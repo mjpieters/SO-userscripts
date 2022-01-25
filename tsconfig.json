@@ -4,11 +4,19 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "resolveJsonModule": true,
+        "lib": [
+            "DOM",
+            "esnext"
+        ],
         "module": "commonjs",
         "moduleResolution": "Node",
         "noImplicitAny": true,
         "outDir": "./dist/",
+        "sourceMap": true,
         "target": "ES2020",
+        "types": [
+            "@types/tampermonkey",
+        ]
     },
     "exclude": [
         "dist",

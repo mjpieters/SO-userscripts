@@ -91,6 +91,7 @@ const config: (
       },
       port: DEV_SERVER_PORT,
       hot: false,
+      liveReload: false,
     },
   }
 }
