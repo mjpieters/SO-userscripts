@@ -1,0 +1,36 @@
+{
+  "name": "so-userscripts",
+  "author": "Martijn Pieters",
+  "license": "MIT",
+  "repository": "git+https://github.com/mjpieters/SO-userscripts.git",
+  "bugs": {
+    "url": "https://github.com/mjpieters/SO-userscripts/issues"
+  },
+  "homepage": "https://github.com/mjpieters/SO-userscripts",
+  "private": true,
+  "scripts": {
+    "serve": "webpack serve --mode=development",
+    "build": "webpack --mode=production",
+    "build:dev": "npx webpack --watch --mode=development"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/node": "^17.0.12",
+    "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "glob": "^7.2.0",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5",
+    "webpack": "^5.67.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.3",
+    "webpack-merge": "^5.8.0",
+    "webpack-userscript": "^2.5.8"
+  }
+}
