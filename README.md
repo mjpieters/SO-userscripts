@@ -1,5 +1,5 @@
 # SO-userscripts
-User scripts for use on Stack Exchange websites
+User scripts for use on Stack Exchange websites. You can install these by clicking on the install link for each individual script listed below.
 
 ## Development
 
