@@ -1,4 +1,4 @@
-// API key specific to this script, client id 22741
+// API key specific to this script, client id
 export const seApiKey = '9VvY5KWke5mKcflYkx)NDw(('
 export const seApiUrl = 'https://api.stackexchange.com/2.3'
 /*
@@ -8,7 +8,9 @@ export const seApiUrl = 'https://api.stackexchange.com/2.3'
  */
 export const minimalUserFilter = '!)69QNaSIc2a*QW(ccD0ph0dVbliY'
 export const sedeUrl = 'https://data.stackexchange.com/'
-export const sedeQueryId = '1892906'
+// Query link: https://data.stackexchange.com/stackoverflow/query/1549808
+// The ID here is that of the _revision_ of the query.
+export const sedeQueryId = '1894927'
 
 export const controllerId = 'us-bookmarkers'
 
