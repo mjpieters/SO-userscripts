@@ -57,6 +57,7 @@ const config: (
           })
         : undefined,
       new WebpackUserscript({
+        metajs: false,
         headers: (data) => {
           const headersFile = path.resolve(
             SCRIPTS_FOLDER,
