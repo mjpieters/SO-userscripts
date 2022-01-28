@@ -64,7 +64,7 @@ const config: (
             'headers.json'
           )
           const exists = existsSync(headersFile)
-          var headers = HEADER_DEFAULTS
+          let headers = HEADER_DEFAULTS
           if (exists) {
             headers = {
               ...headers,

@@ -1,3 +1,4 @@
+/* global Stacks, StackExchange */
 import { html } from 'common-tags'
 
 import { fetchBookmarkers } from './sedeQuery'

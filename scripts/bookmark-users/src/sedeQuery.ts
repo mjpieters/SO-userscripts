@@ -3,6 +3,7 @@
  * Uses the GM_xmlhttpRequest function + a @connect registration to get around CORS
  * limitations on that host.
  */
+/* global GM_xmlhttpRequest */
 import { sedeUrl, sedeQueryId } from './constants'
 import { getSiteId } from './utils'
 

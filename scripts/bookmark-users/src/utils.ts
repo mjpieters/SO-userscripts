@@ -19,7 +19,7 @@ type APIResponse<T> = {
 }
 
 // holds path => earliest next fetch allowed time in ms
-let notBeforeTs: Map<string, number> = new Map()
+const notBeforeTs: Map<string, number> = new Map()
 
 // Fetch data from the API; handles backoff, API key use and site ID transparently
 export async function seApiFetch<T>(path: string): Promise<T[]>

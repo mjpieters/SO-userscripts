@@ -1,3 +1,4 @@
+/* global GM_addStyle */
 import { userStyles } from './constants'
 import { BookmarkersController } from './controller'
 

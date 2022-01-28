@@ -1,6 +1,7 @@
 /*
  * Fetch users from the Stack Exchange API and render to HTML
  */
+/* global StackExchange */
 import { html } from 'common-tags'
 import { seApiFetch } from './utils'
 import { minimalUserFilter } from './constants'
@@ -29,7 +30,7 @@ class User {
     | 'does_not_exist'
 
   get badges(): string[] {
-    let badges = new Array()
+    const badges = []
     if (this.is_employee) {
       badges.push(
         html`<span class="s-badge s-badge__staff s-badge__xs">Staff</span>`
@@ -40,6 +41,7 @@ class User {
         badges.push(
           html`<span class="s-badge s-badge__moderator s-badge__xs">Mod</span>`
         )
+        break
       case 'team_admin':
         badges.push(
           html`<span class="s-badge s-badge__admin s-badge__xs">Admin</span>`
@@ -117,13 +119,13 @@ class DeletedUser extends User {
 }
 
 type JSONUser = {
-  [P in keyof User as User[P] extends Function ? never : P]: User[P]
+  [P in keyof User as User[P] extends Function ? never : P]: User[P] // eslint-disable-line @typescript-eslint/ban-types
 }
 
 // Fetch users and yield User objects in the same order they are listed in the argument
 export async function* fetchUsers(
   userIds: string[],
-  missingAssumeDeleted: boolean = false
+  missingAssumeDeleted = false
 ): AsyncGenerator<User, void, undefined> {
   while (userIds.length > 0) {
     const queryIds = userIds.splice(0, 100)
@@ -146,5 +148,4 @@ export async function* fetchUsers(
       return user ? [...mapped, user] : mapped
     }, [])
   }
-  return
 }
