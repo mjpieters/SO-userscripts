@@ -1,6 +1,5 @@
 {
   "name": "Bookmark Users",
-  "version": "1.0.0",
   "description": "Shows what user bookmarked a question. Fetches the bookmarking users from the StackExchange data explorer (data can be up to a week old)",
   "match": [
     "http*://*.stackoverflow.com/questions/*",

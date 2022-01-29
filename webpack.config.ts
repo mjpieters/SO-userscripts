@@ -5,6 +5,7 @@ import * as path from 'path'
 import * as glob from 'glob'
 import WebpackUserscript from 'webpack-userscript'
 import { existsSync } from 'fs'
+import { execSync } from 'child_process'
 
 const HERE = path.resolve(__dirname)
 const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
@@ -13,8 +14,10 @@ const DEV_SERVER_PORT = 8842
 
 const HEADER_DEFAULTS = {
   namespace: '[homepage]',
-  version: '[version]',
+  version:
+    process.env.VERSION || process.env.npm_package_version || '[version]',
 }
+const gitCommitHash = execSync('git rev-parse HEAD').toString().trim()
 
 const scriptMainPaths = glob.sync(path.join(SCRIPTS_FOLDER, '*/src/index.ts'))
 const entries: { [key: string]: string } = {}
@@ -64,13 +67,17 @@ const config: (
             data.basename,
             'headers.json'
           )
-          const exists = existsSync(headersFile)
-          let headers = HEADER_DEFAULTS
-          if (exists) {
-            headers = {
-              ...headers,
-              ...require(headersFile),
-            }
+          const baseUrl = isDevMode
+            ? `http://localhost:${DEV_SERVER_PORT}/`
+            : `${data.homepage}/raw/${gitCommitHash}/dist`
+          const downloadURL = isDevMode
+            ? `${baseUrl}${data.basename}.proxy.user.js`
+            : `${baseUrl}${data.basename}.user.js`
+          const headers = {
+            ...HEADER_DEFAULTS,
+            downloadURL,
+            updateURL: downloadURL.replace(`/${gitCommitHash}/`, '/main/'),
+            ...(existsSync(headersFile) && require(headersFile)),
           }
           if (isDevMode) {
             headers.version = `${headers.version || '[version]'}-t.[buildTime]`

@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
 jobs:
   build:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
@@ -23,3 +24,9 @@ jobs:
 
       - name: Lint
         run: yarn run lint
+
+      - name: Release
+        if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npm run release
