@@ -48,12 +48,14 @@ const popoverDiv = html`
     aria-hidden="true"
   >
     <div class="s-popover--arrow"></div>
-    <div
-      class="d-flex flex__center fd-column gs8 gsy m4 hmx3 wmx100 overflow-x-hidden overflow-y-auto"
-    >
-      <ul class="list-reset flex--item mr-auto"></ul>
-      <div class="s-spinner s-spinner__sm flex--item">
-        <div class="v-visible-sr">Loading…</div>
+    <div class="m4 hmx3 wmx100 overflow-x-hidden overflow-y-auto">
+      <div
+        class="${controllerId}-popover-inner d-flex fd-column flex__center gs8 gsy"
+      >
+        <ul class="list-reset flex--item mr-auto"></ul>
+        <div class="s-spinner s-spinner__sm flex--item">
+          <div class="v-visible-sr">Loading…</div>
+        </div>
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ export const controllerId = 'us-bookmarkers'
 
 // scale anonymous gravatar sprite in stacks minimal usercard style
 export const userStyles = `
+.${controllerId}-content { min-height: min-content; }
 .${controllerId}-popover .s-user-card__minimal .anonymous-gravatar {
   zoom:0.5;
   -moz-transform:scale(0.5);
