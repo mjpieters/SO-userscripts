@@ -2,7 +2,7 @@
 
 <img src="./screenshot.png" alt="Screenshot" height="300px" align="right" />
 
-[![Install this userscript](https://img.shields.io/badge/Install-Install%20this%20userscript-blue)](../../dist/bookmark-users.user.js)
+[![Install this userscript](https://img.shields.io/badge/Install-Install%20this%20userscript-blue)](../../../raw/dist/bookmark-users.user.js)
 
 Userscript to fetch the list of users that bookmarked a question on any Stack Exchange website.
 
