@@ -10,6 +10,8 @@ assignees: ''
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
+If this report is about a specific user script, please add the label for that script to this issue, by clicking the gear icon next to the *Labels* label on the right.
+
 **Describe the solution you'd like**
 A clear and concise description of what you want to happen.
 

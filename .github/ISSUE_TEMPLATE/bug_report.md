@@ -10,6 +10,8 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
+If this report is about a specific user script, please add the label for that script to this issue, by clicking the gear icon next to the *Labels* label on the right.
+
 **To Reproduce**
 Steps to reproduce the behavior:
 1. Go to '...'
