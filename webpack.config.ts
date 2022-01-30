@@ -10,7 +10,7 @@ import { execSync } from 'child_process'
 const HERE = path.resolve(__dirname)
 const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
 const OUTPUT = path.resolve(HERE, 'dist')
-const DEV_SERVER_PORT = 8842
+const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT || '8842')
 
 const HEADER_DEFAULTS = {
   namespace: '[homepage]',
