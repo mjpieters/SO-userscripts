@@ -94,6 +94,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Setup
         uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561 # v2
