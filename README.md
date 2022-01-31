@@ -24,6 +24,8 @@ Feature requests and bug reports are most welcome, please use the [GitHub issue 
 [prs]: https://github.com/mjpieters/SO-userscripts/pulls
 ## Development
 
+Scripts are written in TypeScript and compiled and packaged as userscripts (JavaScript files with a header), using webpack.
+
 Please install [`nvm`](https://github.com/nvm-sh/nvm) and [`yarn`](https://yarnpkg.com/), then run `nvm use` and `yarn install` to get set up.
 
 Then run `yarn run serve` to start a web server on port 8842, serving the scripts from an index page. Alternatively, run `yarn run build:dev` to create a local development build in `dist/`. You can alter the port number by setting the `DEV_SERVER_PORT` environment variable.
