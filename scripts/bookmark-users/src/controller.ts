@@ -1,4 +1,4 @@
-/* global Stacks, StackExchange */
+/* global Stacks, StackExchange, Svg */
 import { html } from 'common-tags'
 
 import { fetchBookmarkers } from './sedeQuery'
@@ -16,19 +16,7 @@ const bookmarkersButton = html`
     data-action="click->s-popover#toggle s-popover:show->${controllerId}#showBookmarkers"
     aria-pressed="false"
     title="Show who bookmarked this question."
-  >
-    <svg
-      aria-hidden="true"
-      class="svg-icon iconPerson"
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-    >
-      <path
-        d="M15 15a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1c0-2.63 4-4 4-4s.23-.4 0-1c-.84-.62-.94-1.59-1-4 .17-2.41 1.87-3 3-3s2.83.59 3 3c-.06 2.41-.16 3.38-1 4-.23.59 0 1 0 1s4 1.37 4 4v1Z"
-      ></path>
-    </svg>
-  </button>
+  ></button>
 `
 // Stacks styling classes:
 // - We need an inner div so overflow changes are not affecting the popover arrow div
@@ -74,6 +62,10 @@ export class BookmarkersController extends Stacks.StacksController {
       return
     }
     element.insertAdjacentHTML('afterend', bookmarkersButton)
+    element.nextElementSibling?.insertAdjacentElement(
+      'beforeend',
+      Svg.Person()[0]
+    )
     Stacks.application.register(controllerId, BookmarkersController)
   }
 
