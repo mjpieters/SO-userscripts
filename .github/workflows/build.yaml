@@ -81,9 +81,6 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write
-
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@14dc64f30986eaa2ad2dddcec073f5aab18e5a24 # v1
@@ -110,5 +107,5 @@ jobs:
       - name: Release
         if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
         run: npm run release
