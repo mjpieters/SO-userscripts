@@ -1,8 +1,7 @@
 name: Dependabot auto-merge
 on: pull_request_target
 
-permissions:
-  permissions: read-all
+permissions: read-all
 
 jobs:
   dependabot:
@@ -23,7 +22,7 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@a3e5f86ae9f2f49b441498973ddec20035d326b8 # v1.1.1
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
 
       - name: Approve PR
         if: ${{ steps.metadata.outputs.dependency-type == 'direct:development' || steps.metadata.outputs.update-type == 'version-update:semver-minor' }}
