@@ -8,6 +8,12 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # only run a single build wf per PR, cancel any existing (preceding) runs
+  # for this PR.
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     if: "!contains(github.event.head_commit.message, 'skip ci')"
