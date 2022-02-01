@@ -54,12 +54,6 @@ jobs:
       actions: read
       security-events: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language:
-          - javascript
-
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@14dc64f30986eaa2ad2dddcec073f5aab18e5a24 # v1
@@ -78,7 +72,7 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@1a927e9307bc11970b2c679922ebc4d03a5bd980 # v1
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@1a927e9307bc11970b2c679922ebc4d03a5bd980 # v1
