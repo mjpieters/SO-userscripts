@@ -98,6 +98,7 @@ jobs:
             artifactcache.actions.githubusercontent.com:443
             github.com:443
             kv4gacprodeus2file3.blob.core.windows.net:443
+            registry.yarnpkg.com:443
 
       - name: Checkout
         uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2
@@ -107,7 +108,7 @@ jobs:
       - name: Setup
         uses: actions/setup-node@1f8c6b94b26d0feae1e387ca63ccbdc44d27b561 # v2
         with:
-          node-version: lts/*
+          node-version: lts/gallium
           cache: yarn
 
       - name: Install
