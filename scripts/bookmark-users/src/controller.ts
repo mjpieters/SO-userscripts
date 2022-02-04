@@ -58,8 +58,11 @@ export class BookmarkersController extends Stacks.StacksController {
   static attach(bookmarkButton?: Element): void {
     if (
       // If there is no bookbark button, or bookmark count is not visible, bail
-      bookmarkButton?.querySelector<HTMLElement>('.js-bookmark-count')
-        ?.offsetParent === null
+      !(
+        bookmarkButton &&
+        bookmarkButton.querySelector<HTMLElement>('.js-bookmark-count')
+          ?.offsetParent
+      )
     ) {
       return
     }
