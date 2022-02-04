@@ -1,9 +1,6 @@
-/* global GM_addStyle, StackExchange */
-import { userStyles } from './constants'
+/* global StackExchange */
 import { BookmarkersController } from './controller'
 
-StackExchange.ready(() => {
-  GM_addStyle(userStyles)
-  const bookmarksCount = document.querySelector<HTMLElement>('.js-bookmark-btn')
-  BookmarkersController.attach(bookmarksCount)
-})
+StackExchange.ready(() =>
+  BookmarkersController.attach(document.querySelector('.js-bookmark-btn'))
+)

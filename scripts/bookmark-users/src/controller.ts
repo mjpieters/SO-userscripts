@@ -1,9 +1,9 @@
-/* global Stacks, StackExchange, Svg */
+/* global GM_addStyle, Stacks, StackExchange, Svg */
 import { html } from 'common-tags'
 
+import { controllerId, userStyles } from './constants'
 import { fetchBookmarkers } from './sedeQuery'
 import { fetchUsers } from './users'
-import { controllerId } from './constants'
 
 type State = 'initial' | 'attached' | 'loading' | 'loaded'
 
@@ -50,19 +50,24 @@ const popoverDiv = html`
 `
 
 export class BookmarkersController extends Stacks.StacksController {
+  static style?: HTMLStyleElement = null
+
   state: State = 'initial'
   popoverElement?: HTMLElement
 
-  static attach(element?: HTMLElement): void {
+  static attach(bookmarkButton?: Element): void {
     if (
-      // If the bookmark count is not visible, bail
-      element.querySelector<HTMLElement>('.js-bookmark-count')?.offsetParent ===
-      null
+      // If there is no bookbark button, or bookmark count is not visible, bail
+      bookmarkButton?.querySelector<HTMLElement>('.js-bookmark-count')
+        ?.offsetParent === null
     ) {
       return
     }
-    element.insertAdjacentHTML('afterend', bookmarkersButton)
-    element.nextElementSibling?.insertAdjacentElement(
+    if (!BookmarkersController.style) {
+      BookmarkersController.style = GM_addStyle(userStyles)
+    }
+    bookmarkButton.insertAdjacentHTML('afterend', bookmarkersButton)
+    bookmarkButton.nextElementSibling?.insertAdjacentElement(
       'beforeend',
       Svg.Person()[0]
     )
