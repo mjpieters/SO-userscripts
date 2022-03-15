@@ -26,7 +26,7 @@
     "@types/tampermonkey": "^4.0.5",
     "@types/webpack": "^5.28.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
-    "@typescript-eslint/parser": "^5.14.0",
+    "@typescript-eslint/parser": "^5.15.0",
     "@userscripters/stackexchange-global-types": "^2.4.0",
     "common-tags": "^1.8.2",
     "eslint": "^8.11.0",
