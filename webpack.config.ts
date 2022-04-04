@@ -68,11 +68,11 @@ const config: (
             'headers.json'
           )
           const baseUrl = isDevMode
-            ? `http://localhost:${DEV_SERVER_PORT}/`
+            ? `http://localhost:${DEV_SERVER_PORT}`
             : `${data.homepage}/raw/${gitCommitHash}/dist`
           const downloadURL = isDevMode
-            ? `${baseUrl}${data.basename}.proxy.user.js`
-            : `${baseUrl}${data.basename}.user.js`
+            ? `${baseUrl}/${data.basename}.proxy.user.js`
+            : `${baseUrl}/${data.basename}.user.js`
           const headers = {
             ...HEADER_DEFAULTS,
             downloadURL,
