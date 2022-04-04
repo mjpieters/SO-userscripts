@@ -1,13 +1,11 @@
 /* global GM_addStyle, Stacks, StackExchange, Svg */
-import { html } from 'common-tags'
-
 import { controllerId, userStyles } from './constants'
 import { fetchBookmarkers } from './sedeQuery'
 import { fetchUsers } from './users'
 
 type State = 'initial' | 'attached' | 'loading' | 'loaded'
 
-const bookmarkersButton = html`
+const bookmarkersButton = `
   <button
     class="s-btn s-btn__unset c-pointer py4"
     data-controller="s-tooltip ${controllerId}"
@@ -29,7 +27,7 @@ const bookmarkersButton = html`
 //   the items, and m4 setting the margin between the outer and inner containers.
 // - The contained unordered list requires mr-auto (margin-right: auto) to compensate
 //   for flex-item shenenigans; without this the list is shifted too far left.
-const popoverDiv = html`
+const popoverDiv = `
   <div
     class="${controllerId}-popover s-popover"
     role="dialog"

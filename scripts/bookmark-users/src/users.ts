@@ -2,7 +2,6 @@
  * Fetch users from the Stack Exchange API and render to HTML
  */
 /* global StackExchange */
-import { html } from 'common-tags'
 import { seApiFetch } from './utils'
 import { minimalUserFilter } from './constants'
 
@@ -29,25 +28,25 @@ class User {
     | 'team_admin'
     | 'does_not_exist'
 
-  get badges(): string[] {
+  get badges(): string {
     const badges = []
     if (this.is_employee) {
       badges.push(
-        html`<span class="s-badge s-badge__staff s-badge__xs">Staff</span>`
+        `<span class="s-badge s-badge__staff s-badge__xs">Staff</span>`
       )
     }
     switch (this.user_type) {
       case 'moderator':
         badges.push(
-          html`<span class="s-badge s-badge__moderator s-badge__xs">Mod</span>`
+          `<span class="s-badge s-badge__moderator s-badge__xs">Mod</span>`
         )
         break
       case 'team_admin':
         badges.push(
-          html`<span class="s-badge s-badge__admin s-badge__xs">Admin</span>`
+          `<span class="s-badge s-badge__admin s-badge__xs">Admin</span>`
         )
     }
-    return badges
+    return badges.join(' ')
   }
 
   get abbreviated_reputation(): string {
@@ -57,7 +56,7 @@ class User {
   }
 
   toHTML(date: string): string {
-    return html`
+    return `
       <div class="s-user-card s-user-card__minimal">
         <time class="s-user-card--time">${date}</time>
         <a href="${this.link}" class="s-avatar s-user-card--avatar">
@@ -90,7 +89,7 @@ class DeletedUser extends User {
 
   toHTML(date: string): string {
     if (StackExchange.options.user.isModerator) {
-      return html`
+      return `
         <div class="s-user-card s-user-card__minimal s-user-card__deleted">
           <time class="s-user-card--time">${date}</time>
           <a href="${this.link}" class="s-avatar s-user-card--avatar">
@@ -104,7 +103,7 @@ class DeletedUser extends User {
         </div>
       `
     }
-    return html`
+    return `
       <div class="s-user-card s-user-card__minimal s-user-card__deleted">
         <time class="s-user-card--time">${date}</time>
         <div class="s-avatar s-user-card--avatar">
