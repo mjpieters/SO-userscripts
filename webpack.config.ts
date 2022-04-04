@@ -91,7 +91,6 @@ const config: (
         },
       }),
     ].filter(Boolean),
-    devtool: 'inline-source-map',
     devServer: {
       static: {
         directory: OUTPUT,
