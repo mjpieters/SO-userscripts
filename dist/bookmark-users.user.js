@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Bookmark Users
-// @version     1.0.4
+// @version     1.0.5
 // @author      Martijn Pieters
 // @description Shows what user bookmarked a question. Fetches the bookmarking users from the StackExchange data explorer (data can be up to a week old)
 // @homepage    https://github.com/mjpieters/SO-userscripts
@@ -12,8 +12,8 @@
 // @match       http*://*.mathoverflow.net/questions/*
 // @match       http*://*.stackexchange.com/questions/*
 // @namespace   https://github.com/mjpieters/SO-userscripts
-// @downloadURL https://github.com/mjpieters/SO-userscripts/raw/4c5a320eb53579b5e8a13a8909441f4e1f20fe5b/distbookmark-users.user.js
-// @updateURL   https://github.com/mjpieters/SO-userscripts/raw/main/distbookmark-users.user.js
+// @downloadURL https://github.com/mjpieters/SO-userscripts/raw/2cb18daab57c55da23db323d6b881f27498b70a4/dist/bookmark-users.user.js
+// @updateURL   https://github.com/mjpieters/SO-userscripts/raw/main/dist/bookmark-users.user.js
 // @grant       GM_xmlhttpRequest
 // @grant       GM_addStyle
 // @connect     data.stackexchange.com
