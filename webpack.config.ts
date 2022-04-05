@@ -2,7 +2,6 @@
 import * as path from 'path'
 import * as glob from 'glob'
 import { existsSync } from 'fs'
-import { execSync } from 'child_process'
 
 import { BannerPlugin, Configuration, SourceMapDevToolPlugin } from 'webpack'
 import WebpackUserscript from 'webpack-userscript'
