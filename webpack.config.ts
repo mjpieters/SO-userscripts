@@ -19,7 +19,6 @@ const HEADER_DEFAULTS = {
   version:
     process.env.VERSION || process.env.npm_package_version || '[version]',
 }
-const gitCommitHash = execSync('git rev-parse HEAD').toString().trim()
 
 const scriptMainPaths = glob.sync(path.join(SCRIPTS_FOLDER, '*/src/index.ts'))
 const entries: { [key: string]: string } = {}
