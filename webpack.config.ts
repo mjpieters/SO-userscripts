@@ -1,11 +1,13 @@
 /* eslint-env node */
-import type { Configuration } from 'webpack'
-import { BannerPlugin } from 'webpack'
 import * as path from 'path'
 import * as glob from 'glob'
-import WebpackUserscript from 'webpack-userscript'
 import { existsSync } from 'fs'
 import { execSync } from 'child_process'
+
+import { BannerPlugin, Configuration, SourceMapDevToolPlugin } from 'webpack'
+import WebpackUserscript from 'webpack-userscript'
+
+import { homepage } from './package.json'
 
 const HERE = path.resolve(__dirname)
 const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
@@ -31,6 +33,9 @@ const config: (
   args: Record<string, any>
 ) => Configuration = (_, argv) => {
   const isDevMode = argv.mode === 'development'
+  const baseUrl = isDevMode
+    ? `http://localhost:${DEV_SERVER_PORT}`
+    : `${homepage}/raw/${gitCommitHash}/dist`
   return {
     entry: entries,
     module: {
@@ -67,9 +72,6 @@ const config: (
             data.basename,
             'headers.json'
           )
-          const baseUrl = isDevMode
-            ? `http://localhost:${DEV_SERVER_PORT}`
-            : `${data.homepage}/raw/${gitCommitHash}/dist`
           const downloadURL = isDevMode
             ? `${baseUrl}/${data.basename}.proxy.user.js`
             : `${baseUrl}/${data.basename}.user.js`
@@ -90,7 +92,12 @@ const config: (
           filename: '[basename].proxy.user.js',
         },
       }),
+      new SourceMapDevToolPlugin({
+        append: `\n//# sourceMappingURL=${baseUrl}/[url]`,
+        filename: '[name].map',
+      }),
     ].filter(Boolean),
+    devtool: false,
     devServer: {
       static: {
         directory: OUTPUT,
