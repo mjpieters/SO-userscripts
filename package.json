@@ -14,7 +14,7 @@
     "build:dev": "npx webpack --watch --mode=development",
     "lint": "eslint .",
     "release": "semantic-release",
-    "serve": "webpack serve --mode=development"
+    "serve": "webpack serve --mode=development --no-web-socket-server"
   },
   "devDependencies": {
     "@semantic-release/exec": "semantic-release/exec",
