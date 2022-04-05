@@ -95,17 +95,25 @@ export class BookmarkersController extends Stacks.StacksController {
     const listElement = this.popoverElement.querySelector<HTMLElement>('ul')
     const postId = StackExchange.question.getQuestionId()
     const bookmarkers = await fetchBookmarkers(postId)
-    const dateForUid = new Map(bookmarkers.map((b) => [b.userId, b.date]))
-    for await (const user of fetchUsers(
-      bookmarkers.map((b) => b.userId),
-      true
-    )) {
+    if (!bookmarkers.length) {
       listElement.insertAdjacentHTML(
         'beforeend',
-        `<li class="mb4">${user.toHTML(
-          dateForUid.get(user.user_id.toFixed(0))
-        )}</li>`
+        '<li class="mb4 fs-italic">No bookmarkers known (yet)</li>'
       )
+      listElement.classList.add('mx-auto') // center the text
+    } else {
+      const dateForUid = new Map(bookmarkers.map((b) => [b.userId, b.date]))
+      for await (const user of fetchUsers(
+        bookmarkers.map((b) => b.userId),
+        true
+      )) {
+        listElement.insertAdjacentHTML(
+          'beforeend',
+          `<li class="mb4">${user.toHTML(
+            dateForUid.get(user.user_id.toFixed(0))
+          )}</li>`
+        )
+      }
     }
     this.state = 'loaded'
     this.popoverElement.querySelector<HTMLElement>('.s-spinner').remove()
