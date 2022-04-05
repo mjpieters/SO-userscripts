@@ -35,7 +35,7 @@ const config: (
   const isDevMode = argv.mode === 'development'
   const baseUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
-    : `${homepage}/raw/${gitCommitHash}/dist`
+    : `${homepage}/raw/v${HEADER_DEFAULTS.version}/dist`
   return {
     entry: entries,
     module: {
@@ -78,7 +78,10 @@ const config: (
           const headers = {
             ...HEADER_DEFAULTS,
             downloadURL,
-            updateURL: downloadURL.replace(`/${gitCommitHash}/`, '/main/'),
+            updateURL: downloadURL.replace(
+              `/v${HEADER_DEFAULTS.version}/`,
+              '/main/'
+            ),
             ...(existsSync(headersFile) && require(headersFile)),
           }
           if (isDevMode) {
