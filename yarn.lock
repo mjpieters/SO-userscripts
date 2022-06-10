@@ -424,8 +424,8 @@
 
 "@semantic-release/exec@semantic-release/exec":
   version "0.0.0-development"
-  uid ce679babd05b74ac3653cea3a6090f721b7a55dc
-  resolved "https://codeload.github.com/semantic-release/exec/tar.gz/ce679babd05b74ac3653cea3a6090f721b7a55dc"
+  uid f8b57cc08248eb3ac180277623290d8ab737a36a
+  resolved "https://codeload.github.com/semantic-release/exec/tar.gz/f8b57cc08248eb3ac180277623290d8ab737a36a"
   dependencies:
     "@semantic-release/error" "^3.0.0"
     aggregate-error "^3.0.0"
