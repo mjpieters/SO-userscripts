@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # v2
 
       - name: Setup
-        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # v2
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v2
         with:
           node-version: lts/gallium
           cache: yarn
@@ -103,7 +103,7 @@ jobs:
           token: ${{ secrets.DEPLOY_TOKEN }}
 
       - name: Setup
-        uses: actions/setup-node@969bd2663942d722d85b6a8626225850c2f7be4b # v2
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516 # v2
         with:
           node-version: lts/gallium
           cache: yarn
