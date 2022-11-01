@@ -24,7 +24,7 @@
     "@types/semantic-release": "^17.2.4",
     "@types/tampermonkey": "^4.0.5",
     "@types/webpack": "^5.28.0",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.41.0",
     "@userscripters/stackexchange-global-types": "^2.4.2",
     "eslint": "^8.26.0",
