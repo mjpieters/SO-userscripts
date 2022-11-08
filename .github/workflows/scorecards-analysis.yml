@@ -18,6 +18,9 @@ jobs:
     permissions:
       # Needed to upload the results to code-scanning dashboard.
       security-events: write
+      # Used for sharing results with the securityscorecards.dev API
+      # (publish_results: true)
+      id-token: write
       actions: read
       contents: read
 
