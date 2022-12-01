@@ -20,7 +20,7 @@
     "@semantic-release/exec": "semantic-release/exec",
     "@semantic-release/git": "^10.0.1",
     "@types/glob": "^8.0.0",
-    "@types/node": "^18.11.9",
+    "@types/node": "^18.11.10",
     "@types/semantic-release": "^17.2.4",
     "@types/tampermonkey": "^4.0.5",
     "@types/webpack": "^5.28.0",
