@@ -894,10 +894,10 @@
     "@typescript-eslint/types" "5.47.0"
     eslint-visitor-keys "^3.3.0"
 
-"@userscripters/stackexchange-global-types@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@userscripters/stackexchange-global-types/-/stackexchange-global-types-2.4.2.tgz#82a8ec91c3f9f6a1c250848a34165e3ee4098ac4"
-  integrity sha512-UncyjzrPCSs6q7Hi4SLdlwY3nbN6/LCEdWU5zWJay2a9ooI39xxPleci8ivgLLlM2t2CdF9WYVtk1IyTRY8wGg==
+"@userscripters/stackexchange-global-types@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@userscripters/stackexchange-global-types/-/stackexchange-global-types-2.5.2.tgz#11b7e3e486db112ab8664b05375d69d775b513f7"
+  integrity sha512-yjrJUr8Ga1QwPvdKixYX5nBCk3QUfu5jI8jDBgFyCSsoOIZq02hE9DC7RLVBqeFs1L9K7k8hFifsJvMOqnyoeg==
   dependencies:
     "@types/jquery" "^3.5.14"
     stimulus "^2.0.0"
