@@ -785,10 +785,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/tampermonkey@^4.0.6":
-  version "4.0.6"
-  resolved "https://registry.yarnpkg.com/@types/tampermonkey/-/tampermonkey-4.0.6.tgz#fdf68be456c1e0dea59b333e075258fa216bdb6d"
-  integrity sha512-AcsLVRraaqGVlLgybHvxfWTvQpHnSBiT/IGVosf9FcLj+ijcltPgtygpQCXBh5dginAVFJ7U+6Plss/7/BVilQ==
+"@types/tampermonkey@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/@types/tampermonkey/-/tampermonkey-4.0.7.tgz#e415c37511784141e60d0b6a1ef4f25937950b0d"
+  integrity sha512-tMTfb9lOjcYBZI/ZDOhzpFTRp/Gejtu8XdZZFmy+8r1JnFcxS0Y9oU+8e//hlDrk3c0eOMGaan3DgjGqqy5KTA==
 
 "@types/webpack@^5.28.0":
   version "5.28.0"
