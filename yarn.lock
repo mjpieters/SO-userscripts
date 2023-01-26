@@ -684,10 +684,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/jquery@^3.5.14":
-  version "3.5.14"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.14.tgz#ac8e11ee591e94d4d58da602cb3a5a8320dee577"
-  integrity sha512-X1gtMRMbziVQkErhTQmSe2jFwwENA/Zr+PprCkF63vFq+Yt5PZ4AlKqgmeNlwgn7dhsXEK888eIW2520EpC+xg==
+"@types/jquery@^3.5.16":
+  version "3.5.16"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.16.tgz#632131baf30951915b0317d48c98e9890bdf051d"
+  integrity sha512-bsI7y4ZgeMkmpG9OM710RRzDFp+w4P1RGiIt30C1mSBT+ExCleeh4HObwgArnDFELmRrOpXgSYN9VF1hj+f1lw==
   dependencies:
     "@types/sizzle" "*"
 
@@ -889,12 +889,12 @@
     "@typescript-eslint/types" "5.48.0"
     eslint-visitor-keys "^3.3.0"
 
-"@userscripters/stackexchange-global-types@^2.5.2":
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@userscripters/stackexchange-global-types/-/stackexchange-global-types-2.5.2.tgz#11b7e3e486db112ab8664b05375d69d775b513f7"
-  integrity sha512-yjrJUr8Ga1QwPvdKixYX5nBCk3QUfu5jI8jDBgFyCSsoOIZq02hE9DC7RLVBqeFs1L9K7k8hFifsJvMOqnyoeg==
+"@userscripters/stackexchange-global-types@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@userscripters/stackexchange-global-types/-/stackexchange-global-types-2.6.0.tgz#abc16a679251bd2402b95980c7e02748452a66c8"
+  integrity sha512-tBHs3qoxy2JkjL/fR84IvdmSiexMTJclsqWE9w2/37x4JduffIR8uArzdUx6qgmAScE4nOjllBBZ4o7penycDA==
   dependencies:
-    "@types/jquery" "^3.5.14"
+    "@types/jquery" "^3.5.16"
     stimulus "^2.0.0"
 
 "@webassemblyjs/ast@1.11.1":
