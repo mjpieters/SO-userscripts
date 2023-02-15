@@ -16,9 +16,12 @@
     "build:dev": "npx webpack --watch --mode=development",
     "lint": "eslint .",
     "release": "semantic-release",
-    "serve": "webpack serve --mode=development --no-web-socket-server"
+    "serve": "webpack serve --mode=development --no-web-socket-server",
+    "postinstall": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.4.3",
+    "@commitlint/config-conventional": "^17.4.3",
     "@semantic-release/exec": "semantic-release/exec",
     "@semantic-release/git": "^10.0.1",
     "@types/glob": "^8.0.1",
@@ -38,6 +41,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-standard": "^5.0.0",
     "glob": "^8.1.0",
+    "husky": "^8.0.0",
     "prettier": "^2.8.4",
     "prettier-eslint": "^15.0.1",
     "semantic-release": "^20.1.0",
