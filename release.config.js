@@ -35,7 +35,7 @@ module.exports = {
     '@semantic-release/release-notes-generator',
     [
       '@semantic-release/exec',
-      { [step]: `env VERSION=${version} npm run build` },
+      { [step]: `env VERSION=${version} yarn run build` },
     ],
     ['@semantic-release/git', { assets: ['dist'], message }],
   ],
