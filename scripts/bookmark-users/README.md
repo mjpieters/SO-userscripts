@@ -7,6 +7,11 @@
 ![MIT license](https://img.shields.io/github/license/mjpieters/SO-userscripts)
 [![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue)](../../../../raw/main/dist/bookmark-users.user.js)
 
+> **Warning**
+> This userscript no longer works because [Stack Exchange has replaced bookmarks with "saves" in October 2022][bookmarks-evolved]. Saves are private and so can't be queried via the Stack Exchange Data Explorer.
+>
+> [bookmarks-evolved]: https://meta.stackexchange.com/questions/382019/bookmarks-have-evolved-into-saves
+
 Userscript to fetch the list of users that bookmarked a question on any Stack Exchange website.
 
 This script uses the [Stack Exchange Data Explorer](https://data.stackexchange.com/) to fetch the list of users and augments this with user information from the [Stack Exchange API](https://api.stackexchange.com/).

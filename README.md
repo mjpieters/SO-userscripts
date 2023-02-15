@@ -7,7 +7,14 @@ User scripts for use on Stack Exchange websites. You can install these by clicki
 
 ## Scripts
 
-* [Bookmark users](./scripts/bookmark-users/README.md): Fetch the list of users that bookmarked a question on any Stack Exchange website.
+
+## Deprecated
+
+These scripts are deprecated and no longer receive support.
+
+* [Bookmark users](./scripts/bookmark-users/README.md): Fetch the list of users that bookmarked a question on any Stack Exchange website. **Stack Exchange [replaced the bookmark feature with "saves"][bookmarks-evolved], which are now private.
+
+[bookmarks-evolved]: https://meta.stackexchange.com/questions/382019/bookmarks-have-evolved-into-saves
 
 ## License
 
