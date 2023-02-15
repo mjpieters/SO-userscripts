@@ -7,8 +7,10 @@
     "url": "https://github.com/mjpieters/SO-userscripts/issues"
   },
   "homepage": "https://github.com/mjpieters/SO-userscripts",
-  "version": "0.0.1",
   "private": true,
+  "workspaces": [
+    "scripts/bookmark-users"
+  ],
   "scripts": {
     "build": "webpack --mode=production",
     "build:dev": "npx webpack --watch --mode=development",
