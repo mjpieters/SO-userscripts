@@ -40,7 +40,7 @@ jobs:
           cache: yarn
 
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Lint
         run: yarn run lint
@@ -105,7 +105,7 @@ jobs:
           cache: yarn
 
       - name: Install
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Release
         if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
