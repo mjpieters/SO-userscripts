@@ -8,16 +8,17 @@
             "DOM",
             "esnext"
         ],
-        "moduleResolution": "Node",
+        "moduleResolution": "node16",
         "noImplicitAny": true,
         "outDir": "./dist/",
         "sourceMap": true,
         "strictNullChecks": true,
         "target": "ES2020",
         "types": [
+            "@types/luxon",
             "@types/tampermonkey",
             "@userscripters/stackexchange-global-types",
-        ]
+        ],
     },
     "exclude": [
         "dist",

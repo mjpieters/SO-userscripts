@@ -7,6 +7,7 @@ User scripts for use on Stack Exchange websites. You can install these by clicki
 
 ## Scripts
 
+* ♦ [Connected users](./scripts/connected-users/README.md): Userscript to aid investigation of connected users on the moderator-only IP cross-reference view. **Requires ♦ moderator access**.
 
 ## Deprecated
 

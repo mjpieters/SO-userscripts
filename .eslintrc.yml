@@ -39,5 +39,6 @@ rules:
   no-unused-vars: 0
   '@typescript-eslint/no-unused-vars':
     - error
+    - varsIgnorePattern: "^_"
   # Conflicts with the StandardJS rule
   '@typescript-eslint/indent': off

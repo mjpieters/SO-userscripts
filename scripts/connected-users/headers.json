@@ -1,0 +1,12 @@
+{
+    "name": "Connected Users",
+    "description": "**Moderator-only**. Hightlights users in the IP cross section view that overlap in time",
+    "match": [
+        "*://stackoverflow.com/admin/xref-user-ips/*",
+        "*://serverfault.com/admin/xref-user-ips/*",
+        "*://superuser.com/admin/xref-user-ips/*",
+        "*://askubuntu.com/admin/xref-user-ips/*",
+        "*://mathoverflow.net/admin/xref-user-ips/*",
+        "*://*.stackexchange.com/admin/xref-user-ips/*"
+    ]
+}

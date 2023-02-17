@@ -9,7 +9,8 @@
   "homepage": "https://github.com/mjpieters/SO-userscripts",
   "private": true,
   "workspaces": [
-    "scripts/bookmark-users"
+    "scripts/bookmark-users",
+    "scripts/connected-users"
   ],
   "scripts": {
     "build": "webpack --mode=production",

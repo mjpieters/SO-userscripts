@@ -1,0 +1,33 @@
+# ♦ Connected Users
+
+> **Warning**  
+> This userscript only works for sites where you have ♦ elected moderator access.
+
+<img src="./screenshot.png" alt="Screenshot" height="300px" align="right" />
+
+![current version](https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github)
+![MIT license](https://img.shields.io/github/license/mjpieters/SO-userscripts)
+[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue)](../../../../raw/main/dist/connected-users.user.js)
+
+Userscript to aid investigation of connected users on the moderator-only IP cross-reference view.
+
+The script adds tools to show a histogram of connected users, list those users in a separate control, and a list of 'focused' users that determine the time periods (per IP address) that non-focused users could be connected to.
+
+## Installation
+
+[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)](../../../../raw/main/dist/connected-users.user.js)
+
+
+## License
+
+This script is [MIT licensed](../../LICENSE).
+
+## Issues and suggestions
+
+[![GitHub issues](https://img.shields.io/github/issues/mjpieters/SO-userscripts/connected-users?label=issues)][issues]
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/mjpieters/SO-userscripts/connected-users?label=pull+requests)][prs]
+
+Feature requests and bug reports are most welcome, please use the [GitHub issue tracker][issues]. Issues with accompanying [pull requests][prs] are even more awesome!
+
+[issues]: https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:connected-users
+[prs]: https://github.com/mjpieters/SO-userscripts/pulls?q=is:pr+is%3Aopen+label:connected-users

@@ -913,6 +913,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@stackoverflow/stacks-icons@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "@stackoverflow/stacks-icons@npm:5.3.1"
+  checksum: e5c5e384b46ec37bcdf791139024cf24e6b651f5a0847a9fc7fc6ed629398d4c33d322d0cdc5f96fb5e4a55b10fed1e7c3bdd80def3f7bf2c2eddc021e9f115b
+  languageName: node
+  linkType: hard
+
 "@tkausl/userscript-meta@npm:^1.0.2":
   version: 1.0.2
   resolution: "@tkausl/userscript-meta@npm:1.0.2"
@@ -1089,6 +1096,13 @@ __metadata:
   version: 0.0.29
   resolution: "@types/json5@npm:0.0.29"
   checksum: e60b153664572116dfea673c5bda7778dbff150498f44f998e34b5886d8afc47f16799280e4b6e241c0472aef1bc36add771c569c68fc5125fc2ae519a3eb9ac
+  languageName: node
+  linkType: hard
+
+"@types/luxon@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@types/luxon@npm:3.2.0"
+  checksum: 051bfbf841c6ce98728df6538342ce4aaddfcf0ec6e8b473e0195dcfc3ba6b1fe4b3ce17f2ba6d25344f41cb70032c1debe96da9e384e5f6e639665c1e6d368c
   languageName: node
   linkType: hard
 
@@ -2654,6 +2668,16 @@ __metadata:
   checksum: dc5368690f4a5c413889792f8df70d5941ca9da44523cde3f87af0745faee5ee16afb8195434550f0504726642734f2683d6c07f8b460f828a12c45fbd4c9a68
   languageName: node
   linkType: hard
+
+"connected-users@workspace:scripts/connected-users":
+  version: 0.0.0-use.local
+  resolution: "connected-users@workspace:scripts/connected-users"
+  dependencies:
+    "@stackoverflow/stacks-icons": ^5.3.1
+    "@types/luxon": ^3.2.0
+    stimulus-use: ^0.52.0
+  languageName: unknown
+  linkType: soft
 
 "console-control-strings@npm:^1.1.0":
   version: 1.1.0
@@ -8336,6 +8360,16 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
+  languageName: node
+  linkType: hard
+
+"stimulus-use@npm:^0.52.0":
+  version: 0.52.0
+  resolution: "stimulus-use@npm:0.52.0"
+  peerDependencies:
+    "@hotwired/stimulus": ">= 3"
+    hotkeys-js: ">= 3"
+  checksum: 99a0b8f2f89564ee8cb5aa3874e7e0e15ac6e6dcd0f327dc85fc504fd384248629d1730490d1df78489190cc061a56e7238bfef15690459ee0d02d0004de609c
   languageName: node
   linkType: hard
 
