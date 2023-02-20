@@ -276,6 +276,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@hotwired/stimulus@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "@hotwired/stimulus@npm:3.2.1"
+  checksum: 2617b10fb3ca0fb05205526693cbc9ea17fca84f40d8d95d0ce8d58f903aa74e020da858adc72f056f777f4854bdd7f5ee6d69810ecb17412af43d6ffb78997e
+  languageName: node
+  linkType: hard
+
 "@humanwhocodes/config-array@npm:^0.11.8":
   version: 0.11.8
   resolution: "@humanwhocodes/config-array@npm:0.11.8"
@@ -882,38 +889,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stimulus/core@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/core@npm:2.0.0"
-  dependencies:
-    "@stimulus/mutation-observers": ^2.0.0
-  checksum: 28e33dfaf2db2e72b007f1798aa906d18080ca988c7f99919107d9a5456fcb2f7eef21f908232666b34070d975ce12f1922a20b2eded796b1bb937d7de7322cd
-  languageName: node
-  linkType: hard
-
-"@stimulus/multimap@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/multimap@npm:2.0.0"
-  checksum: 0b2dbacb02f9ef2e1a0c873fb445cdd9443afe35e007218242ebfb49c99877e73a0c3e951151e3b69b1dd16cbae67fe8ef6eb19da3c64aad71864976347af6af
-  languageName: node
-  linkType: hard
-
-"@stimulus/mutation-observers@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/mutation-observers@npm:2.0.0"
-  dependencies:
-    "@stimulus/multimap": ^2.0.0
-  checksum: b0fb739563d4944c09602b55a56fd3953d6efdb4a24a6a97a7400de0101cc63064c2daa612acd3f3af340d79815687ddd85bad700929647de29b4e9ca3ce10ba
-  languageName: node
-  linkType: hard
-
-"@stimulus/webpack-helpers@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "@stimulus/webpack-helpers@npm:2.0.0"
-  checksum: 0ec66e238193533e61a8bee8fc868db776a446fb52f70bec5d65c398826ac443f64b541fd141e06c0505b2f03683df407a4b94d4429fcd3beebb37e2d74b575f
-  languageName: node
-  linkType: hard
-
 "@tkausl/userscript-meta@npm:^1.0.2":
   version: 1.0.2
   resolution: "@tkausl/userscript-meta@npm:1.0.2"
@@ -1355,13 +1330,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@userscripters/stackexchange-global-types@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "@userscripters/stackexchange-global-types@npm:2.6.0"
+"@userscripters/stackexchange-global-types@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "@userscripters/stackexchange-global-types@npm:2.6.1"
   dependencies:
+    "@hotwired/stimulus": ^3.2.1
     "@types/jquery": ^3.5.16
-    stimulus: ^2.0.0
-  checksum: 0d50e6143c8fde38d3fbd63f81f1e6b1dda05af52c4fc2f2e769f9dab1e788e01175fc6df7e49b6c44f13acedf7ac1af93b1fc688b22792852b2a6baad1800fd
+  checksum: 28b34fa64b52de0de55fb8e7de38832b4d04803f68d71a82e389c5d4a5bdd99bd5d82ce45cb5f904171c8c4bdf5a546ec12b93f64599745d6c4675fde3106eca
   languageName: node
   linkType: hard
 
@@ -7990,7 +7965,7 @@ __metadata:
     "@types/webpack": ^5.28.0
     "@typescript-eslint/eslint-plugin": ^5.52.0
     "@typescript-eslint/parser": ^5.52.0
-    "@userscripters/stackexchange-global-types": ^2.6.0
+    "@userscripters/stackexchange-global-types": ^2.6.1
     eslint: ^8.34.0
     eslint-config-prettier: ^8.6.0
     eslint-config-standard: ^16.0.3
@@ -8209,16 +8184,6 @@ __metadata:
   version: 1.5.0
   resolution: "statuses@npm:1.5.0"
   checksum: c469b9519de16a4bb19600205cffb39ee471a5f17b82589757ca7bd40a8d92ebb6ed9f98b5a540c5d302ccbc78f15dc03cc0280dd6e00df1335568a5d5758a5c
-  languageName: node
-  linkType: hard
-
-"stimulus@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "stimulus@npm:2.0.0"
-  dependencies:
-    "@stimulus/core": ^2.0.0
-    "@stimulus/webpack-helpers": ^2.0.0
-  checksum: f72d8951c9e162514a7004367c5a26eba2fddcc59926e65d7308aa719582df8bf4dd79d6541579d8de1f8388e27f506cb6d77a14439a6fd6b78540c15af613e0
   languageName: node
   linkType: hard
 
