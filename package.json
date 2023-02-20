@@ -20,7 +20,7 @@
     "postinstall": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.3",
+    "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@semantic-release/exec": "semantic-release/exec",
     "@semantic-release/git": "^10.0.1",
