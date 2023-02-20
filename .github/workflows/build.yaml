@@ -113,4 +113,5 @@ jobs:
         if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
         env:
           GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          HUSKY: 0
         run: yarn run release
