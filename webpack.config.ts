@@ -53,15 +53,17 @@ const config: (
       filename: '[name].user.js',
     },
     plugins: [
-      isDevMode
-        ? new BannerPlugin({
-            raw: true,
-            banner: (data) =>
-              `console.log(\`Start userscript: "${
-                data.chunk.name
-              }". Build time: \${new Date(${Date.now()}).toLocaleString()}\`);`,
-          })
-        : undefined,
+      ...(isDevMode
+        ? [
+            new BannerPlugin({
+              raw: true,
+              banner: (data) =>
+                `console.log(\`Start userscript: "${
+                  data.chunk.name
+                }". Build time: \${new Date(${Date.now()}).toLocaleString()}\`);`,
+            }),
+          ]
+        : []),
       new WebpackUserscript({
         metajs: false,
         headers: (data) => {

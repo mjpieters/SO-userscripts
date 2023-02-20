@@ -43,7 +43,7 @@ export async function seApiFetch<T>(
 
   const response = await fetch(url.toString())
   const wrapper: APIResponse<T> = await response.json()
-  notBeforeTs.set(path, new Date().getTime() + wrapper.backoff ?? 0)
+  notBeforeTs.set(path, new Date().getTime() + (wrapper.backoff ?? 0))
 
   if (wrapper.error_id) {
     throw new Error(

@@ -48,12 +48,12 @@ const popoverDiv = `
 `
 
 export class BookmarkersController extends Stacks.StacksController {
-  static style?: HTMLStyleElement = null
+  static style: HTMLStyleElement | null
 
   state: State = 'initial'
-  popoverElement?: HTMLElement
+  popoverElement: HTMLElement | null
 
-  static attach(bookmarkButton?: Element): void {
+  static attach(bookmarkButton: Element | null): void {
     if (
       // If there is no bookbark button, or bookmark count is not visible, bail
       !(
@@ -83,7 +83,7 @@ export class BookmarkersController extends Stacks.StacksController {
     this.state = 'attached'
     Stacks.attachPopover(this.element, popoverDiv)
     this.popoverElement = document.getElementById(
-      this.element.getAttribute('aria-controls')
+      this.element.getAttribute('aria-controls') ?? ''
     )
   }
 
@@ -92,30 +92,30 @@ export class BookmarkersController extends Stacks.StacksController {
       return
     }
     this.state = 'loading'
-    const listElement = this.popoverElement.querySelector<HTMLElement>('ul')
+    const listElement = this.popoverElement?.querySelector<HTMLElement>('ul')
     const postId = StackExchange.question.getQuestionId()
     const bookmarkers = await fetchBookmarkers(postId)
     if (!bookmarkers.length) {
-      listElement.insertAdjacentHTML(
+      listElement?.insertAdjacentHTML(
         'beforeend',
         '<li class="mb4 fs-italic">No bookmarkers known (yet)</li>'
       )
-      listElement.classList.add('mx-auto') // center the text
+      listElement?.classList.add('mx-auto') // center the text
     } else {
       const dateForUid = new Map(bookmarkers.map((b) => [b.userId, b.date]))
       for await (const user of fetchUsers(
         bookmarkers.map((b) => b.userId),
         true
       )) {
-        listElement.insertAdjacentHTML(
+        listElement?.insertAdjacentHTML(
           'beforeend',
           `<li class="mb4">${user.toHTML(
-            dateForUid.get(user.user_id.toFixed(0))
+            dateForUid.get(user.user_id.toFixed(0)) ?? '&lt;unknown&gt;'
           )}</li>`
         )
       }
     }
     this.state = 'loaded'
-    this.popoverElement.querySelector<HTMLElement>('.s-spinner').remove()
+    this.popoverElement?.querySelector<HTMLElement>('.s-spinner')?.remove()
   }
 }
