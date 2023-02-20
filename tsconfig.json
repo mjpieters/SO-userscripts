@@ -8,7 +8,6 @@
             "DOM",
             "esnext"
         ],
-        "module": "commonjs",
         "moduleResolution": "Node",
         "noImplicitAny": true,
         "outDir": "./dist/",
