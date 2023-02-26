@@ -7,6 +7,7 @@
         "*://superuser.com/admin/xref-user-ips/*",
         "*://askubuntu.com/admin/xref-user-ips/*",
         "*://mathoverflow.net/admin/xref-user-ips/*",
+        "*://stackapps.com/admin/xref-user-ips/*",
         "*://*.stackexchange.com/admin/xref-user-ips/*"
     ]
 }
