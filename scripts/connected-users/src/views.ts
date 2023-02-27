@@ -1,4 +1,5 @@
-import { luxonUrl } from './constants'
+/* global Stacks */
+import { controllerId, luxonUrl } from './constants'
 import { documentReady, loadScript } from './utils'
 import { XRefConnectedUsersController } from './xrefIPAddresses/controller'
 
@@ -7,6 +8,9 @@ import { XRefConnectedUsersController } from './xrefIPAddresses/controller'
  * highlight connected users.
  */
 export function xrefUsersView(): void {
+  Stacks.application.logDebugActivity(controllerId, 'xrefUsersView', {
+    location: location.pathname,
+  })
   if (!location.pathname.includes('/admin/xref-user-ips/')) return
 
   Promise.all([documentReady, loadScript(luxonUrl)]).then(() => {

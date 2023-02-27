@@ -17,7 +17,9 @@ import { Bucket, HistogramController } from './histogram'
 import { IpGroupController } from './ipGroup'
 import { UserFrequencies } from './types'
 
-const ipGroupSelector = '.ip-group'
+// The Suspicious Voting helper script removes the odd/even classes, adds the ip-group
+// class. We need to account for both.
+const ipGroupSelector = 'tr.odd, tr.even, tr.ip-group'
 const histogramSelector = `.s-${controllerId}__connected-histogram`
 
 // Container for the floating UI. It's inserted before the IP cross-ref table
@@ -201,6 +203,18 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
   }
 
   static attach(xRefsSelector: string): void {
+    const xrefsTable = document.querySelector(xRefsSelector) as HTMLTableElement
+    const groups =
+      xrefsTable.querySelectorAll<HTMLTableRowElement>(ipGroupSelector)
+    Stacks.application.logDebugActivity(this.controllerId, 'attach', {
+      controllersToRegister: [
+        this.controllerId,
+        IpGroupController.controllerId,
+      ],
+      hasXrefsTable: !!xrefsTable,
+      ipGroupsCount: groups.length,
+    })
+
     // Register the IpGroupController first, as these need to exist for
     // them to be viable outlets for this controller.
     Stacks.application.register(
@@ -210,17 +224,13 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
 
     // The table becomes a target for this controller, which is defined
     // on the parent div of the table.
-    const xrefsTable = document.querySelector(xRefsSelector) as HTMLTableElement
     xrefsTable.setAttribute(
       Stacks.application.schema.targetAttributeForScope(this.controllerId),
       'xrefsTable'
     )
-    xrefsTable
-      .querySelectorAll<HTMLTableRowElement>(ipGroupSelector)
-      .forEach(
-        (ipGroup) =>
-          (ipGroup.dataset.controller = IpGroupController.controllerId)
-      )
+    groups.forEach(
+      (ipGroup) => (ipGroup.dataset.controller = IpGroupController.controllerId)
+    )
 
     // Update the controller list for the parent div, and register the
     // histogram and ipgroup outlets.
@@ -247,13 +257,17 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     Stacks.application.register(this.controllerId, this)
   }
 
-  static afterLoad() {
-    for (const controller of [
+  static afterLoad(identifier: string, application: typeof Stacks.application) {
+    const controllers = [
       HistogramController,
       EmptyDomController,
       UserListController,
-    ]) {
-      Stacks.application.register(controller.controllerId, controller)
+    ]
+    application.logDebugActivity(identifier, 'afterLoad', {
+      controllersToRegister: controllers.map((c) => c.controllerId),
+    })
+    for (const controller of controllers) {
+      application.register(controller.controllerId, controller)
     }
   }
 

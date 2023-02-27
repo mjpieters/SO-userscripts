@@ -9,21 +9,25 @@ import { UserFrequencies } from './types'
 
 import { parseDateTime } from './utils'
 
+const mainUserCls = 's-mainUser'
+const knownUserCls = 's-known'
+const overlapCls = 's-overlap'
+
 const ipGroupStyles = `
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].known {
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls} {
     background: var(--gold-lighter);
   }
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].curruser.known {
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${mainUserCls}.${knownUserCls} {
     background: var(--green-100) !important;
   }
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].overlap {
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${overlapCls} {
     background: var(--orange-200);
   }
   [data-controller="${controllerId}-ip-group"] tr[data-uid] .s-btn {
     display: none;
   }
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].known:hover .s-focus-rm-btn, 
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].known:focus .s-focus-rm-btn { 
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls}:hover .s-focus-rm-btn, 
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls}:focus .s-focus-rm-btn { 
     display: block;
     background-color: var(--_bu-bg-hover);
   }
@@ -32,8 +36,8 @@ const ipGroupStyles = `
     display: block;
     background-color: var(--_bu-bg-hover);
   }
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].known:hover .s-focus-add-btn, 
-  [data-controller="${controllerId}-ip-group"] tr[data-uid].known:focus .s-focus-add-btn { 
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls}:hover .s-focus-add-btn, 
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls}:focus .s-focus-add-btn { 
     display: none !important;
   }
 `
@@ -69,15 +73,8 @@ export function parseAccessInterval(tr: HTMLTableRowElement): luxon.Interval {
 export class IpGroupController extends Stacks.StacksController {
   static controllerId = `${controllerId}-ip-group`
 
-  static attach(xrefsTable: HTMLElement) {
-    xrefsTable
-      .querySelectorAll('.ip-group')
-      .forEach((ipGroup: HTMLTableRowElement) => {
-        ipGroup.dataset.controller = this.controllerId
-      })
-  }
-
-  static afterLoad(identifier: string): void {
+  static afterLoad(identifier: string, application: typeof Stacks.application) {
+    application.logDebugActivity(identifier, 'afterLoad')
     document.head.insertAdjacentHTML(
       'beforeend',
       `<style id="${identifier}-styles">${ipGroupStyles}</style>`
@@ -92,9 +89,11 @@ export class IpGroupController extends Stacks.StacksController {
     )
   }
 
-  private get _currUserRow(): HTMLTableRowElement {
+  private get _mainUserRow(): HTMLTableRowElement {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return this.element.querySelector<HTMLTableRowElement>('tbody .curruser')!
+    return this.element.querySelector<HTMLTableRowElement>(
+      `tbody .${mainUserCls}`
+    )!
   }
 
   private get _focusUserRows(): HTMLTableRowElement[] {
@@ -105,7 +104,7 @@ export class IpGroupController extends Stacks.StacksController {
   }
 
   private get _focusIntervals(): luxon.Interval[] {
-    return [this._currUserRow, ...this._focusUserRows].map((tr) =>
+    return [this._mainUserRow, ...this._focusUserRows].map((tr) =>
       parseAccessInterval(tr)
     )
   }
@@ -114,7 +113,7 @@ export class IpGroupController extends Stacks.StacksController {
     const intervals = this._focusIntervals
     const known = new Set<number>(preferences.focusedUsers)
     return this._userRows.filter((tr) => {
-      if (tr.classList.contains('curruser')) return false
+      if (tr.classList.contains(mainUserCls)) return false
       const uid = parseInt(tr.dataset.uid || '0')
       if (known.has(uid)) return false
       const interval = parseAccessInterval(tr)
@@ -128,7 +127,22 @@ export class IpGroupController extends Stacks.StacksController {
 
   _showOnlyConnected: boolean
 
+  private _updateMarkup() {
+    // Make it easier to work with the table rows by adding some dataset values.
+    this.element
+      .querySelectorAll<HTMLTableRowElement>('tbody tr')
+      .forEach((tr) => {
+        const userLink = tr.querySelector<HTMLAnchorElement>('td a')
+        tr.dataset.uid = userLink?.href.split('/').pop() || '0'
+      })
+    const mainUserId = location.pathname.split('/').pop() || '0'
+    this.element
+      .querySelector(`tr[data-uid="${mainUserId}"]`)
+      ?.classList.add(mainUserCls)
+  }
+
   connect() {
+    this._updateMarkup()
     this._belowThreshold = new Set<number>()
     this._showOnlyConnected = preferences.xrefUIState.showOnlyConnected
     this._addFocusButtons()
@@ -148,18 +162,18 @@ export class IpGroupController extends Stacks.StacksController {
 
   private _updateClasses() {
     this._userRows.forEach((tr) => {
-      tr.classList.remove('known', 'overlap', 'd-none')
+      tr.classList.remove(knownUserCls, overlapCls, 'd-none')
       delete tr.dataset.connected
     })
     this._focusUserRows.forEach((tr) => {
-      tr.classList.add('known')
+      tr.classList.add(knownUserCls)
     })
     this._connectedUserRows.forEach((tr) => {
       const uid = parseInt(tr.dataset.uid || '0')
-      tr.classList.toggle('overlap', !this._belowThreshold.has(uid))
+      tr.classList.toggle(overlapCls, !this._belowThreshold.has(uid))
     })
     if (this._showOnlyConnected) {
-      const kept = ['curruser', 'known', 'overlap']
+      const kept = [mainUserCls, knownUserCls, overlapCls]
       this._userRows.forEach((tr) => {
         if (!kept.some((c) => tr.classList.contains(c)))
           tr.classList.add('d-none')
