@@ -8,7 +8,7 @@ import {
 } from '@stackoverflow/stacks-icons/icons'
 
 import { controllerId } from '../constants'
-import { EmptyDomController } from '../empty_dom'
+import { EmptyDomController } from '../emptyDom'
 import { preferences, reload as reloadPreferences } from '../preferences'
 import { UserListController } from '../users'
 import { outlet, outletConnected, outlets } from '../utils'
