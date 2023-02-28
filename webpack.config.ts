@@ -19,7 +19,9 @@ const HEADER_DEFAULTS = {
     process.env.VERSION || process.env.npm_package_version || '[version]',
 }
 
-const scriptMainPaths = glob.sync(path.join(SCRIPTS_FOLDER, '*/src/index.ts'))
+const scriptMainPaths = glob.globIterateSync(
+  path.join(SCRIPTS_FOLDER, '*/src/index.ts')
+)
 const entries: { [key: string]: string } = {}
 for (const mainPath of scriptMainPaths) {
   const scriptName = path.basename(path.dirname(path.dirname(mainPath)))
