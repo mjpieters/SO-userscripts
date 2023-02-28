@@ -1,6 +1,6 @@
 /* global Stacks, luxon */
 
-import { IconEye, IconEyeOff } from '@stackoverflow/stacks-icons/icons'
+import { IconEyeSm, IconEyeOffSm } from '@stackoverflow/stacks-icons/icons'
 
 import { controllerId } from '../constants'
 import { preferences } from '../preferences'
@@ -47,17 +47,17 @@ const ipGroupStyles = `
 
 const userControls = `
 <span class="ps-absolute h0">
-  <button class="s-btn s-btn__icon s-btn__xs s-focus-add-btn ps-relative l96 tn6"
+  <button class="s-btn s-btn__icon s-btn__xs s-focus-add-btn ps-relative l96 tn4"
           data-controller="s-tooltip"
           data-action="${controllerId}#addFocusUser"
           title="Add this user to the focused accounts list"
-    >${IconEye} <span class="md:d-none">Focus</span></button></span>
+    >${IconEyeSm} <span class="md:d-none">Focus</span></button></span>
 <span class="ps-absolute h0">
-  <button class="s-btn s-btn__icon s-btn__xs s-btn__danger s-focus-rm-btn ps-relative l96 tn6"
+  <button class="s-btn s-btn__icon s-btn__xs s-btn__danger s-focus-rm-btn ps-relative l96 tn4"
           data-controller="s-tooltip"
           data-action="${controllerId}#removeFocusUser"
           title="Remove this user from the focused accounts list"
-    >${IconEyeOff} <span class="md:d-none">Remove</span></button></span>
+    >${IconEyeOffSm} <span class="md:d-none">Remove</span></button></span>
 `
 
 /**

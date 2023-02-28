@@ -1,8 +1,8 @@
 /* global luxon, Stacks */
 
 import {
-  IconEye,
-  IconEyeOff,
+  IconEyeSm,
+  IconEyeOffSm,
   IconReputationSm,
   IconTrashSm,
 } from '@stackoverflow/stacks-icons/icons'
@@ -432,7 +432,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
                       data-${controllerId}-uid-param="${uid}" 
                       title="Add this user to the focused accounts list"
                 >
-                  ${IconEye}
+                  ${IconEyeSm}
                   <span class="md:d-none">Focus</span>
                 </button>
             </div>
@@ -468,7 +468,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
                       data-action="${controllerId}#removeFocusUser"
                       data-${controllerId}-uid-param="${uid}" 
                       title="Remove this user from the focused accounts list"
-                >${IconEyeOff}
+                >${IconEyeOffSm}
                   <span class="md:d-none">Remove</span>
                 </button>
             </div>
