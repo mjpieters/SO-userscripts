@@ -14,6 +14,9 @@ const knownUserCls = 's-known'
 const overlapCls = 's-overlap'
 
 const ipGroupStyles = `
+  [data-controller="${controllerId}-ip-group"] tr[data-uid].${mainUserCls} {
+    background: var(--green-300);
+  }
   [data-controller="${controllerId}-ip-group"] tr[data-uid].${knownUserCls} {
     background: var(--gold-lighter);
   }
