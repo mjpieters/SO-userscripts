@@ -70,7 +70,6 @@ const xrefFocusUI = `
 
     <div data-controller="${EmptyDomController.controllerId} ${UserListController.controllerId}"
          data-${EmptyDomController.controllerId}-empty-class="d-none"
-         data-${EmptyDomController.controllerId}-scope-selector=".s-user"
          data-action="${EmptyDomController.controllerId}:not-empty->${UserListController.controllerId}#updateUsers"
       >
       <h2 class="s-sidebarwidget--header s-sidebarwidget__small-bold-text
@@ -113,7 +112,6 @@ const xrefFocusUI = `
 
     <div data-controller="${EmptyDomController.controllerId} ${UserListController.controllerId}"
          data-${EmptyDomController.controllerId}-empty-class="d-none"
-         data-${EmptyDomController.controllerId}-scope-selector=".s-user"
          data-action="
              ${EmptyDomController.controllerId}:not-empty->${UserListController.controllerId}#updateUsers
              ${UserListController.controllerId}:usersHydrated->${controllerId}#updateFocusUsersGraphLink
