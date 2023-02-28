@@ -17,6 +17,9 @@ The script adds tools to show a histogram of connected users, list those users i
 
 [![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)](../../../../raw/main/dist/connected-users.user.js)
 
+## Documentation
+
+Due to the sensitive nature of moderator-only tooling, the documentation for this script is maintained [on the (private) Stack Moderators team site](https://stackoverflowteams.com/c/moderators/articles/4997).
 
 ## License
 
