@@ -1,9 +1,11 @@
 /* global luxon, Stacks */
 
 import {
+  IconCheckmarkSm,
   IconEyeSm,
   IconEyeOffSm,
   IconReputationSm,
+  IconShareSm,
   IconTrashSm,
 } from '@stackoverflow/stacks-icons/icons'
 
@@ -21,6 +23,12 @@ import { UserFrequencies } from './types'
 // class. We need to account for both.
 const ipGroupSelector = 'tr.odd, tr.even, tr.ip-group'
 const histogramSelector = `.s-${controllerId}__connected-histogram`
+
+const xrefFocusUIStyles = `
+.s-${controllerId} .s-btn__copy.is-copied .v-hidden {
+  visibility: inherit !important;
+}
+`
 
 // Container for the floating UI. It's inserted before the IP cross-ref table
 // and given a stick position, with the inner container top offset and
@@ -147,6 +155,17 @@ const xrefFocusUI = `
             target="_blank"
             href="/admin/user-activity"
         >${IconReputationSm}<span class="v-visible-sr">Clear</a>
+        <button class="
+              s-sidebarwidget--action
+              s-btn s-btn__icon s-btn__xs s-btn__link
+              s-btn__copy
+              "
+            data-controller="s-tooltip"
+            data-action="${controllerId}#copyFocusUsers:stop"
+            title="Copy the list of focus users to the clipboard"
+        >${IconShareSm}<span
+            class="fc-success bg-black-025 ps-absolute l0 v-hidden"
+        >${IconCheckmarkSm}</span><span class="v-visible-sr">Copy</span></button>
         <span data-${UserListController.controllerId}-target="count">0</span> Focused users
       </h2>
       <div class="s-expandable" id="${controllerId}-focused">
@@ -267,6 +286,11 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     for (const controller of controllers) {
       application.register(controller.controllerId, controller)
     }
+
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `<style id="${identifier}-styles">${xrefFocusUIStyles}</style>`
+    )
   }
 
   private _threshold = 0
@@ -370,6 +394,27 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
       preferences.focusedUsers = []
       this._refresh()
     }
+  }
+
+  copyFocusUsers({ target }: { target: HTMLElement }): void {
+    // list userids, and if available, their username slug.
+    const users = preferences.focusedUsers.map((uid) => {
+      const userLink = this.focusedUsersTarget.querySelector<HTMLAnchorElement>(
+        `a[href^="/users/${uid}/"]`
+      )
+      return userLink
+        ? userLink.href.replace(/.*\/users\//, '')
+        : uid.toFixed(0)
+    })
+    const text = users.join('\n')
+    const button = target.closest('button')
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        button?.classList.add('is-copied')
+        return new Promise((resolve) => setTimeout(resolve, 1500))
+      })
+      .then(() => button?.classList.remove('is-copied'))
   }
 
   updateFocusUsersGraphLink({ detail: uids }: { detail: number[] }): void {
