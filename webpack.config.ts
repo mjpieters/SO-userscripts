@@ -33,9 +33,12 @@ const config: (
   args: Record<string, any>
 ) => Configuration = (_, argv) => {
   const isDevMode = argv.mode === 'development'
-  const baseUrl = isDevMode
+  const versionedUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
     : `${homepage}/raw/v${HEADER_DEFAULTS.version}/dist`
+  const downloadUrl = isDevMode
+    ? `http://localhost:${DEV_SERVER_PORT}`
+    : `${homepage}/raw/main/dist`
   return {
     entry: entries,
     module: {
@@ -75,15 +78,12 @@ const config: (
             'headers.json'
           )
           const downloadURL = isDevMode
-            ? `${baseUrl}/${data.basename}.proxy.user.js`
-            : `${baseUrl}/${data.basename}.user.js`
+            ? `${downloadUrl}/${data.basename}.proxy.user.js`
+            : `${downloadUrl}/${data.basename}.user.js`
           const headers = {
             ...HEADER_DEFAULTS,
             downloadURL,
-            updateURL: downloadURL.replace(
-              `/v${HEADER_DEFAULTS.version}/`,
-              '/main/'
-            ),
+            // TODO: reinstate updateURL, pointing to a metadata-only file
             ...(existsSync(headersFile) && require(headersFile)),
           }
           if (isDevMode) {
@@ -98,7 +98,7 @@ const config: (
         },
       }),
       new SourceMapDevToolPlugin({
-        append: `\n//# sourceMappingURL=${baseUrl}/[url]`,
+        append: `\n//# sourceMappingURL=${versionedUrl}/[url]`,
         filename: '[name].map',
       }),
     ].filter(Boolean),
