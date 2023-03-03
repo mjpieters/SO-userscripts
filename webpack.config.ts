@@ -83,7 +83,8 @@ const config: (
           const headers = {
             ...HEADER_DEFAULTS,
             downloadURL,
-            // TODO: reinstate updateURL, pointing to a metadata-only file
+            updateURL: downloadURL,
+            // TODO: point updateURL to a metadata-only file
             ...(existsSync(headersFile) && require(headersFile)),
           }
           if (isDevMode) {
