@@ -86,7 +86,6 @@ const config: (
             updateURL: isDevMode
               ? downloadURL
               : downloadURL.replace('.user', '.meta'),
-            // TODO: point updateURL to a metadata-only file
             ...(existsSync(headersFile) && require(headersFile)),
           }
           if (isDevMode) {
