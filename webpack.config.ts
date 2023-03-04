@@ -33,12 +33,11 @@ const config: (
   args: Record<string, any>
 ) => Configuration = (_, argv) => {
   const isDevMode = argv.mode === 'development'
-  const versionedUrl = isDevMode
-    ? `http://localhost:${DEV_SERVER_PORT}`
-    : `${homepage}/raw/v${HEADER_DEFAULTS.version}/dist`
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
-    : `${homepage}/raw/main/dist`
+    : // Can't use [homepage] placeholder here because this URL is also used
+      // as the basis for the sourcemap URL.
+      `${homepage}/raw/main/dist`
   return {
     entry: entries,
     module: {
@@ -100,7 +99,10 @@ const config: (
         },
       }),
       new SourceMapDevToolPlugin({
-        append: `\n//# sourceMappingURL=${versionedUrl}/[url]`,
+        append: `\n//# sourceMappingURL=${downloadUrl.replace(
+          '/main/',
+          `/v${HEADER_DEFAULTS.version}/`
+        )}/[url]`,
         filename: '[name].map',
       }),
     ].filter(Boolean),
