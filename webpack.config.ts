@@ -70,7 +70,7 @@ const config: (
           ]
         : []),
       new WebpackUserscript({
-        metajs: !isDevMode,
+        metajs: true,
         headers: (data) => {
           const headersFile = path.resolve(
             SCRIPTS_FOLDER,
