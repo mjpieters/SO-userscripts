@@ -38,10 +38,18 @@ Please install [`nvm`](https://github.com/nvm-sh/nvm) and [`yarn`](https://yarnp
 
 Then run `yarn run serve` to start a web server on port 8842, serving the scripts from an index page. Alternatively, run `yarn run build:dev` to create a local development build in `dist/`. You can alter the port number by setting the `DEV_SERVER_PORT` environment variable.
 
+Commits must follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) pattern; if the commit affects a specific userscript, use the script directory name as the tag (e.g. `fix(connected-users): ...`). A [`commitlint` configuration](https://commitlint.js.org/) is provided and commit messages are verified at commit time with Husky.
+
 ### Reloading scripts under development
 
-It's easiest to install the 'proxy.user.js' variant, as this way you can just reload your browser page (twice) to have Tampermonkey pick up changes. Do set Tampermonkey to always refresh `@require`-ed resources (`Settings` -> `Externals` -> `Update Interval` -> *Always*).  Remember to switch back to the regular variant once you are done.
+Open the `yarn run serve` development server URL in your browser and pick one of the following options to facilitate reloading changes:
+
+- Install the `.user.js` file, your userscript manager should automatically install it when you click on it. Some managers have explicit support for watching for updates; e.g. when using ViolentMonkey, [just leave the ViolentMonkey tab open](https://violentmonkey.github.io/posts/how-to-edit-scripts-with-your-favorite-editor/#edit-and-sync) and revisit that tab to trigger a reload.
+
+-  Install the `proxy.user.js` variant, as this way you can just reload your browser page for the usermanager to pick up the latest changes (you may have to reload twice, e.g. when using Tampermonkey) pick up changes). You may have to configure your user manager to always refresh `@require` resources (Tampermonkey: `Settings` -> `Externals` -> `Update Interval` -> *`Always`*).
+
+Remember to switch back to the released version once you are done, especially when using the `proxy.user.js` technique.
 
 ### Releasing
 
-A GitHub workflow handles releasing from the main branch into `dist/`.
+A GitHub workflow handles releasing from the main branch into `dist/`, updating the version number based on the conventional commit messages pushed to the branch since the last commit.
