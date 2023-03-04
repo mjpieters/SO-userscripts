@@ -81,6 +81,7 @@ const config: (
             : `${downloadUrl}/${data.basename}.user.js`
           const headers = {
             ...HEADER_DEFAULTS,
+            homepage: '[homepage]/scripts/[basename]',
             supportURL: '[bugs]?q=is:issue+is%3Aopen+label:[basename]',
             downloadURL,
             updateURL: isDevMode
