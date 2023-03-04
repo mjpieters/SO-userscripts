@@ -70,7 +70,7 @@ const config: (
           ]
         : []),
       new WebpackUserscript({
-        metajs: false,
+        metajs: !isDevMode,
         headers: (data) => {
           const headersFile = path.resolve(
             SCRIPTS_FOLDER,
@@ -83,7 +83,9 @@ const config: (
           const headers = {
             ...HEADER_DEFAULTS,
             downloadURL,
-            updateURL: downloadURL,
+            updateURL: isDevMode
+              ? downloadURL
+              : downloadURL.replace('.user', '.meta'),
             // TODO: point updateURL to a metadata-only file
             ...(existsSync(headersFile) && require(headersFile)),
           }
