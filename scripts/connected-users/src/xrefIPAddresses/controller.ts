@@ -221,8 +221,9 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
 
   static attach(xRefsSelector: string): void {
     const xrefsTable = document.querySelector(xRefsSelector) as HTMLTableElement
-    const groups =
+    const groups = Array.from(
       xrefsTable.querySelectorAll<HTMLTableRowElement>(ipGroupSelector)
+    ).filter((row) => row.querySelector('tbody') !== null)
     Stacks.application.logDebugActivity(this.controllerId, 'attach', {
       controllersToRegister: [
         this.controllerId,
