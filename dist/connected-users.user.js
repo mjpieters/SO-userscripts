@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name Connected Users
 // @description **Moderator-only**. Hightlights users in the IP cross section view that overlap in time
-// @version 1.4.4
+// @version 1.4.5
 // @author Martijn Pieters
-// @homepage https://github.com/mjpieters/SO-userscripts/scripts/connected-users
+// @homepage https://github.com/mjpieters/SO-userscripts/tree/main/scripts/connected-users
 // @supportURL https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:connected-users
 // @match *://stackoverflow.com/admin/xref-user-ips/*
 // @match *://serverfault.com/admin/xref-user-ips/*
