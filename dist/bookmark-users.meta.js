@@ -1,20 +1,20 @@
 // ==UserScript==
-// @name        Bookmark Users
-// @version     1.4.3
-// @author      Martijn Pieters
+// @name Bookmark Users
 // @description Shows what user bookmarked a question. Fetches the bookmarking users from the StackExchange data explorer (data can be up to a week old)
-// @homepage    https://github.com/mjpieters/SO-userscripts
-// @supportURL  https://github.com/mjpieters/SO-userscripts/issues
-// @match       http*://*.stackoverflow.com/questions/*
-// @match       http*://*.serverfault.com/questions/*
-// @match       http*://*.superuser.com/questions/*
-// @match       http*://*.askubuntu.com/questions/*
-// @match       http*://*.mathoverflow.net/questions/*
-// @match       http*://*.stackexchange.com/questions/*
-// @namespace   https://github.com/mjpieters/SO-userscripts
-// @downloadURL https://github.com/mjpieters/SO-userscripts/raw/main/dist/bookmark-users.user.js
-// @updateURL   https://github.com/mjpieters/SO-userscripts/raw/main/dist/bookmark-users.meta.js
-// @grant       GM_xmlhttpRequest
-// @grant       GM_addStyle
-// @connect     data.stackexchange.com
+// @version 1.4.4
+// @author Martijn Pieters
+// @homepage https://github.com/mjpieters/SO-userscripts/scripts/bookmark-users
+// @supportURL https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:bookmark-users
+// @match http*://*.stackoverflow.com/questions/*
+// @match http*://*.serverfault.com/questions/*
+// @match http*://*.superuser.com/questions/*
+// @match http*://*.askubuntu.com/questions/*
+// @match http*://*.mathoverflow.net/questions/*
+// @match http*://*.stackexchange.com/questions/*
+// @connect data.stackexchange.com
+// @downloadURL https://github.com/mjpieters/SO-userscripts/raw/main/bookmark-users.user.js
+// @grant GM_xmlhttpRequest
+// @grant GM_addStyle
+// @namespace https://github.com/mjpieters/SO-userscripts
+// @updateURL https://github.com/mjpieters/SO-userscripts/raw/main/bookmark-users.meta.js
 // ==/UserScript==
