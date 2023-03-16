@@ -1,10 +1,11 @@
 /* eslint-env node */
 import * as path from 'path'
 import * as glob from 'glob'
+import { execSync } from 'child_process'
 import { existsSync } from 'fs'
 
-import { BannerPlugin, Configuration, SourceMapDevToolPlugin } from 'webpack'
-import WebpackUserscript from 'webpack-userscript'
+import { BannerPlugin, Configuration } from 'webpack'
+import { UserscriptPlugin } from 'webpack-userscript'
 
 import { homepage } from './package.json'
 
@@ -13,11 +14,13 @@ const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
 const OUTPUT = path.resolve(HERE, 'dist')
 const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT || '8842')
 
-const HEADER_DEFAULTS = {
-  namespace: '[homepage]',
-  version:
-    process.env.VERSION || process.env.npm_package_version || '[version]',
-}
+const VERSION =
+  process.env.VERSION ||
+  process.env.npm_package_version ||
+  execSync('git describe --tags --abbrev=0 || echo "1.0.0"')
+    .toString()
+    .trim()
+    .replace(/^v/, '')
 
 const scriptMainPaths = glob.globIterateSync(
   path.join(SCRIPTS_FOLDER, '*/src/index.ts')
@@ -35,9 +38,7 @@ const config: (
   const isDevMode = argv.mode === 'development'
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
-    : // Can't use [homepage] placeholder here because this URL is also used
-      // as the basis for the sourcemap URL.
-      `${homepage}/raw/main/dist`
+    : `${homepage}/raw/main/dist`
   return {
     entry: entries,
     module: {
@@ -54,7 +55,8 @@ const config: (
     output: {
       clean: true,
       path: OUTPUT,
-      filename: '[name].user.js',
+      // Can't use [name].user.js, see momocow/webpack-userscript#90
+      filename: '[name].js',
     },
     plugins: [
       ...(isDevMode
@@ -68,44 +70,29 @@ const config: (
             }),
           ]
         : []),
-      new WebpackUserscript({
+      new UserscriptPlugin({
         metajs: true,
-        headers: (data) => {
-          const headersFile = path.resolve(
-            SCRIPTS_FOLDER,
-            data.basename,
-            'headers.json'
-          )
-          const downloadURL = isDevMode
-            ? `${downloadUrl}/${data.basename}.proxy.user.js`
-            : `${downloadUrl}/${data.basename}.user.js`
-          const headers = {
-            ...HEADER_DEFAULTS,
-            homepage: '[homepage]/scripts/[basename]',
-            supportURL: '[bugs]?q=is:issue+is%3Aopen+label:[basename]',
-            downloadURL,
-            updateURL: isDevMode
-              ? downloadURL
-              : downloadURL.replace('.user', '.meta'),
+        downloadBaseURL: downloadUrl,
+        strict: !isDevMode,
+        headers: (original, ctx) => {
+          const name = ctx.fileInfo.basename
+          const headersFile = path.resolve(SCRIPTS_FOLDER, name, 'headers.json')
+          return {
+            ...original,
+            name: ctx.fileInfo.basename,
+            namespace: original.homepage,
+            homepage: `${original.homepage}/scripts/${name}`,
+            supportURL: `${original.supportURL}?q=is:issue+is%3Aopen+label:${name}`,
+            version: isDevMode ? `${VERSION}-build.[buildNo]` : VERSION,
             ...(existsSync(headersFile) && require(headersFile)),
           }
-          if (isDevMode) {
-            headers.version = `${headers.version || '[version]'}-t.[buildTime]`
-          }
-          return headers
         },
-        proxyScript: {
-          baseUrl: `http://localhost:${DEV_SERVER_PORT}/`,
-          enable: isDevMode,
-          filename: '[basename].proxy.user.js',
-        },
-      }),
-      new SourceMapDevToolPlugin({
-        append: `\n//# sourceMappingURL=${downloadUrl.replace(
-          '/main/',
-          `/v${HEADER_DEFAULTS.version}/`
-        )}/[url]`,
-        filename: '[name].map',
+        proxyScript: isDevMode
+          ? {
+              baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
+              filename: '[basename].proxy.user.js',
+            }
+          : undefined,
       }),
     ].filter(Boolean),
     devtool: false,
