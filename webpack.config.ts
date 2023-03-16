@@ -38,7 +38,7 @@ const config: (
   const isDevMode = argv.mode === 'development'
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
-    : `${homepage}/raw/main/dist`
+    : `${homepage}/raw/main/dist/`
   return {
     entry: entries,
     module: {
