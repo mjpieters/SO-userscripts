@@ -81,7 +81,7 @@ const config: (
             ...original,
             name: ctx.fileInfo.basename,
             namespace: original.homepage,
-            homepage: `${original.homepage}/scripts/${name}`,
+            homepage: `${original.homepage}/tree/main/scripts/${name}`,
             supportURL: `${original.supportURL}?q=is:issue+is%3Aopen+label:${name}`,
             version: isDevMode ? `${VERSION}-build.[buildNo]` : VERSION,
             ...(existsSync(headersFile) && require(headersFile)),
