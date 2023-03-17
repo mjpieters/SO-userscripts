@@ -72,6 +72,7 @@ const config: (
         : []),
       new UserscriptPlugin({
         metajs: true,
+        pretty: true,
         downloadBaseURL: downloadUrl,
         strict: !isDevMode,
         headers: (original, ctx) => {
