@@ -1,32 +1,16 @@
 /* eslint-env node */
 import * as path from 'path'
-import * as glob from 'glob'
-import { existsSync } from 'fs'
 
 import { BannerPlugin, Configuration } from 'webpack'
 import { UserscriptPlugin } from 'webpack-userscript'
 
 import { homepage } from './package.json'
-import { currentTag } from './utils'
+import { currentTag, UserScripts } from './utils'
 
 const HERE = path.resolve(__dirname)
-const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
 const OUTPUT = path.resolve(HERE, 'dist')
 const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT || '8842')
-
-const VERSION =
-  process.env.VERSION ||
-  process.env.npm_package_version ||
-  currentTag().replace(/^v/, '')
-
-const scriptMainPaths = glob.globIterateSync(
-  path.join(SCRIPTS_FOLDER, '*/src/index.ts')
-)
-const entries: { [key: string]: string } = {}
-for (const mainPath of scriptMainPaths) {
-  const scriptName = path.basename(path.dirname(path.dirname(mainPath)))
-  entries[scriptName] = mainPath
-}
+const VERSION = process.env.VERSION || currentTag().replace(/^v/, '')
 
 const config: (
   env: Record<string, any>,
@@ -36,69 +20,61 @@ const config: (
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
     : `${homepage}/raw/main/dist/`
+
+  const scripts = new UserScripts()
+
+  const plugin = new UserscriptPlugin({
+    metajs: true,
+    pretty: true,
+    downloadBaseURL: downloadUrl,
+    strict: !isDevMode,
+    headers: (original, ctx) => {
+      const name = ctx.fileInfo.basename
+      const { homepage, supportURL } = original
+      return {
+        ...original,
+        name: name,
+        namespace: homepage,
+        homepage: `${homepage}/tree/main/scripts/${name}`,
+        supportURL: `${supportURL}?q=is:issue+is%3Aopen+label:${name}`,
+        version: isDevMode ? `${VERSION}-build.[buildNo]` : VERSION,
+        ...scripts.headers[name],
+      }
+    },
+  })
+  const plugins: Configuration['plugins'] = [plugin]
+
+  if (isDevMode) {
+    plugin.options.proxyScript = {
+      baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
+      filename: '[basename].proxy.user.js',
+    }
+
+    plugins.unshift(
+      new BannerPlugin({
+        raw: true,
+        banner: (data) =>
+          `console.log(\`Start userscript: "${
+            data.chunk.name
+          }". Build time: \${new Date(${Date.now()}).toLocaleString()}\`);`,
+      })
+    )
+  }
+
   return {
-    entry: entries,
-    module: {
-      rules: [
-        {
-          test: /\.ts$/,
-          loader: 'ts-loader',
-        },
-      ],
-    },
-    resolve: {
-      extensions: ['.js', '.ts'],
-    },
+    entry: scripts.entries,
+    module: { rules: [{ test: /\.ts$/, loader: 'ts-loader' }] },
+    resolve: { extensions: ['.js', '.ts'] },
     output: {
       clean: true,
       path: OUTPUT,
       // Can't use [name].user.js, see momocow/webpack-userscript#90
       filename: '[name].js',
     },
-    plugins: [
-      ...(isDevMode
-        ? [
-            new BannerPlugin({
-              raw: true,
-              banner: (data) =>
-                `console.log(\`Start userscript: "${
-                  data.chunk.name
-                }". Build time: \${new Date(${Date.now()}).toLocaleString()}\`);`,
-            }),
-          ]
-        : []),
-      new UserscriptPlugin({
-        metajs: true,
-        pretty: true,
-        downloadBaseURL: downloadUrl,
-        strict: !isDevMode,
-        headers: (original, ctx) => {
-          const name = ctx.fileInfo.basename
-          const headersFile = path.resolve(SCRIPTS_FOLDER, name, 'headers.json')
-          return {
-            ...original,
-            name: ctx.fileInfo.basename,
-            namespace: original.homepage,
-            homepage: `${original.homepage}/tree/main/scripts/${name}`,
-            supportURL: `${original.supportURL}?q=is:issue+is%3Aopen+label:${name}`,
-            version: isDevMode ? `${VERSION}-build.[buildNo]` : VERSION,
-            ...(existsSync(headersFile) && require(headersFile)),
-          }
-        },
-        proxyScript: isDevMode
-          ? {
-              baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
-              filename: '[basename].proxy.user.js',
-            }
-          : undefined,
-      }),
-    ].filter(Boolean),
+    plugins,
     devtool: false,
     devServer: {
-      static: {
-        directory: OUTPUT,
-        serveIndex: true,
-      },
+      static: { directory: OUTPUT, serveIndex: true },
       port: DEV_SERVER_PORT,
       hot: false,
       liveReload: false,
