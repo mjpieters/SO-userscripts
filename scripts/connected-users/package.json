@@ -1,6 +1,5 @@
 {
     "name": "connected-users",
-    "version": "0.0.1",
     "devDependencies": {
         "@types/luxon": "^3.2.0"
     },
