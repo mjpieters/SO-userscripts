@@ -12,6 +12,10 @@ class UserScripts {
     this.scriptsFolder = path.resolve(__dirname, '..', 'scripts')
   }
 
+  get names(): string[] {
+    return Object.keys(this.entries)
+  }
+
   private _entries: { [key: string]: string } | undefined
 
   get entries(): { [key: string]: string } {
