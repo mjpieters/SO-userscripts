@@ -1,13 +1,13 @@
 /* eslint-env node */
 import * as path from 'path'
 import * as glob from 'glob'
-import { execSync } from 'child_process'
 import { existsSync } from 'fs'
 
 import { BannerPlugin, Configuration } from 'webpack'
 import { UserscriptPlugin } from 'webpack-userscript'
 
 import { homepage } from './package.json'
+import { currentTag } from './utils'
 
 const HERE = path.resolve(__dirname)
 const SCRIPTS_FOLDER = path.resolve(HERE, 'scripts')
@@ -17,10 +17,7 @@ const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT || '8842')
 const VERSION =
   process.env.VERSION ||
   process.env.npm_package_version ||
-  execSync('git describe --tags --abbrev=0 || echo "1.0.0"')
-    .toString()
-    .trim()
-    .replace(/^v/, '')
+  currentTag().replace(/^v/, '')
 
 const scriptMainPaths = glob.globIterateSync(
   path.join(SCRIPTS_FOLDER, '*/src/index.ts')

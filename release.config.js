@@ -1,34 +1,26 @@
 // @ts-check
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const execSync = require('child_process').execSync
+const gitUtils = require('./utils/git.cjs')
 
 const mainBranch = 'main'
+const currentBranch = gitUtils.currentBranch()
 
-/** @param {string} command */
-const run = (command) => execSync(command).toString().trim()
-
-const branch =
-  (process.env.GITHUB_REF || '').replace('refs/heads/', '') ||
-  run('git branch --show-current')
-
-try {
-  run(`git ls-remote --exit-code --heads origin '${branch}'`)
-} catch (e) {
-  throw new Error(`Branch '${branch}' needs to exist on remote to run release`)
+if (!gitUtils.branchExistsOnRemote(currentBranch)) {
+  throw new Error(
+    `Branch '${currentBranch}' needs to exist on remote to run release`
+  )
 }
 
-console.log('Current branch:', branch)
-const dryRun = branch !== mainBranch
+console.log('Current branch:', currentBranch)
+const dryRun = currentBranch !== mainBranch
 const step = dryRun ? 'verifyConditionsCmd' : 'verifyReleaseCmd'
 /* eslint-disable no-template-curly-in-string */
-const version = dryRun
-  ? run('git describe --tags --abbrev=0 || echo "1.0.0"')
-  : '${nextRelease.version}'
+const version = dryRun ? gitUtils.currentTag() : '${nextRelease.version}'
 const message = 'ci: Release scripts [skip ci]\n\n${nextRelease.notes}'
 /* eslint-enable */
 
 module.exports = {
-  branches: [branch],
+  branches: [currentBranch],
   dryRun,
   plugins: [
     '@semantic-release/commit-analyzer',
