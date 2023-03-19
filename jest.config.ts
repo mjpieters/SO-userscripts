@@ -10,7 +10,7 @@ const jestConfig: JestConfigWithTsJest = {
       roots: ['<rootDir>/test'],
       preset: 'ts-jest',
       transform: {
-        "^.+\\.(t|j)sx?$": "@swc/jest",
+        '^.+\\.(t|j)sx?$': '@swc/jest',
       },
       coveragePathIgnorePatterns: ['node-modules', '<rootDir>/utils'],
     },
@@ -19,7 +19,7 @@ const jestConfig: JestConfigWithTsJest = {
       roots: [path],
       preset: 'ts-jest',
       transform: {
-        "^.+\\.(t|j)sx?$": "@swc/jest",
+        '^.+\\.(t|j)sx?$': '@swc/jest',
       },
       testEnvironment: 'jsdom',
     })),
