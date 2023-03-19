@@ -2,12 +2,13 @@ import config from '../webpack.config'
 import { homepage } from '../package.json'
 import { UserScripts } from '../utils'
 
-import { beforeAll, describe, expect, test } from '@jest/globals'
+import { beforeAll, describe, expect, jest, test } from '@jest/globals'
 import { createFsFromVolume } from 'memfs'
 import { Volume } from 'memfs/lib/volume'
 import path from 'path'
 import webpack from 'webpack'
 
+jest.setTimeout(10000)
 type WebpackResult = Pick<webpack.Compilation, 'assets'> & { output: Volume }
 
 async function runWebpack(): Promise<WebpackResult> {
@@ -43,7 +44,7 @@ describe('The webpack build is not broken', () => {
       ])
     )
     assetNames = Object.keys(assets)
-  }, 10000)
+  })
 
   test.each(scripts.names)('output includes a %p.meta.js file', (name) => {
     expect(assetNames).toContain(`${name}.meta.js`)
