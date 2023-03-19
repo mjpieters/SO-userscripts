@@ -76,7 +76,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: yarn test
+        run: yarn test --detectOpenHandles
 
   analyze:
     name: Analyze
