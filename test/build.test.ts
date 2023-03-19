@@ -14,6 +14,7 @@ async function runWebpack(): Promise<WebpackResult> {
   const volume = new Volume()
   const compiler = webpack(config({}, {}))
   compiler.outputFileSystem = createFsFromVolume(volume)
+  compiler.options.cache = { type: 'memory' }
   const results = await new Promise<WebpackResult>((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) return reject(err)
