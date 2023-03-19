@@ -51,17 +51,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Harden Runner
-        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
-        with:
-          egress-policy: block
-          allowed-endpoints: >
-            api.github.com:443
-            codeload.github.com:443
-            github.com:443
-            registry.yarnpkg.com:443
-            registry.npmjs.org:443
-
       - name: Checkout
         uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
 
@@ -76,7 +65,7 @@ jobs:
 
       - name: Run tests
         continue-on-error: true
-        run: yarn test --detectOpenHandles
+        run: yarn test
 
   analyze:
     name: Analyze
