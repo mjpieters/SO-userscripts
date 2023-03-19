@@ -52,7 +52,7 @@ const config: (
 
   return {
     entry: scripts.entries,
-    module: { rules: [{ test: /\.ts$/, loader: 'ts-loader' }] },
+    module: { rules: [{ test: /\.ts$/, loader: 'swc-loader' }] },
     resolve: { extensions: ['.js', '.ts'] },
     output: {
       clean: true,
