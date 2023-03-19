@@ -9,6 +9,7 @@ const jestConfig: JestConfigWithTsJest = {
       displayName: 'build',
       roots: ['<rootDir>/test'],
       preset: 'ts-jest',
+      coveragePathIgnorePatterns: ['node-modules', '<rootDir>/utils'],
     },
     ...scripts.tests.map(({ name, path }) => ({
       displayName: name,
@@ -17,5 +18,6 @@ const jestConfig: JestConfigWithTsJest = {
       testEnvironment: 'jsdom',
     })),
   ],
+  coverageDirectory: 'coverage',
 }
 export default jestConfig
