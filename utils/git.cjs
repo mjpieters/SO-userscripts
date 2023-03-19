@@ -28,8 +28,10 @@ const currentBranch = () =>
  * @param {string} defaultTag
  * @returns {string}
  */
-const currentTag = (defaultTag = '1.0.0') => {
-  return run(`git describe --tags --abbrev=0 || echo "${defaultTag}"`)
+const currentTag = (defaultTag = 'v1.0.0') => {
+  return run(
+    `git describe --tags --abbrev=0 2>/dev/null || echo "${defaultTag}"`
+  )
 }
 
 /**
