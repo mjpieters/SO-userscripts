@@ -1,8 +1,13 @@
 import path from 'path'
 import glob from 'glob'
+import { existsSync } from 'fs'
 
 interface UserScriptContexts {
   [scriptName: string]: Record<string, any>
+}
+type UserScriptTest = {
+  name: string
+  path: string
 }
 
 class UserScripts {
@@ -23,12 +28,11 @@ class UserScripts {
       const scriptMainPaths = glob.globIterateSync(
         path.join(this.scriptsFolder, '*/src/index.ts')
       )
-      const entries: { [key: string]: string } = {}
+      this._entries = {}
       for (const mainPath of scriptMainPaths) {
         const scriptName = path.basename(path.dirname(path.dirname(mainPath)))
-        entries[scriptName] = mainPath
+        this._entries[scriptName] = mainPath
       }
-      this._entries = entries
     }
     return this._entries
   }
@@ -58,6 +62,19 @@ class UserScripts {
     } catch (e) {
       return {}
     }
+  }
+
+  private _tests: UserScriptTest[]
+  get tests(): UserScriptTest[] {
+    if (this._tests === undefined) {
+      this._tests = this.names.reduce((tests, scriptName) => {
+        const testPath = path.resolve(this.scriptsFolder, scriptName, 'test')
+        if (existsSync(testPath))
+          tests = [...tests, { name: scriptName, path: testPath }]
+        return tests
+      }, [] as UserScriptTest[])
+    }
+    return this._tests
   }
 }
 
