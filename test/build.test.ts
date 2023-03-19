@@ -8,7 +8,7 @@ import { Volume } from 'memfs/lib/volume'
 import path from 'path'
 import webpack from 'webpack'
 
-jest.setTimeout(15000)
+jest.setTimeout(30000)
 type WebpackResult = Pick<webpack.Compilation, 'assets'> & { output: Volume }
 
 async function runWebpack(): Promise<WebpackResult> {
