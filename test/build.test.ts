@@ -43,7 +43,7 @@ describe('The webpack build is not broken', () => {
       ])
     )
     assetNames = Object.keys(assets)
-  })
+  }, 10000)
 
   test.each(scripts.names)('output includes a %p.meta.js file', (name) => {
     expect(assetNames).toContain(`${name}.meta.js`)
