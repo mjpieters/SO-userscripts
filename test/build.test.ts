@@ -14,13 +14,17 @@ async function runWebpack(): Promise<WebpackResult> {
   const volume = new Volume()
   const compiler = webpack(config({}, {}))
   compiler.outputFileSystem = createFsFromVolume(volume)
-  return await new Promise<WebpackResult>((resolve, reject) => {
+  const results = await new Promise<WebpackResult>((resolve, reject) => {
     compiler.run((err, stats) => {
       if (err) return reject(err)
       if (!stats) return reject(new Error('No stats returned from webpack'))
       resolve({ assets: stats.compilation.assets, output: volume })
     })
   })
+  await compiler.close((err) => {
+    if (err) throw err
+  })
+  return results
 }
 
 describe('The webpack build is not broken', () => {
