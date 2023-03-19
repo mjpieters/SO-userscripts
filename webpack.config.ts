@@ -1,7 +1,7 @@
 /* eslint-env node */
 import * as path from 'path'
 
-import { BannerPlugin, Configuration } from 'webpack'
+import { Configuration } from 'webpack'
 import { UserscriptPlugin } from 'webpack-userscript'
 
 import { homepage } from './package.json'
@@ -42,23 +42,12 @@ const config: (
       }
     },
   })
-  const plugins: Configuration['plugins'] = [plugin]
-
+  /* istanbul ignore next */
   if (isDevMode) {
     plugin.options.proxyScript = {
       baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
       filename: '[basename].proxy.user.js',
     }
-
-    plugins.unshift(
-      new BannerPlugin({
-        raw: true,
-        banner: (data) =>
-          `console.log(\`Start userscript: "${
-            data.chunk.name
-          }". Build time: \${new Date(${Date.now()}).toLocaleString()}\`);`,
-      })
-    )
   }
 
   return {
@@ -71,7 +60,7 @@ const config: (
       // Can't use [name].user.js, see momocow/webpack-userscript#90
       filename: '[name].js',
     },
-    plugins,
+    plugins: [plugin],
     devtool: false,
     devServer: {
       static: { directory: OUTPUT, serveIndex: true },
