@@ -51,7 +51,10 @@ describe('We can parse date/time strings', () => {
 
     const result = parseAccessInterval(tr)
     expect(fromDateTimesMock).toHaveBeenCalledWith(mockDate1, mockDate2)
-    expect(fromISOMock).toHaveBeenCalledTimes(2)
+    expect(fromISOMock.mock.calls).toEqual([
+      ['2016-11-28T23:31:16Z', { zone: 'utc' }],
+      ['2017-12-15T05:02:04Z', { zone: 'utc' }],
+    ])
     expect(result).toBe(expected)
   })
 })
