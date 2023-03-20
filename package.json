@@ -18,7 +18,7 @@
     "lint": "concurrently \"eslint --cache .\" \"tsc --noEmit --pretty --incremental\"",
     "release": "semantic-release",
     "serve": "webpack serve --mode=development --no-web-socket-server",
-    "postinstall": "husky install",
+    "postinstall": "is-ci || husky install",
     "test": "jest"
   },
   "devDependencies": {
@@ -49,6 +49,7 @@
     "eslint-plugin-standard": "^5.0.0",
     "glob": "^9.3.0",
     "husky": "^8.0.0",
+    "is-ci": "^3.0.1",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
     "jest-extended": "^3.2.4",
