@@ -68,9 +68,9 @@ class UserScripts {
   get tests(): UserScriptTest[] {
     if (this._tests === undefined) {
       this._tests = this.names.reduce((tests, scriptName) => {
-        const testPath = path.resolve(this.scriptsFolder, scriptName, 'test')
-        if (existsSync(testPath))
-          tests = [...tests, { name: scriptName, path: testPath }]
+        const scriptPath = path.resolve(this.scriptsFolder, scriptName)
+        if (existsSync(path.resolve(scriptPath, 'test')))
+          tests = [...tests, { name: scriptName, path: scriptPath }]
         return tests
       }, [] as UserScriptTest[])
     }
