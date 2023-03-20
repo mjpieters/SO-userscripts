@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   lint:
+    name: 'Lint'
     if: "!contains(github.event.head_commit.message, 'skip ci')"
     runs-on: ubuntu-latest
 
@@ -46,9 +47,47 @@ jobs:
       - name: Lint
         run: yarn run lint
   
-  test:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
+  testprojects:
+    name: 'Determine test projects'
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+
+    outputs:
+      projects: ${{ steps.set-projects.outputs.projects }}
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          egress-policy: audit
+
+      - name: Checkout
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+
+      - name: Setup
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install
+        run: yarn install --immutable
+
+      - id: set-projects
+        name: Determine jest project names
+        run: |
+          PROJECTS=$(yarn run jest --showConfig | jq -c '.globalConfig.projects | map(.displayName)')
+          echo "projects=${PROJECTS}" >> $GITHUB_OUTPUT
+
+  test:
+    name: Test ${{ matrix.project }}
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    needs: testprojects
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        project: ${{ fromJSON( needs.testprojects.outputs.projects ) }}
 
     steps:
       - name: Harden Runner
@@ -78,12 +117,13 @@ jobs:
         run: yarn install --immutable
 
       - name: Run tests
-        run: yarn test --coverage
+        run: yarn test --coverage --selectProjects "${{ matrix.project }}"
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # v3.1.1
         with:
           directory: coverage
+          flags: ${{ matrix.project }}
 
   analyze:
     name: Analyze
@@ -116,6 +156,7 @@ jobs:
         uses: github/codeql-action/analyze@168b99b3c22180941ae7dbdd5f5c9678ede476ba # v2.2.7
 
   build:
+    name: Build
     needs:
       - lint
       - test

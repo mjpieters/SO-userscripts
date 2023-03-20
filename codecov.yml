@@ -1,7 +1,14 @@
 comment:
   require_changes: true
+flag_management:
+  default_rules:
+    statuses:
+      - type: project
+        target: auto
 coverage:
   status:
+    default_rules:
+      flag_coverage_not_uploaded_behavior: exclude
     project:
       default:
         target: auto
