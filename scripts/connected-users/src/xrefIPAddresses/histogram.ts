@@ -172,7 +172,7 @@ export class HistogramController extends Stacks.StacksController {
           .slice(i, i + bucketCount)
           .reduce((acc, { userCount }) => acc + userCount, 0)
         newBuckets.push({
-          connCount: connCount,
+          connCount,
           userCount,
           label:
             connCount !== lastConnCount

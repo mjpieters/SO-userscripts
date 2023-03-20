@@ -33,7 +33,7 @@ const config: (
       const { homepage, supportURL } = original
       return {
         ...original,
-        name: name,
+        name,
         namespace: homepage,
         homepage: `${homepage}/tree/main/scripts/${name}`,
         supportURL: `${supportURL}?q=is:issue+is%3Aopen+label:${name}`,
