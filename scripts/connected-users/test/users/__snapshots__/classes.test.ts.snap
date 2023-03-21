@@ -1,0 +1,848 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deleted user can rendered to HTML 1`] = `
+"
+      <div class="s-user-card s-user-card__deleted">
+        <a href="/users/42" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <span class="anonymous-gravatar s-avatar--image"></span>
+        </a>
+        <div class="s-user-card--info">
+          <a href="/users/42" class="s-user-card--link"
+            >user42</a
+          >
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 1234, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 17424, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting reputation 4321432, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
