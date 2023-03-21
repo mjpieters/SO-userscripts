@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* global luxon */
 
 import {
@@ -9,7 +10,11 @@ import {
   test,
 } from '@jest/globals'
 
-import { parseAccessInterval } from '../../src/xrefIPAddresses/utils'
+import {
+  ensureHasSize,
+  innerRect,
+  parseAccessInterval,
+} from '../../src/xrefIPAddresses/utils'
 
 describe('We can parse date/time strings', () => {
   const expected = { mocked: 'interval' } as unknown as luxon.Interval
@@ -33,9 +38,7 @@ describe('We can parse date/time strings', () => {
   })
 
   afterAll(() => {
-    if (Object.hasOwn(global, 'luxon')) {
-      delete (global as unknown as { luxon: any }).luxon
-    }
+    delete (global as any).luxon
   })
 
   test('from table rows with relative time elements', () => {
@@ -46,7 +49,6 @@ describe('We can parse date/time strings', () => {
           <td><span title="2017-12-15 05:02:04Z" class="relativetime">Dec 15, 2017 at 5:02</span></td>
         </tr> 
       </table>`
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const tr = document.querySelector<HTMLTableRowElement>('tr')!
 
     const result = parseAccessInterval(tr)
@@ -56,5 +58,66 @@ describe('We can parse date/time strings', () => {
       ['2017-12-15T05:02:04Z', { zone: 'utc' }],
     ])
     expect(result).toBe(expected)
+  })
+})
+
+describe('We can get the inner rectangle size of an element', () => {
+  const elem = document.createElement('div')
+
+  beforeAll(() => {
+    Object.defineProperties(elem, {
+      clientWidth: { get: () => 42 },
+      clientHeight: { get: () => 17 },
+    })
+    jest.spyOn(window, 'getComputedStyle').mockReturnValue({
+      paddingLeft: '1',
+      paddingRight: '5',
+      paddingTop: '3',
+      paddingBottom: '7',
+    } as CSSStyleDeclaration)
+  })
+
+  afterAll(() => {
+    delete (elem as any).clientWidth
+    delete (elem as any).clientHeight
+    jest.restoreAllMocks()
+  })
+
+  test('given its CSS padding', () => {
+    expect(innerRect(elem)).toEqual({ width: 36, height: 7 })
+  })
+})
+
+describe('Given an invisible element inside expandable divs', () => {
+  document.body.innerHTML = `
+    <div id="d0">
+      <div class="d-none" id="d1">
+        <div class="d-none other" id="d2">
+          <div id="d3"></div>
+        </div>
+      </div>
+    </div>
+  `
+  const elems = [0, 1, 2, 3].map((i) => document.getElementById(`d${i}`)!)
+  const inner = elems[elems.length - 1]
+  const expectedClasses = ['', '', 'other']
+
+  beforeAll(() => {
+    const widths = [42, 0, 0, 0]
+    for (const [i, width] of widths.entries()) {
+      Object.defineProperty(elems[i], 'clientWidth', { get: (w = width) => w })
+    }
+  })
+
+  afterAll(() => {
+    for (const elem of elems) delete (elem as any).clientWidth
+  })
+
+  test('we can make the element temporarily visible', () => {
+    for (const _ of ensureHasSize(inner)) {
+      for (const [i, expected] of expectedClasses.entries()) {
+        expect(elems[i].className).toBe(expected)
+      }
+    }
   })
 })
