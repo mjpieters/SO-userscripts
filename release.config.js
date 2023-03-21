@@ -4,15 +4,16 @@ const gitUtils = require('./utils/git.cjs')
 
 const mainBranch = 'main'
 const currentBranch = gitUtils.currentBranch()
+const isPR = currentBranch.startsWith('refs/pull/')
 
-if (!gitUtils.branchExistsOnRemote(currentBranch)) {
+if (!isPR && !gitUtils.branchExistsOnRemote(currentBranch)) {
   throw new Error(
     `Branch '${currentBranch}' needs to exist on remote to run release`
   )
 }
 
 console.log('Current branch:', currentBranch)
-const dryRun = currentBranch !== mainBranch
+const dryRun = isPR || currentBranch !== mainBranch
 const step = dryRun ? 'verifyConditionsCmd' : 'verifyReleaseCmd'
 /* eslint-disable no-template-curly-in-string */
 const version = dryRun ? gitUtils.currentTag() : '${nextRelease.version}'
