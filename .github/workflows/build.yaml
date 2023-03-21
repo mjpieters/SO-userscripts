@@ -124,6 +124,7 @@ jobs:
         with:
           directory: coverage
           flags: ${{ matrix.project }}
+          verbose: true
 
   analyze:
     name: Analyze
