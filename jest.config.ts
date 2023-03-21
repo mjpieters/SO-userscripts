@@ -17,6 +17,7 @@ const jestConfig: JestConfigWithTsJest = {
       roots: [path],
       coveragePathIgnorePatterns: [
         '/node_modules/',
+        `${path}/test/`,
         `<rootDir>/scripts/(?!${name})/`,
       ],
       preset: 'ts-jest',
