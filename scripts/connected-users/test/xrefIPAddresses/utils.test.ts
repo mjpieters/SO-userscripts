@@ -30,10 +30,11 @@ describe('We can parse date/time strings', () => {
 
   beforeAll(() => {
     Object.defineProperty(global, 'luxon', {
-      get: () => ({
+      value: {
         DateTime: { fromISO: fromISOMock },
         Interval: { fromDateTimes: fromDateTimesMock },
-      }),
+      },
+      configurable: true,
     })
   })
 
@@ -66,8 +67,8 @@ describe('We can get the inner rectangle size of an element', () => {
 
   beforeAll(() => {
     Object.defineProperties(elem, {
-      clientWidth: { get: () => 42 },
-      clientHeight: { get: () => 17 },
+      clientWidth: { value: 42, configurable: true },
+      clientHeight: { value: 17, configurable: true },
     })
     jest.spyOn(window, 'getComputedStyle').mockReturnValue({
       paddingLeft: '1',
@@ -105,7 +106,10 @@ describe('Given an invisible element inside expandable divs', () => {
   beforeAll(() => {
     const widths = [42, 0, 0, 0]
     for (const [i, width] of widths.entries()) {
-      Object.defineProperty(elems[i], 'clientWidth', { get: (w = width) => w })
+      Object.defineProperty(elems[i], 'clientWidth', {
+        value: width,
+        configurable: true,
+      })
     }
   })
 
