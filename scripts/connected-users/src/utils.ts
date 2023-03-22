@@ -4,7 +4,6 @@
  * Add src as a script tag to the document head
  * Returns a promise that resolves when the script is loaded
  */
-
 export function loadScript(src: string): Promise<void> {
   return new Promise(function (resolve, reject) {
     if (document.querySelector(`script[src='${src}']`) !== null)
@@ -25,30 +24,25 @@ export const documentReady = new Promise((resolve) => {
   StackExchange.ready(() => resolve(null))
 })
 
-// Promise that delays resolution for a given number of milliseconds
-export function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
-}
+/** Promise that delays resolution for a given number of milliseconds */
+export const delay = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms))
 
 /** create a camelCase name of a string */
-export function camelize(value: string): string {
-  return value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
-}
+export const camelize = (value: string): string =>
+  value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
 
 /** Stimulus hook helpers */
 type HasControllerId = { controllerId: string }
 /** Generate a property name for the given controller type accessed as a single outlet */
-export function outlet<T>({ controllerId }: HasControllerId): keyof T {
-  return `${camelize(`${controllerId}`)}Outlet` as keyof T
-}
+export const outlet = <T>({ controllerId }: HasControllerId): keyof T =>
+  `${camelize(`${controllerId}`)}Outlet` as keyof T
 /** Generate a property name for the given controller type accessed as an array of outlets */
-export function outlets<T>({ controllerId }: HasControllerId): keyof T {
-  return `${camelize(`${controllerId}`)}Outlets` as keyof T
-}
+export const outlets = <T>({ controllerId }: HasControllerId): keyof T =>
+  `${camelize(`${controllerId}`)}Outlets` as keyof T
 /** Generate the 'connected' hook property name for the given controller type */
-export function outletConnected({ controllerId }: HasControllerId): string {
-  return `${camelize(controllerId)}OutletConnected`
-}
+export const outletConnected = ({ controllerId }: HasControllerId): string =>
+  `${camelize(controllerId)}OutletConnected`
 
 export class LruCache<K, V> {
   private values: Map<K, V> = new Map<K, V>()
@@ -75,6 +69,7 @@ export class LruCache<K, V> {
   }
 }
 
+/** Escape HTML metacharacters in a string */
 export const escapeHtml = (unsafe: string): string => {
   return unsafe
     .replaceAll('&', '&amp;')
