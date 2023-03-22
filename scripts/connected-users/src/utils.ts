@@ -124,3 +124,12 @@ export class LruCache<K, V> {
     this.values.set(key, value)
   }
 }
+
+export const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;')
+}

@@ -17,6 +17,8 @@ export const seApiUrl = 'https://api.stackexchange.com/2.3'
  *   wrapper (backoff, error_id, error_message, error_name, items, quota_max, quota_remaining),
  *   badge_count (bronze, silver, gold),
  *   user (badge_counts, display_name, is_employee, link, profile_image, reputation, user_id, user_type)
+ * unsafe is true, to work around https://meta.stackexchange.com/q/387761; the display_name field will
+ * need to be sanitized!
  */
-export const minimalUserFilter = '!ACgHDY30sZUf7hsfwUhuaGWzjM9W8F5'
+export const minimalUserFilter = ')Q7.NL.wLaTOvZyxvEF8za4m(g8T'
 export const userAPICacheSize = 1000
