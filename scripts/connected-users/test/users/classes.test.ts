@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
 
-import { cartesian } from '../utils'
+import { cartesian } from '../testUtils'
 import { DeletedUser, User } from '../../src/users/classes'
 
 describe('Users are rendered to HTML', () => {
@@ -11,7 +11,7 @@ describe('Users are rendered to HTML', () => {
       silver: 2,
       gold: 1,
     },
-    display_name: 'Test User',
+    display_name: 'Test User <script>alert("XSS")</script>',
     link: 'https://example.com/users/42/test-user',
     profile_image: 'https://images.example.com/test-user.png',
   }

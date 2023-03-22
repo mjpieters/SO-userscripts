@@ -23,6 +23,7 @@ const jestConfig: JestConfigWithTsJest = {
       preset: 'ts-jest',
       transform: { '^.+\\.(t|j)sx?$': '@swc/jest' },
       testEnvironment: 'jsdom',
+      setupFilesAfterEnv: ['<rootDir>/utils/testSetup.ts'],
     })),
   ],
   coverageDirectory: 'coverage',

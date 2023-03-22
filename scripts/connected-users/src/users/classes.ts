@@ -1,6 +1,7 @@
 /*
- * Fetch users from the Stack Exchange API and render to HTML
+ * Provide classes representing users from the Stack Exchange API, with HTML rendering
  */
+import { escapeHtml } from '../utils'
 
 const abbreviatedRepFormat = new Intl.NumberFormat('en-US', {
   notation: 'compact',
@@ -73,7 +74,7 @@ export class User {
         </a>
         <div class="s-user-card--info">
           <a href="${this.link}" class="s-user-card--link"
-            >${this.display_name} ${this._badges}</a
+            >${escapeHtml(this.display_name)} ${this._badges}</a
           >
           <ul class="s-user-card--awards">
             <li
