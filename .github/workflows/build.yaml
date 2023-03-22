@@ -132,7 +132,6 @@ jobs:
           directory: coverage
           flags: ${{ matrix.project }}
           token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
 
   analyze:
     name: Analyze
