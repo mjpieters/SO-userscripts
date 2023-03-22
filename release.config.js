@@ -31,5 +31,9 @@ module.exports = {
       { [step]: `env VERSION=${version} yarn run build` },
     ],
     ['@semantic-release/git', { assets: ['dist'], message }],
+    [
+      '@semantic-release/github',
+      { assignees: ['mjpieters'], assets: ['dist/*.js'] },
+    ],
   ],
 }
