@@ -1,7 +1,8 @@
 /*
  * Fetch users from the Stack Exchange API
  */
-import { LruCache, seApiFetch } from '../utils'
+import { LruCache } from '../utils'
+import { seAPIFetch } from '../seAPI'
 import { minimalUserFilter, userAPICacheSize } from '../constants'
 
 import { DeletedUser, User } from './classes'
@@ -31,7 +32,7 @@ export async function* fetchUsers(
   while (toFetch.length > 0) {
     const queryIds = toFetch.splice(0, 100)
     toFetch = toFetch.splice(100)
-    const results = await seApiFetch<JSONUser>(
+    const results = await seAPIFetch<JSONUser>(
       `users/${queryIds.join(';')}`,
       minimalUserFilter
     )
