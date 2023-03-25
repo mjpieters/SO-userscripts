@@ -54,7 +54,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Release
-        if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+        if: github.event.workflow_run.actor.type != 'Bot'
         env:
           GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           HUSKY: 0
