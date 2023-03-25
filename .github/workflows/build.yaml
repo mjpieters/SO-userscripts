@@ -1,9 +1,12 @@
-name: Build
+name: Validate
 on:
-  workflow_run:
-    workflows: ["Validate"]
-    types:
-      - completed
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '32 13 * * 5'
+
 
 permissions:
   contents: read
@@ -11,15 +14,172 @@ permissions:
 concurrency:
   # only run a single build wf per PR, cancel any existing (preceding) runs
   # for this PR.
-  group: ${{ github.workflow }}-${{ github.event.workflow_run.head_ref || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: 'Lint'
+    if: "!contains(github.event.head_commit.message, 'skip ci')
+      && github.event_name != 'schedule'
+      "
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            codeload.github.com:443
+            github.com:443
+            registry.yarnpkg.com:443
+            registry.npmjs.org:443
+
+      - name: Checkout
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+
+      - name: Setup
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn run lint
+
+  testprojects:
+    name: 'Determine test projects'
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'skip ci')
+      && github.event_name != 'schedule'
+      "
+
+    outputs:
+      projects: ${{ steps.set-projects.outputs.projects }}
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            codeload.github.com:443
+            github.com:443
+            registry.yarnpkg.com:443
+            registry.npmjs.org:443
+
+      - name: Checkout
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+
+      - name: Setup
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install
+        run: yarn install --immutable
+
+      - id: set-projects
+        name: Determine jest project names
+        run: |
+          PROJECTS=$(yarn run jest --showConfig | jq -c '.globalConfig.projects | map(.displayName)')
+          echo "projects=${PROJECTS}" >> $GITHUB_OUTPUT
+
+  test:
+    name: Test ${{ matrix.project }}
+    if: "!contains(github.event.head_commit.message, 'skip ci')
+      && github.event_name != 'schedule'
+      "
+    needs: testprojects
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        project: ${{ fromJSON( needs.testprojects.outputs.projects ) }}
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            codeload.github.com:443
+            github.com:443
+            registry.yarnpkg.com:443
+            registry.npmjs.org:443
+            uploader.codecov.io:443
+            codecov.io:443
+            storage.googleapis.com:443
+
+      - name: Checkout
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+
+      - name: Setup
+        uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Run tests
+        run: yarn test --coverage --selectProjects "${{ matrix.project }}"
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@d9f34f8cd5cb3b3eb79b3e4b5dae3a16df499a70 # v3.1.1
+        with:
+          directory: coverage
+          flags: ${{ matrix.project }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
+            codeload.github.com:443
+            github.com:443
+            uploads.github.com:443
+            objects.githubusercontent.com:443
+
+      - name: Checkout repository
+        uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
+
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@67a35a08586135a9573f4327e904ecbf517a882d # v2.2.8
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@67a35a08586135a9573f4327e904ecbf517a882d # v2.2.8
+        with:
+          category: "/language:javascript"
+
   build:
     name: Build
-    if: "github.event.workflow_run.conclusion == 'success'
-      && github.event.workflow_run.actor.type != 'Bot'
-      && !contains(github.event.workflow_run.head_commit.message, 'skip ci')
+    if: "!contains(github.event.head_commit.message, 'skip ci')
+      && github.event_name == 'push'
       "
     runs-on: ubuntu-latest
 
