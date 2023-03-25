@@ -14,7 +14,7 @@ import {
   ensureHasSize,
   innerRect,
   parseAccessInterval,
-} from '../../src/xrefIPAddresses/utils'
+} from '@connected-users/xrefIPAddresses/utils'
 
 describe('We can parse date/time strings', () => {
   const expected = { mocked: 'interval' } as unknown as luxon.Interval

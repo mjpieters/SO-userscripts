@@ -1,4 +1,6 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
+import { pathsToModuleNameMapper } from 'ts-jest'
+import { compilerOptions } from './tsconfig.json'
 import { UserScripts } from './utils'
 
 const scripts = new UserScripts()
@@ -24,6 +26,8 @@ const jestConfig: JestConfigWithTsJest = {
       transform: { '^.+\\.(t|j)sx?$': '@swc/jest' },
       testEnvironment: 'jsdom',
       setupFilesAfterEnv: ['<rootDir>/utils/testSetup.ts'],
+      modulePaths: [compilerOptions.baseUrl],
+      moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
     })),
   ],
   coverageDirectory: 'coverage',

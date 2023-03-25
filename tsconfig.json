@@ -17,10 +17,16 @@
         "types": [
             "@types/luxon",
             "@types/tampermonkey",
-            "@userscripters/stackexchange-global-types",
+            "@userscripters/stackexchange-global-types"
         ],
+        "baseUrl": ".",
+        "paths": {
+            "@connected-users/*": [
+                "scripts/connected-users/src/*"
+            ]
+        }
     },
     "exclude": [
-        "dist",
-    ],
+        "dist"
+    ]
 }

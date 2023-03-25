@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
 
-import { camelize, escapeHtml } from '../src/utils'
+import { camelize, escapeHtml } from '@connected-users/utils'
 
 describe('We can turn kebab-case into camelCase', () => {
   const tests = [

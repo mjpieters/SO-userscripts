@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, test } from '@jest/globals'
 
-import { persisted } from '../src/storage'
+import { persisted } from '@connected-users/storage'
 
 const STORAGE_KEY = 'testStorageKey'
 const loadStorage = async (delay = 300) => {

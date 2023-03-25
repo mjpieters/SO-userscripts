@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals'
 
 import { cartesian } from '../testUtils'
-import { DeletedUser, User } from '../../src/users/classes'
+import { DeletedUser, User } from '@connected-users/users/classes'
 
 describe('Users are rendered to HTML', () => {
   const baseUserData = {
