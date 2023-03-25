@@ -176,8 +176,8 @@ jobs:
         with:
           category: "/language:javascript"
 
-  build:
-    name: Build
+  release:
+    name: Release
     if: "!contains(github.event.head_commit.message, 'skip ci')
       && github.event_name == 'push'
       "
