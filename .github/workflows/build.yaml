@@ -32,11 +32,17 @@ jobs:
             registry.yarnpkg.com:443
             registry.npmjs.org:443
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github.workflow_run) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
       - name: Checkout
         uses: actions/checkout@24cb9080177205b6e8c946b17badbe402adc938f # v3.4.0
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-          ref: ${{ github.workflow_run.event.head_branch }}
+          ref: ${{ github.workflow_run.head_branch }}
 
       - name: Setup
         uses: actions/setup-node@64ed1c7eab4cce3362f8c340dee64e5eaeef8f7c # v3.6.0
