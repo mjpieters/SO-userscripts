@@ -3,7 +3,7 @@
  */
 import { LruCache } from '../utils'
 import { seAPIFetch } from '../seAPI'
-import { minimalUserFilter, seAPIKey, userAPICacheSize } from '../constants'
+import { minimalUserFilter, userAPICacheSize } from '../constants'
 
 import { DeletedUser, User } from './classes'
 
@@ -33,9 +33,8 @@ export async function* fetchUsers(
     const queryIds = toFetch.splice(0, 100)
     toFetch = toFetch.splice(100)
     const results = await seAPIFetch<JSONUser>(
-      `/users/{ids}`,
-      { apiKey: seAPIKey, filter: minimalUserFilter },
-      { ids: queryIds }
+      `users/${queryIds.join(';')}`,
+      minimalUserFilter
     )
     const byUserId = new Map(
       results.map((user) => [user.user_id, Object.assign(new User(), user)])

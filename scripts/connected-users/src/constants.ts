@@ -10,8 +10,8 @@ export const maxhistBars = 20
 export const gridLineHeightRatio = 0.005
 
 // API key specific to this script, client id 25514
-export const seAPIKey = 'rSgJSoND0c32iHgumlM8vg(('
-export const seAPIURL = 'https://api.stackexchange.com/2.3'
+export const seApiKey = 'rSgJSoND0c32iHgumlM8vg(('
+export const seApiUrl = 'https://api.stackexchange.com/2.3'
 /*
  * Minimal subset for user queries, containing only:
  *   wrapper (backoff, error_id, error_message, error_name, items, quota_max, quota_remaining),
