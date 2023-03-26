@@ -209,6 +209,7 @@ jobs:
             github.com:443
             registry.yarnpkg.com:443
             registry.npmjs.org:443
+            uploads.github.com:443
 
       - name: Dump GitHub context
         env:
