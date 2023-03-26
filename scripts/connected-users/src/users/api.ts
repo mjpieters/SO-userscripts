@@ -2,8 +2,8 @@
  * Fetch users from the Stack Exchange API
  */
 import { LruCache } from '../utils'
-import { seAPIFetch } from '../seAPI'
-import { minimalUserFilter, userAPICacheSize } from '../constants'
+import { StackExchangeAPI } from '../seAPI'
+import { minimalUserFilter, seAPIKey, userAPICacheSize } from '../constants'
 
 import { DeletedUser, User } from './classes'
 
@@ -12,6 +12,7 @@ type JSONUser = {
 }
 
 const apiCache = new LruCache<number, User>(userAPICacheSize)
+const api = new StackExchangeAPI(seAPIKey)
 
 // Fetch users and yield User objects in the same order they are listed in the argument
 export async function* fetchUsers(
@@ -32,9 +33,10 @@ export async function* fetchUsers(
   while (toFetch.length > 0) {
     const queryIds = toFetch.splice(0, 100)
     toFetch = toFetch.splice(100)
-    const results = await seAPIFetch<JSONUser>(
-      `users/${queryIds.join(';')}`,
-      minimalUserFilter
+    const results = await api.fetch<JSONUser>(
+      `/users/{ids}`,
+      { ids: queryIds },
+      { filter: minimalUserFilter }
     )
     const byUserId = new Map(
       results.map((user) => [user.user_id, Object.assign(new User(), user)])
