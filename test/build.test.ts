@@ -59,7 +59,9 @@ describe('The webpack build is not broken', () => {
     (name) => {
       const meta = sources[`${name}.meta.js`]
       expect(meta).toMatch(
-        new RegExp(`// @updateURL\\s*${homepage}/raw/main/dist/${name}.meta.js`)
+        new RegExp(
+          `// @updateURL\\s*${homepage}/releases/latest/download/${name}.meta.js`
+        )
       )
     }
   )
@@ -70,7 +72,7 @@ describe('The webpack build is not broken', () => {
       const meta = sources[`${name}.meta.js`]
       expect(meta).toMatch(
         new RegExp(
-          `// @downloadURL\\s*${homepage}/raw/main/dist/${name}.user.js`
+          `// @downloadURL\\s*${homepage}/releases/latest/download/${name}.user.js`
         )
       )
     }
