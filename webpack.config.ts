@@ -19,7 +19,7 @@ const config: (
   const isDevMode = argv.mode === 'development'
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
-    : `${homepage}/raw/main/dist/`
+    : `${homepage}/releases/latest/download/`
 
   const scripts = new UserScripts()
 
