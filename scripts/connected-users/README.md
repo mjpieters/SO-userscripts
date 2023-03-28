@@ -7,7 +7,7 @@
 
 ![current version](https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github)
 ![MIT license](https://img.shields.io/github/license/mjpieters/SO-userscripts)
-[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue)](../../../../raw/main/dist/connected-users.user.js)
+[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue)](../../../../releases/latest/download/connected-users.user.js)
 
 Userscript to aid investigation of connected users on the moderator-only IP cross-reference view.
 
@@ -15,7 +15,7 @@ The script adds tools to show a histogram of connected users, list those users i
 
 ## Installation
 
-[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)](../../../../raw/main/dist/connected-users.user.js)
+[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)](../../../../releases/latest/download/connected-users.user.js)
 
 ## Documentation
 
