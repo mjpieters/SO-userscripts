@@ -12,6 +12,7 @@ import { APIError, StackExchangeAPI } from '@connected-users/seAPI'
 type MockResponse = {
   items?: any[]
   backoff?: number
+  has_more?: boolean
   error?: {
     id: number
     name: string
@@ -32,7 +33,7 @@ const addMockResponse = (
     case Error:
       return mock.mockRejectedValueOnce(resp)
     default: {
-      const { backoff, error, items } = resp as MockResponse
+      const { backoff, error, items, has_more: hasMore } = resp as MockResponse
       return mock.mockResolvedValueOnce({
         json: () =>
           Promise.resolve({
@@ -41,6 +42,7 @@ const addMockResponse = (
             error_name: error?.name,
             error_message: error?.message,
             items,
+            has_more: hasMore,
           }),
       } as unknown as jest.Mocked<Response>)
     }
@@ -222,8 +224,6 @@ describe('We honour the backoff parameter', () => {
   )
 })
 
-// cover errors
-
 describe('API errors are passed on to the caller', () => {
   let api: StackExchangeAPI
   beforeEach(() => {
@@ -245,5 +245,52 @@ describe('API errors are passed on to the caller', () => {
     })
 
     await expect(api.fetch('/foo')).rejects.toThrow(expected)
+  })
+})
+
+describe('We can fetch results in batches', () => {
+  let api: StackExchangeAPI
+  beforeEach(() => {
+    api = new StackExchangeAPI()
+  })
+  test('from paged API results', async () => {
+    mockFetch({ items: [1, 2, 3], has_more: true }, { items: [4, 5] })
+    const gen = api.fetchAll<number>('/foo')
+    for (const i of [1, 2, 3, 4, 5])
+      await expect(gen.next()).resolves.toEqual({ value: i, done: false })
+    await expect(gen.next()).rejects
+  })
+
+  test('from vectored path parameters', async () => {
+    const fetchSpy = mockFetch({ items: [1, 2] }, { items: [3] })
+    const gen = api.fetchAll<number>(
+      '/foo/{bar}',
+      { bar: [1, 2, 3] },
+      { pageSize: 2 }
+    )
+    await expect(gen.next()).resolves.toEqual({ value: 1, done: false })
+    expect(fetchSpy).toHaveBeenCalledWith(expect.stringContaining('/foo/1;2'))
+    await gen.next() // 2
+    await gen.next() // 3
+    expect(fetchSpy).toHaveBeenCalledWith(expect.stringContaining('/foo/3'))
+  })
+
+  test("vectoring doesn't break when a scalar parameter value is given", async () => {
+    const fetchSpy = mockFetch({ items: [] })
+    const gen = api.fetchAll<number>('/foo/{bar}', { bar: 1 })
+    await expect(gen.next()).resolves.toEqual({ value: undefined, done: true })
+    expect(fetchSpy).toHaveBeenCalledWith(expect.stringContaining('/foo/1'))
+  })
+
+  test('but vectoring only works for a single parameter', async () => {
+    const gen = api.fetchAll<number>('/foo/{spam}/{ham}', { bar: 1 })
+    await expect(gen.next()).rejects.toThrow(
+      /Can't batch multiple path parameters/
+    )
+  })
+
+  test('but vectoring requires there to be a parameter for the path key', async () => {
+    const gen = api.fetchAll<number>('/foo/{bar}')
+    await expect(gen.next()).rejects.toThrow(/Missing path parameter bar/)
   })
 })

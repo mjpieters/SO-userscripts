@@ -63,7 +63,7 @@ export class LruCache<K, V> {
   }
 
   public put(key: K, value: V) {
-    if (this.values.size >= this.maxEntries)
+    while (this.values.size >= this.maxEntries)
       this.values.delete(this.values.keys().next().value)
     this.values.set(key, value)
   }

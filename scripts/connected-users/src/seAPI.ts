@@ -4,6 +4,7 @@ import { delay } from './utils'
 type APIBackoff = { backoff?: number }
 type APIItems<T> = {
   items: T[]
+  has_more?: boolean
   error_id?: never
 }
 type APIResponseError = {
@@ -18,10 +19,13 @@ type APIOptions = {
   filter?: string
   pageSize?: number
 }
+type ArrayElement<ArrayType extends readonly unknown[]> =
+  ArrayType extends readonly (infer ElementType)[] ? ElementType : never
+type ParameterValues = string[] | number[] | Date[]
+type ParameterValue = ArrayElement<ParameterValues>
 type APIParameters = {
-  [key: string]: number[] | string[] | Date[] | string | number | Date
+  [key: string]: ParameterValue | ParameterValues
 }
-
 export class APIError extends Error {
   constructor(
     public readonly errorId: number,
@@ -49,7 +53,7 @@ const getSiteId = (): string =>
  * Convert a value to a string used in API paths or query strings
  * Note that numbers are _always_ integers in API parameters.
  */
-const convert = (v: string | number | Date): string =>
+const convert = (v: ParameterValue): string =>
   typeof v === 'string'
     ? v
     : (v instanceof Date ? Math.round(v.getTime() / 1000) : v).toFixed(0)
@@ -69,6 +73,17 @@ class FutureBackoff implements PromiseLike<number> {
   }
 }
 const NO_BEFORE = new FutureBackoff(0)
+
+const perN = <S extends any[]>(values: S, n: number): S[] =>
+  values.reduce((result, elem, index) => {
+    const chunk = Math.floor(index / n)
+    result[chunk] = [...(chunk < result.length ? result[chunk] : []), elem]
+    return result
+  }, [] as S[])
+
+const asArr = <S extends readonly unknown[], T = ArrayElement<S>>(
+  v: S | T
+): S => (Array.isArray(v) ? (v as S) : ([v] as unknown as S))
 
 export class StackExchangeAPI {
   readonly siteId: string
@@ -92,6 +107,15 @@ export class StackExchangeAPI {
     parameters: APIParameters = {},
     options: APIOptions = {}
   ): Promise<T[]> {
+    const wrapper = await this.fetchItems<T>(path, parameters, options)
+    return wrapper.items
+  }
+
+  private async fetchItems<T>(
+    path: string,
+    parameters: APIParameters,
+    options: APIOptions
+  ): Promise<APIItems<T>> {
     const url = this.buildURL(path, parameters, options)
     const setBackoff = await this.handleBackoff(path)
 
@@ -106,7 +130,51 @@ export class StackExchangeAPI {
     }
 
     if (isAPIError(wrapper)) throw APIError.fromWrapper(wrapper)
-    return wrapper.items
+    return wrapper
+  }
+
+  /**
+   * Fetch paged data from the API; handles paging, and batches path parameter vector batching
+   * If a filter is used, retrieving more than pageSize items only works if the `has_more`
+   * parameter is included in the response wrapper.
+   */
+  async *fetchAll<T>(
+    path: string,
+    parameters: APIParameters = {},
+    options: APIOptions = {}
+  ): AsyncIterableIterator<T> {
+    const pageSize = options.pageSize || this.defaultPageSize
+    for (const batch of this.pathParameterBatches(path, parameters, pageSize)) {
+      let page = parseInt(batch.page?.toString() || '1')
+      let wrapper: APIItems<T>
+      do {
+        wrapper = await this.fetchItems<T>(path, { ...batch, page }, options)
+        yield* wrapper.items
+        page += 1
+      } while (wrapper.has_more)
+    }
+  }
+
+  private pathParameterBatches(
+    path: string,
+    params: APIParameters,
+    per: number
+  ): APIParameters[] {
+    const keys = Array.from(path.matchAll(/{(\w+)}/g)).map((g) => g[1])
+    switch (keys.length) {
+      case 0:
+        return [params]
+      case 1: {
+        const [k, v] = [keys[0], params[keys[0]]]
+        if (v === undefined) throw Error(`Missing path parameter ${k}`)
+        return perN(asArr<ParameterValues>(v), per).map((batch) => ({
+          ...params,
+          [k]: batch,
+        }))
+      }
+      default:
+        throw Error("Can't batch multiple path parameters")
+    }
   }
 
   private buildURL(
