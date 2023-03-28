@@ -145,7 +145,6 @@ export class HistogramController extends Stacks.StacksController {
       [Infinity, 1]
     )
     this._logScale = maxFreq > 10 * minFreq
-    console.log('Histogram scale uses log?', this._logScale)
 
     // don't bother when it's just one bucket or fewer.
     if (this._buckets.length <= 1) return
