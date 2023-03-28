@@ -5,9 +5,10 @@
 
 <img src="./screenshot.png" alt="Screenshot" height="300px" align="right" />
 
-![current version](https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github)
-![MIT license](https://img.shields.io/github/license/mjpieters/SO-userscripts)
-[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue)](../../../../releases/latest/download/connected-users.user.js)
+[![current version][badge_current_version]][latest]
+[![MIT license][badge_license]](../../LICENSE)
+[![Install this userscript][badge_install]][install]
+
 
 Userscript to aid investigation of connected users on the moderator-only IP cross-reference view.
 
@@ -15,7 +16,7 @@ The script adds tools to show a histogram of connected users, list those users i
 
 ## Installation
 
-[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)](../../../../releases/latest/download/connected-users.user.js)
+[![Install this userscript](https://img.shields.io/badge/install-Install%20this%20userscript-blue?style=for-the-badge&logo=Tampermonkey)][install]
 
 ## Documentation
 
@@ -27,10 +28,18 @@ This script is [MIT licensed](../../LICENSE).
 
 ## Issues and suggestions
 
-[![GitHub issues](https://img.shields.io/github/issues/mjpieters/SO-userscripts/connected-users?label=issues)][issues]
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/mjpieters/SO-userscripts/connected-users?label=pull+requests)][prs]
+[![GitHub issues][badge_issues]][issues]
+[![GitHub pull requests][badge_prs]][prs]
 
 Feature requests and bug reports are most welcome, please use the [GitHub issue tracker][issues]. Issues with accompanying [pull requests][prs] are even more awesome!
 
+[latest]: https://github.com/mjpieters/SO-userscripts/releases/latest
+[install]: https://github.com/mjpieters/SO-userscripts/releases/latest/download/connected-users.user.js
 [issues]: https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:connected-users
 [prs]: https://github.com/mjpieters/SO-userscripts/pulls?q=is:pr+is%3Aopen+label:connected-users
+
+[badge_current_version]: https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github
+[badge_license]: https://img.shields.io/github/license/mjpieters/SO-userscripts
+[badge_install]: https://img.shields.io/badge/install-Install%20this%20userscript-blue
+[badge_issues]: https://img.shields.io/github/issues/mjpieters/SO-userscripts/connected-users?label=issues
+[badge_prs]: https://img.shields.io/github/issues-pr/mjpieters/SO-userscripts/connected-users?label=pull+requests

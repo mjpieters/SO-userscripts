@@ -1,7 +1,7 @@
 # SO-userscripts
 
-![current version](https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github)
-![MIT license](https://img.shields.io/github/license/mjpieters/SO-userscripts)
+[![current version][badge_current_version]][latest]
+[![MIT license][badge_license]](./LICENSE)
 
 User scripts for use on Stack Exchange websites. You can install these by clicking on the install link for each individual script from their individual README files, listed below.
 
@@ -23,13 +23,11 @@ All scripts are [MIT licensed](./LICENSE).
 
 ## Issues and suggestions
 
-[![GitHub issues](https://img.shields.io/github/issues/mjpieters/SO-userscripts)][issues]
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/mjpieters/SO-userscripts)][prs]
+[![GitHub issues][badge_issues]][issues]
+[![GitHub pull requests][badge_prs]][prs]
 
 Feature requests and bug reports are most welcome, please use the [GitHub issue tracker][issues]. Issues with accompanying [pull requests][prs] are even more awesome!
 
-[issues]: https://github.com/mjpieters/SO-userscripts/issues
-[prs]: https://github.com/mjpieters/SO-userscripts/pulls
 ## Development
 
 Scripts are written in TypeScript and compiled and packaged as userscripts (JavaScript files with a header), using webpack.
@@ -52,4 +50,13 @@ Remember to switch back to the released version once you are done, especially wh
 
 ### Releasing
 
-A GitHub workflow handles releasing from the main branch into `dist/`, updating the version number based on the conventional commit messages pushed to the branch since the last commit.
+A GitHub workflow handles releasing from the main branch, updating the version number based on the conventional commit messages pushed to the branch since the last release. 
+
+[latest]: https://github.com/mjpieters/SO-userscripts/releases/latest
+[issues]: https://github.com/mjpieters/SO-userscripts/issues
+[prs]: https://github.com/mjpieters/SO-userscripts/pulls
+
+[badge_current_version]: https://img.shields.io/github/v/tag/mjpieters/SO-userscripts?color=green&label=version&logo=github
+[badge_license]: https://img.shields.io/github/license/mjpieters/SO-userscripts
+[badge_issues]: https://img.shields.io/github/issues/mjpieters/SO-userscripts
+[badge_prs]: https://img.shields.io/github/issues/mjpieters/SO-userscripts
