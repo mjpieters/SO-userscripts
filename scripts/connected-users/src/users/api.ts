@@ -5,10 +5,13 @@ import { LruCache } from '../utils'
 import { StackExchangeAPI } from '../seAPI'
 import { minimalUserFilter, seAPIKey, userAPICacheSize } from '../constants'
 
-import { DeletedUser, User } from './classes'
+import { DeletedUser, ExistingUser, User } from './classes'
 
 type JSONUser = {
-  [P in keyof User as User[P] extends Function ? never : P]: User[P] // eslint-disable-line @typescript-eslint/ban-types
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  [P in keyof ExistingUser as ExistingUser[P] extends Function
+    ? never
+    : P]: ExistingUser[P]
 }
 
 const apiCache = new LruCache<number, User>(userAPICacheSize)
@@ -39,7 +42,10 @@ export async function* fetchUsers(
       { filter: minimalUserFilter }
     )
     const byUserId = new Map(
-      results.map((user) => [user.user_id, Object.assign(new User(), user)])
+      results.map((user) => [
+        user.user_id,
+        Object.assign(new ExistingUser(), user),
+      ])
     )
     const lastFetched = userIds.indexOf(queryIds[queryIds.length - 1]) + 1
     yield* userIds.splice(0, lastFetched).reduce((mapped, uid) => {

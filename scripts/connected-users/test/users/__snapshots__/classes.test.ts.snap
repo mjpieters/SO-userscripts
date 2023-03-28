@@ -7,7 +7,7 @@ exports[`Deleted user can rendered to HTML 1`] = `
           <span class="anonymous-gravatar s-avatar--image"></span>
         </a>
         <div class="s-user-card--info">
-          <a href="/users/42" class="s-user-card--link"
+          <a href="https://example.com/users/42" class="s-user-card--link"
             >user42</a
           >
         </div>
@@ -15,7 +15,7 @@ exports[`Deleted user can rendered to HTML 1`] = `
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type moderator, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type moderator, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -41,7 +41,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type moderator
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type moderator, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type moderator, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -67,7 +67,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type moderator
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type registered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type registered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -93,7 +93,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type registere
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type registered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type registered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -119,7 +119,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type registere
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type team_admin, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -145,7 +145,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type team_admi
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type team_admin, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -171,7 +171,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type team_admi
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type unregistered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -197,7 +197,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type unregiste
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1, user type unregistered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -223,7 +223,7 @@ exports[`Users are rendered to HTML reflecting reputation 1, user type unregiste
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type moderator, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -249,7 +249,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type modera
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type moderator, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -275,7 +275,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type modera
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type registered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type registered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -301,7 +301,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type regist
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type registered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type registered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -327,7 +327,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type regist
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type team_admin, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -353,7 +353,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type team_a
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type team_admin, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -379,7 +379,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type team_a
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type unregistered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -405,7 +405,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type unregi
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 1234, user type unregistered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -431,7 +431,7 @@ exports[`Users are rendered to HTML reflecting reputation 1234, user type unregi
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type moderator, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -457,7 +457,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type moder
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type moderator, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -483,7 +483,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type moder
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type registered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type registered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -509,7 +509,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type regis
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type registered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type registered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -535,7 +535,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type regis
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type team_admin, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -561,7 +561,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type team_
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type team_admin, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -587,7 +587,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type team_
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type unregistered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -613,7 +613,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type unreg
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 17424, user type unregistered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -639,7 +639,7 @@ exports[`Users are rendered to HTML reflecting reputation 17424, user type unreg
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type moderator, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -665,7 +665,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type mod
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type moderator, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -691,7 +691,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type mod
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type registered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -717,7 +717,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type reg
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type registered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -743,7 +743,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type reg
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type team_admin, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -769,7 +769,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type tea
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type team_admin, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -795,7 +795,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type tea
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type unregistered, and is_employee false 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee false 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -821,7 +821,7 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type unr
     "
 `;
 
-exports[`Users are rendered to HTML reflecting reputation 4321432, user type unregistered, and is_employee true 1`] = `
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee true 1`] = `
 "
       <div class="s-user-card" data-uid="42"> 
         <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
@@ -829,6 +829,2502 @@ exports[`Users are rendered to HTML reflecting reputation 4321432, user type unr
         </a>
         <div class="s-user-card--info">
           <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1"
+            >
+              1
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 1234, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 1,234"
+            >
+              1,234
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 17424, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 17,424"
+            >
+              17.4k
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type moderator, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__moderator s-badge__xs">Mod</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type registered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type team_admin, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span> <span class="s-badge s-badge__admin s-badge__xs">Admin</span></a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee false 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
+            >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; </a
+          >
+          <ul class="s-user-card--awards">
+            <li
+              class="s-user-card--rep"
+              title="reputation score 4,321,432"
+            >
+              4.32m
+            </li>
+            <li class="s-award-bling s-award-bling__gold">1</li>
+            <li class="s-award-bling s-award-bling__silver">2</li>
+            <li class="s-award-bling s-award-bling__bronze">3</li>
+          </ul>
+        </div>
+      </div>
+    "
+`;
+
+exports[`Users are rendered to HTML reflecting link https://othersite.example.com/users/42/test-user, reputation 4321432, user type unregistered, and is_employee true 1`] = `
+"
+      <div class="s-user-card" data-uid="42"> 
+        <a href="https://othersite.example.com/users/42/test-user" class="s-avatar s-avatar__32 s-user-card--avatar">
+          <img class="s-avatar--image" src="https://images.example.com/test-user.png" />
+        </a>
+        <div class="s-user-card--info">
+          <a href="https://othersite.example.com/users/42/test-user" class="s-user-card--link"
             >Test User &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt; <span class="s-badge s-badge__staff s-badge__xs">Staff</span></a
           >
           <ul class="s-user-card--awards">

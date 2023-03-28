@@ -11,16 +11,30 @@ const fullRepFormat = new Intl.NumberFormat('en-US', {
   useGrouping: true,
 })
 
-/* subset of https://api.stackexchange.com/docs/types/user */
-export class User {
+export abstract class User {
   user_id: number
+  link: string
+
+  constructor() {} // eslint-disable-line no-useless-constructor,@typescript-eslint/no-empty-function
+
+  // because the moderator-quick-links-everywhere script looks for relative
+  // link URLs.
+  protected get relativeLink(): string {
+    const url = new URL(this.link)
+    return url.origin === location.origin ? url.pathname : this.link
+  }
+
+  abstract toHTML(): string
+}
+
+/* subset of https://api.stackexchange.com/docs/types/user */
+export class ExistingUser extends User {
   badge_counts: {
     bronze: number
     silver: number
     gold: number
   }
   display_name: string
-  link: string
   profile_image: string
   reputation: number
   is_employee: boolean
@@ -30,12 +44,6 @@ export class User {
     | 'moderator'
     | 'team_admin'
     | 'does_not_exist'
-
-  // because the moderator-quick-links-everywhere script looks for relative
-  // link URLs.
-  private get _relativeLink(): string {
-    return this.link.replace(/https?:\/\/[^/]+/, '')
-  }
 
   private get _badges(): string {
     const badges = []
@@ -68,7 +76,7 @@ export class User {
     return `
       <div class="s-user-card" data-uid="${this.user_id}"> 
         <a href="${
-          this._relativeLink
+          this.relativeLink
         }" class="s-avatar s-avatar__32 s-user-card--avatar">
           <img class="s-avatar--image" src="${this.profile_image}" />
         </a>
@@ -102,14 +110,14 @@ export class User {
 export class DeletedUser extends User {
   constructor(userId: number) {
     super()
-    this.user_id = userId
-    this.link = `/users/${userId}`
+    this.user_id = userId || 0
+    this.link = `${location.origin}/users/${this.user_id}`
   }
 
   toHTML(): string {
     return `
       <div class="s-user-card s-user-card__deleted">
-        <a href="${this.link}" class="s-avatar s-avatar__32 s-user-card--avatar">
+        <a href="${this.relativeLink}" class="s-avatar s-avatar__32 s-user-card--avatar">
           <span class="anonymous-gravatar s-avatar--image"></span>
         </a>
         <div class="s-user-card--info">
