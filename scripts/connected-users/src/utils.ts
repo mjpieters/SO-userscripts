@@ -44,7 +44,11 @@ export const outlets = <T>({ controllerId }: HasControllerId): keyof T =>
 export const outletConnected = ({ controllerId }: HasControllerId): string =>
   `${camelize(controllerId)}OutletConnected`
 
-export class LruCache<K, V> {
+export interface Cache<K, V> {
+  get(key: K): V | undefined
+  put(key: K, value: V): void
+}
+export class LruCache<K, V> implements Cache<K, V> {
   private values: Map<K, V> = new Map<K, V>()
   private maxEntries = 20
 

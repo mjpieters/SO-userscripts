@@ -1,11 +1,12 @@
 /* global Stacks */
 import { controllerId } from '../constants'
 
-import { fetchUsers } from './api'
+import { UserFetcher } from './api'
 
 // set padding inside the user cards to 0 in the usercard lists
 // _uc-p is the CSS variable set by Stacks and we can override it here.
 const userStyles = `.s-${controllerId} .s-user-card { --_uc-p: 0 }`
+const api = UserFetcher.withDefaultClasses({ missingAssumeDeleted: true })
 
 export class UserListController extends Stacks.StacksController {
   static controllerId = `${controllerId}-user-list`
@@ -44,7 +45,7 @@ export class UserListController extends Stacks.StacksController {
     )
     if (hydrationRows.size === 0) return
     window.requestAnimationFrame(async () => {
-      for await (const user of fetchUsers([...hydrationRows.keys()], true)) {
+      for await (const user of api.users([...hydrationRows.keys()])) {
         const userRow = hydrationRows.get(user.user_id)
         if (!userRow) continue
         const firstChild =
