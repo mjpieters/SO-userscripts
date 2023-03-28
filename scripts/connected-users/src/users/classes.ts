@@ -3,6 +3,15 @@
  */
 import { escapeHtml } from '../utils'
 
+type JSONReflection<T> = {
+  [P in keyof T as T[P] extends Function ? never : P]: T[P] // eslint-disable-line @typescript-eslint/ban-types
+}
+type Constructor<T> = new (...args: any[]) => T
+export interface JSONLoadable<T> {
+  new (): T
+  fromJSON(json: JSONReflection<T>): T
+}
+
 const abbreviatedRepFormat = new Intl.NumberFormat('en-US', {
   notation: 'compact',
   maximumSignificantDigits: 3,
@@ -64,6 +73,15 @@ export class ExistingUser extends User {
         )
     }
     return badges.join(' ')
+  }
+
+  static fromJSON<T extends ExistingUser>(
+    this: Constructor<T>,
+    json: JSONReflection<T>
+  ): T {
+    const user = new this()
+    Object.assign(user, json)
+    return user
   }
 
   private get _abbreviated_reputation(): string {

@@ -7,13 +7,7 @@ import { minimalUserFilter, seAPIKey, userAPICacheSize } from '../constants'
 
 import { DeletedUser, ExistingUser, User } from './classes'
 
-type JSONUser = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [P in keyof ExistingUser as ExistingUser[P] extends Function
-    ? never
-    : P]: ExistingUser[P]
-}
-
+type JSONUser = Parameters<(typeof ExistingUser)['fromJSON']>[0]
 const apiCache = new LruCache<number, User>(userAPICacheSize)
 const api = new StackExchangeAPI(seAPIKey)
 
@@ -42,10 +36,7 @@ export async function* fetchUsers(
       { filter: minimalUserFilter }
     )
     const byUserId = new Map(
-      results.map((user) => [
-        user.user_id,
-        Object.assign(new ExistingUser(), user),
-      ])
+      results.map((user) => [user.user_id, ExistingUser.fromJSON(user)])
     )
     const lastFetched = userIds.indexOf(queryIds[queryIds.length - 1]) + 1
     yield* userIds.splice(0, lastFetched).reduce((mapped, uid) => {
