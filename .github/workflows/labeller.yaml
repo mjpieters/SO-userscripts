@@ -66,10 +66,7 @@ jobs:
             )
 
       - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
-        if: 'github.event.action == "opened"
-          || github.event.action == "synchronize"
-          || github.event.action == "reopened"
-          '
+        if: 'github.event.action == "opened" || github.event.action == "synchronize" || github.event.action == "reopened"'
         with:
           debug: ${{ fromJSON(env.OCTOKIT_DEBUG) }}
           retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
