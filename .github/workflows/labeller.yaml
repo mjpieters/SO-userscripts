@@ -78,7 +78,7 @@ jobs:
             // userscript name is also the name of a label.
             const { data: { entries = [] } } = await github.rest.repos.getContent({
               ...here,
-              ref: context.payload.head.sha,
+              ref: context.payload.pull_request.head.sha,
               path: 'scripts',
               mediaType: { format: 'object' },
             })
