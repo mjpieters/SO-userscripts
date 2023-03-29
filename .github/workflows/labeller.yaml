@@ -90,12 +90,13 @@ jobs:
 
             // Determine what userscripts are defined at the PR HEAD SHA. Each
             // userscript name is also the name of a label.
-            const { data: { entries = [] } } = await github.rest.repos.getContent({
+            const { data } = await github.rest.repos.getContent({
               ...here,
               ref: context.payload.pull_request.head.sha,
               path: 'scripts',
               mediaType: { format: 'object' },
             })
+            const entries = data.entries || []
             core.debug(`scripts/ entries: ${JSON.stringify(entries, null, 2)}`)
             const scriptNames = entries.reduce(
               (results, e) => (e.type === 'dir' ? [...results, e.name] : results),
