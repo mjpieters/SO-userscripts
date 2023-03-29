@@ -212,10 +212,10 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     IpGroupController.controllerId,
   ]
 
-  private get _ipGroups(): IpGroupController[] {
+  private get ipGroups(): IpGroupController[] {
     return this[outlets<this>(IpGroupController)] as IpGroupController[]
   }
-  private get _histogram(): HistogramController {
+  private get histogram(): HistogramController {
     return this[outlet<this>(HistogramController)] as HistogramController
   }
 
@@ -294,9 +294,9 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     )
   }
 
-  private _threshold = 0
+  private threshold = 0
 
-  private get _uiDiv(): HTMLDivElement {
+  private get uiDiv(): HTMLDivElement {
     let uiDiv = this.element.querySelector<HTMLDivElement>(
       `.s-${this.identifier}`
     )
@@ -325,9 +325,9 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     return uiDiv
   }
 
-  private get _connectedUsers(): UserFrequencies {
+  private get connectedUsers(): UserFrequencies {
     const connectedUsers: Map<number, number> = new Map()
-    this._ipGroups.forEach((ipGroup) =>
+    this.ipGroups.forEach((ipGroup) =>
       ipGroup.connectedUsers.forEach((uid) =>
         connectedUsers.set(uid, (connectedUsers.get(uid) ?? 0) + 1)
       )
@@ -340,30 +340,30 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
   }
 
   connect(): void {
-    this.element.insertAdjacentElement('afterbegin', this._uiDiv)
-    this._updateConnectedUsersList(this._connectedUsers)
-    this._updateFocusedUsersList()
+    this.element.insertAdjacentElement('afterbegin', this.uiDiv)
+    this.updateConnectedUsersList(this.connectedUsers)
+    this.updateFocusedUsersList()
   }
 
   [outletConnected(HistogramController)](outlet: HistogramController): void {
-    outlet.setFrequencies(this._connectedUsers)
+    outlet.setFrequencies(this.connectedUsers)
   }
 
   reloadPreferences() {
     reloadPreferences()
-    this._refresh()
+    this.refresh()
   }
 
   showConnected({ detail: { connCount } }: { detail: Bucket }): void {
-    if (connCount !== this._threshold) {
-      this._threshold = connCount
-      this._refreshConnectedUsers(this._connectedUsers)
+    if (connCount !== this.threshold) {
+      this.threshold = connCount
+      this.refreshConnectedUsers(this.connectedUsers)
     }
   }
 
   toggleOnly({ target }: { target: HTMLInputElement }): void {
     preferences.xrefUIState.showOnlyConnected = target.checked
-    this._ipGroups.forEach((ipGroup) => ipGroup.refresh(target.checked))
+    this.ipGroups.forEach((ipGroup) => ipGroup.refresh(target.checked))
   }
 
   sectionToggled({ target }: { target: HTMLElement }): void {
@@ -378,7 +378,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     preferences.focusedUsers = Array.from(
       new Set([...preferences.focusedUsers, uid])
     ).sort((a, b) => a - b)
-    if (preferences.focusedUsers.length !== before) this._refresh()
+    if (preferences.focusedUsers.length !== before) this.refresh()
   }
 
   removeFocusUser({ params: { uid } }: { params: { uid: number } }): void {
@@ -386,14 +386,14 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     preferences.focusedUsers = preferences.focusedUsers.filter(
       (focusedUid) => focusedUid !== uid
     )
-    if (preferences.focusedUsers.length !== before) this._refresh()
+    if (preferences.focusedUsers.length !== before) this.refresh()
   }
 
   clearFocusUsers(): void {
     if (!confirm('Clear all focused users?')) return
     if (preferences.focusedUsers.length > 0) {
       preferences.focusedUsers = []
-      this._refresh()
+      this.refresh()
     }
   }
 
@@ -427,33 +427,33 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     graphLink.href = url.toString()
   }
 
-  _refreshId: number | null = null
+  private refreshId: number | null = null
 
-  private _refresh(): void {
-    if (this._refreshId !== null) return
-    this._refreshId = window.requestAnimationFrame(() => {
-      this._threshold = 0
-      this._updateFocusedUsersList()
-      const connectedUsers = this._connectedUsers
-      this._histogram.setFrequencies(connectedUsers, false)
-      this._refreshConnectedUsers(connectedUsers)
-      this._refreshId = null
+  private refresh(): void {
+    if (this.refreshId !== null) return
+    this.refreshId = window.requestAnimationFrame(() => {
+      this.threshold = 0
+      this.updateFocusedUsersList()
+      const connectedUsers = this.connectedUsers
+      this.histogram.setFrequencies(connectedUsers, false)
+      this.refreshConnectedUsers(connectedUsers)
+      this.refreshId = null
     })
   }
 
-  private _refreshConnectedUsers(connectedUsers: UserFrequencies): void {
-    this._ipGroups.forEach((ipGroup) =>
-      ipGroup.updateUsersBelowThreshold(this._threshold, connectedUsers)
+  private refreshConnectedUsers(connectedUsers: UserFrequencies): void {
+    this.ipGroups.forEach((ipGroup) =>
+      ipGroup.updateUsersBelowThreshold(this.threshold, connectedUsers)
     )
-    this._updateConnectedUsersList(connectedUsers)
+    this.updateConnectedUsersList(connectedUsers)
   }
 
-  private _updateConnectedUsersList(connectedUsers: UserFrequencies): void {
+  private updateConnectedUsersList(connectedUsers: UserFrequencies): void {
     const doUpdate = () => {
       const connectedUsersDiv = this.connectedUsersTarget
       connectedUsersDiv.replaceChildren()
       connectedUsers.forEach(({ uid, count }) => {
-        if (count < this._threshold) return
+        if (count < this.threshold) return
         const overlap = `Overlaps on ${count} IP${count !== 1 ? 's' : ''}`
         connectedUsersDiv.insertAdjacentHTML(
           'beforeend',
@@ -485,12 +485,12 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
       })
     }
     // if already contained in an animationFrame handler, run directly.
-    this._refreshId === null
+    this.refreshId === null
       ? window.requestAnimationFrame(doUpdate)
       : doUpdate()
   }
 
-  private _updateFocusedUsersList(): void {
+  private updateFocusedUsersList(): void {
     const focusedUsersDiv = this.focusedUsersTarget
     focusedUsersDiv.replaceChildren()
     preferences.focusedUsers.forEach((uid) => {

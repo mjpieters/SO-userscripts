@@ -21,34 +21,34 @@ class UserScripts {
     return Object.keys(this.entries)
   }
 
-  private _entries: { [key: string]: string } | undefined
+  private entries_cache: { [key: string]: string } | undefined
 
   get entries(): { [key: string]: string } {
-    if (this._entries === undefined) {
+    if (this.entries_cache === undefined) {
       const scriptMainPaths = glob.globIterateSync(
         path.join(this.scriptsFolder, '*/src/index.ts')
       )
-      this._entries = {}
+      this.entries_cache = {}
       for (const mainPath of scriptMainPaths) {
         const scriptName = path.basename(path.dirname(path.dirname(mainPath)))
-        this._entries[scriptName] = mainPath
+        this.entries_cache[scriptName] = mainPath
       }
     }
-    return this._entries
+    return this.entries_cache
   }
 
-  private _headers: UserScriptContexts
+  private headers_cache: UserScriptContexts
 
   get headers(): UserScriptContexts {
-    if (this._headers === undefined) {
-      this._headers = {}
+    if (this.headers_cache === undefined) {
+      this.headers_cache = {}
       for (const scriptName of Object.keys(this.entries)) {
-        Object.defineProperty(this._headers, scriptName, {
+        Object.defineProperty(this.headers_cache, scriptName, {
           get: () => this.headersFor(scriptName),
         })
       }
     }
-    return this._headers
+    return this.headers_cache
   }
 
   private headersFor(scriptName: string): Record<string, any> {
@@ -64,17 +64,18 @@ class UserScripts {
     }
   }
 
-  private _tests: UserScriptTest[]
+  private tests_cache: UserScriptTest[]
+
   get tests(): UserScriptTest[] {
-    if (this._tests === undefined) {
-      this._tests = this.names.reduce((tests, scriptName) => {
+    if (this.tests_cache === undefined) {
+      this.tests_cache = this.names.reduce((tests, scriptName) => {
         const scriptPath = path.resolve(this.scriptsFolder, scriptName)
         if (existsSync(path.resolve(scriptPath, 'test')))
           tests = [...tests, { name: scriptName, path: scriptPath }]
         return tests
       }, [] as UserScriptTest[])
     }
-    return this._tests
+    return this.tests_cache
   }
 }
 
