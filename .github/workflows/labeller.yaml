@@ -25,9 +25,13 @@ jobs:
       - name: Harden Runner
         uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
         with:
-          egress-policy: audit
+          disable-sudo: true
+          egress-policy: block
+          allowed-endpoints: >
+            api.github.com:443
 
-      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+      - name: Add auto-merge label
+        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
         if: github.event.action == 'auto_merge_enabled'
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -46,7 +50,8 @@ jobs:
               )
             }
 
-      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+      - name: Remove auto-merge label
+        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
         if: github.event.action == 'auto_merge_disabled'
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -65,7 +70,8 @@ jobs:
               )
             )
 
-      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+      - name: Set userscript-specific labels
+        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
         if: contains(fromJSON('["opened", "synchronize", "reopened"]'), github.event.action)
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -73,8 +79,14 @@ jobs:
           script: |
             const here = { owner: context.repo.owner, repo: context.repo.repo }
             const number = context.issue.number
-            core.debug(`Context: owner=${here.owner}, repo=${here.repo}, number=${number}`)
+
+            core.startGroup('Debug context:')
+            core.debug(`Octokit version: ${github.constructor.VERSION}`)
+            for (const plugin of github.constructor.plugins)
+              core.debug(`  plugin ${plugin.name} version: ${plugin.VERSION}`)
+            core.debug(`owner=${here.owner}, repo=${here.repo}, number=${number}`)
             core.debug(`HEAD for PR: ${JSON.stringify(context.payload.pull_request.head)}`)
+            core.endGroup()
 
             // Determine what userscripts are defined at the PR HEAD SHA. Each
             // userscript name is also the name of a label.
