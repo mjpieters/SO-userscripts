@@ -1,0 +1,135 @@
+name: Labeller
+on:
+  pull_request_target:
+    types:
+      - auto_merge_disabled
+      - auto_merge_enabled
+      - opened
+      - synchronize
+      - reopened
+  
+permissions: {}
+
+env:
+  OCTOKIT_DEBUG: true
+  OCTOKIT_RETRIES: 3
+
+jobs:
+  add_remove_labels:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1f99358870fe1c846a3ccba386cc2b2246836776 # v2.2.1
+        with:
+          egress-policy: audit
+
+      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        if: github.event.action == 'auto_merge_enabled'
+        with:
+          debug: ${{ fromJSON(env.OCTOKIT_DEBUG) }}
+          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
+          script: |
+            core.debug(
+              JSON.stringify(
+                await github.rest.issues.addLabels({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  labels: ['auto-merge']
+                }),
+                null,
+                2
+              )
+            }
+
+      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        if: github.event.action == 'auto_merge_disabled'
+        with:
+          debug: ${{ fromJSON(env.OCTOKIT_DEBUG) }}
+          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
+          script: |
+            core.debug(
+              JSON.stringify(
+                await github.rest.issues.removeLabel({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name: 'auto-merge'
+                }),
+                null,
+                2
+              )
+            )
+
+      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        if: 'github.event.action == "opened"
+          || github.event.action == "synchronize"
+          || github.event.action == "reopened"
+          '
+        with:
+          debug: ${{ fromJSON(env.OCTOKIT_DEBUG) }}
+          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
+          script: |
+            const here = { owner: context.repo.owner, repo: context.repo.repo }
+            const number = context.issue.number
+
+            // Determine what userscripts are defined at the PR HEAD SHA. Each
+            // userscript name is also the name of a label.
+            const { data: { entries = [] } } = await github.rest.repos.getContent({
+              ...here,
+              ref: context.payload.head.sha,
+              path: 'scripts',
+              mediaType: { format: 'object' },
+            })
+            core.debug(`scripts/ entries: ${JSON.stringify(entries, null, 2)}`)
+            const scriptNames = entries.reduce(
+              (results, e) => (e.type === 'dir' ? [...results, e.name] : results),
+              []
+            )
+            core.info(`Known userscripts: ${scriptNames.join(', ')}`)
+            if (scriptNames.length === 0) return
+
+            // Determine the existing labels on this PR
+            const { data: { labels } } = await github.rest.pulls.get({
+              ...here, pull_number: number
+            })
+            core.debug(`PR label entries: ${JSON.stringify(labels, null, 2)}`)
+            const existingLabels = new Set(labels.map((l) => l.name))
+            core.info(`Existing PR labels: ${[...existingLabels].join(', ')}`)
+
+            // Determine what files have been touched
+            const listFilesOptions = github.rest.pulls.listFiles.endpoint.merge({
+              ...here, pull_number: number
+            })
+            const changedFiles = await github.paginate(listFilesOptions)
+            core.debug(`Changed file entries: ${JSON.stringify(changedFiles, null, 2)}`)
+            const changedFileNames = changedFiles.map((f) => f.filename)
+
+            // if there are changes for a userscript, add the matching label
+            // otherwise, if there is an existing label for a userscript the
+            // PR no longer touches, remove it again.
+            const missingLabels = []
+            for (const scriptName of scriptNames) {
+              const hasLabel = existingLabels.has(scriptName)
+              const needle = `scripts/${scriptName}/`
+              const touchedScript = changedFileNames.some((f) => f.startsWith(needle))
+              if (touchedScript && !hasLabel) missingLabels.push(scriptName)
+              else if (!touchedScript && hasLabel) {
+                core.info(`Removing existing label ${scriptName} from PR`)
+                await github.rest.issues.removeLabel({
+                  ...here, issue_number: number, name: scriptName,
+                })
+              }
+            }
+            if (missingLabels.length > 0) {
+              core.info(`Adding labels to PR: ${missingLabels.join(", ")}`)
+              await github.rest.issues.addLabels({
+                ...here,
+                issue_number: number,
+                labels: missingLabels,
+              })
+            }
