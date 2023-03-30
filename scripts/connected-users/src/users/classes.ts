@@ -54,7 +54,7 @@ export class ExistingUser extends User {
     | 'team_admin'
     | 'does_not_exist'
 
-  private get _badges(): string {
+  private get badges(): string {
     const badges = []
     if (this.is_employee) {
       badges.push(
@@ -84,7 +84,7 @@ export class ExistingUser extends User {
     return user
   }
 
-  private get _abbreviated_reputation(): string {
+  private get abbreviatedReputation(): string {
     return this.reputation < 10000
       ? fullRepFormat.format(this.reputation)
       : abbreviatedRepFormat.format(this.reputation).toLowerCase()
@@ -100,14 +100,14 @@ export class ExistingUser extends User {
         </a>
         <div class="s-user-card--info">
           <a href="${this.link}" class="s-user-card--link"
-            >${escapeHtml(this.display_name)} ${this._badges}</a
+            >${escapeHtml(this.display_name)} ${this.badges}</a
           >
           <ul class="s-user-card--awards">
             <li
               class="s-user-card--rep"
               title="reputation score ${fullRepFormat.format(this.reputation)}"
             >
-              ${this._abbreviated_reputation}
+              ${this.abbreviatedReputation}
             </li>
             <li class="s-award-bling s-award-bling__gold">${
               this.badge_counts.gold

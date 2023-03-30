@@ -84,38 +84,38 @@ export class IpGroupController extends Stacks.StacksController {
     )
   }
 
-  private _belowThreshold: Set<number>
+  private belowThreshold: Set<number>
 
-  private get _userRows(): HTMLTableRowElement[] {
+  private get userRows(): HTMLTableRowElement[] {
     return Array.from(
       this.element.querySelectorAll<HTMLTableRowElement>('tbody > tr[data-uid]')
     )
   }
 
-  private get _mainUserRow(): HTMLTableRowElement {
+  private get mainUserRow(): HTMLTableRowElement {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.element.querySelector<HTMLTableRowElement>(
       `tbody .${mainUserCls}`
     )!
   }
 
-  private get _focusUserRows(): HTMLTableRowElement[] {
+  private get focusUserRows(): HTMLTableRowElement[] {
     const known = new Set<number>(preferences.focusedUsers)
-    return this._userRows.filter((tr) =>
+    return this.userRows.filter((tr) =>
       known.has(parseInt(tr.dataset.uid || '0'))
     )
   }
 
-  private get _focusIntervals(): luxon.Interval[] {
-    return [this._mainUserRow, ...this._focusUserRows].map((tr) =>
+  private get focusIntervals(): luxon.Interval[] {
+    return [this.mainUserRow, ...this.focusUserRows].map((tr) =>
       parseAccessInterval(tr)
     )
   }
 
-  private get _connectedUserRows(): HTMLTableRowElement[] {
-    const intervals = this._focusIntervals
+  private get connectedUserRows(): HTMLTableRowElement[] {
+    const intervals = this.focusIntervals
     const known = new Set<number>(preferences.focusedUsers)
-    return this._userRows.filter((tr) => {
+    return this.userRows.filter((tr) => {
       if (tr.classList.contains(mainUserCls)) return false
       const uid = parseInt(tr.dataset.uid || '0')
       if (known.has(uid)) return false
@@ -125,12 +125,12 @@ export class IpGroupController extends Stacks.StacksController {
   }
 
   get connectedUsers(): number[] {
-    return this._connectedUserRows.map((tr) => parseInt(tr.dataset.uid || '0'))
+    return this.connectedUserRows.map((tr) => parseInt(tr.dataset.uid || '0'))
   }
 
-  _showOnlyConnected: boolean
+  private showOnlyConnected: boolean
 
-  private _updateMarkup() {
+  private updateMarkup() {
     // Make it easier to work with the table rows by adding some dataset values.
     this.element
       .querySelectorAll<HTMLTableRowElement>('tbody tr')
@@ -145,15 +145,15 @@ export class IpGroupController extends Stacks.StacksController {
   }
 
   connect() {
-    this._updateMarkup()
-    this._belowThreshold = new Set<number>()
-    this._showOnlyConnected = preferences.xrefUIState.showOnlyConnected
-    this._addFocusButtons()
-    this._updateClasses()
+    this.updateMarkup()
+    this.belowThreshold = new Set<number>()
+    this.showOnlyConnected = preferences.xrefUIState.showOnlyConnected
+    this.addFocusButtons()
+    this.updateClasses()
   }
 
-  private _addFocusButtons() {
-    this._userRows.forEach((tr) => {
+  private addFocusButtons() {
+    this.userRows.forEach((tr) => {
       const uid = tr.dataset.uid || '0'
       const dataKey = `${camelize(controllerId)}UidParam`
       tr.querySelector('td a')?.insertAdjacentHTML('beforebegin', userControls)
@@ -163,46 +163,46 @@ export class IpGroupController extends Stacks.StacksController {
     })
   }
 
-  private _updateClasses() {
-    this._userRows.forEach((tr) => {
+  private updateClasses() {
+    this.userRows.forEach((tr) => {
       tr.classList.remove(knownUserCls, overlapCls, 'd-none')
       delete tr.dataset.connected
     })
-    this._focusUserRows.forEach((tr) => {
+    this.focusUserRows.forEach((tr) => {
       tr.classList.add(knownUserCls)
     })
-    this._connectedUserRows.forEach((tr) => {
+    this.connectedUserRows.forEach((tr) => {
       const uid = parseInt(tr.dataset.uid || '0')
-      tr.classList.toggle(overlapCls, !this._belowThreshold.has(uid))
+      tr.classList.toggle(overlapCls, !this.belowThreshold.has(uid))
     })
-    if (this._showOnlyConnected) {
+    if (this.showOnlyConnected) {
       const kept = [mainUserCls, knownUserCls, overlapCls]
-      this._userRows.forEach((tr) => {
+      this.userRows.forEach((tr) => {
         if (!kept.some((c) => tr.classList.contains(c)))
           tr.classList.add('d-none')
       })
     }
   }
 
-  _refreshId: number | null = null
+  private refreshId: number | null = null
 
   refresh(showOnlyConnected?: boolean) {
     if (showOnlyConnected !== undefined)
-      this._showOnlyConnected = showOnlyConnected
-    if (this._refreshId !== null) return
-    this._refreshId = window.requestAnimationFrame(() => {
-      this._updateClasses()
-      this._refreshId = null
+      this.showOnlyConnected = showOnlyConnected
+    if (this.refreshId !== null) return
+    this.refreshId = window.requestAnimationFrame(() => {
+      this.updateClasses()
+      this.refreshId = null
     })
   }
 
   updateUsersBelowThreshold(threshold: number, connected: UserFrequencies) {
-    this._belowThreshold = new Set<number>(
+    this.belowThreshold = new Set<number>(
       connected.reduce(
         (uids, { uid, count }) => (count < threshold ? [...uids, uid] : uids),
         [] as number[]
       )
     )
-    this._updateClasses()
+    this.updateClasses()
   }
 }
