@@ -47,7 +47,7 @@ jobs:
                   labels: ['auto-merge']
                 })
               )
-            }
+            )
 
       - name: Remove auto-merge label
         # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
