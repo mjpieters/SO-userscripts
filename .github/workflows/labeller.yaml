@@ -31,7 +31,8 @@ jobs:
             api.github.com:443
 
       - name: Add auto-merge label
-        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
+        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: github.event.action == 'auto_merge_enabled'
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -49,7 +50,8 @@ jobs:
             }
 
       - name: Remove auto-merge label
-        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
+        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: github.event.action == 'auto_merge_disabled'
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -67,7 +69,8 @@ jobs:
             )
 
       - name: Set userscript-specific labels
-        uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975 # v6.4.0
+        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
+        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: contains(fromJSON('["opened", "synchronize", "reopened"]'), github.event.action)
         with:
           debug: ${{ env.OCTOKIT_DEBUG }}
@@ -77,8 +80,9 @@ jobs:
 
             // Determine what userscripts are defined at the PR HEAD SHA. Each
             // userscript name is also the name of a label.
-            const { data: entries } = await github.rest.repos.getContent({
+            const { data: { entries = [] } } = await github.rest.repos.getContent({
               ...context.repo, ref: context.sha, path: 'scripts',
+              mediaType: { format: 'object' }
             })
             core.debug(`response entries: ${JSON.stringify(entries)}`)
             const scriptNames = entries.reduce(
