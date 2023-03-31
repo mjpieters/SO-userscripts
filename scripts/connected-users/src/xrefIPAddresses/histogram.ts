@@ -35,7 +35,7 @@ export const genHistogramBuckets = (
     buckets.push({
       connCount: i,
       userCount: 0,
-      label: `Overlapping on ${i} ip(s)`,
+      label: `Overlapping on ${i} ip${i === 1 ? '' : 's'}`,
     })
   }
   userFrequencies.forEach(
@@ -59,8 +59,8 @@ export const genHistogramBuckets = (
         userCount,
         label:
           connCount !== lastConnCount
-            ? `Overlapping on ${connCount}-${lastConnCount} ip(s)`
-            : `Overlapping on ${connCount} ip(s)`,
+            ? `Overlapping on ${connCount}-${lastConnCount} ips`
+            : `Overlapping on ${connCount} ips`,
       })
     }
     buckets.splice(0, buckets.length)
