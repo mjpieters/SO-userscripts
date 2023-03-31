@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Bookmark Users
 // @description Shows what user bookmarked a question. Fetches the bookmarking users from the StackExchange data explorer (data can be up to a week old)
-// @version     1.4.10
+// @version     1.4.11
 // @author      Martijn Pieters
 // @homepage    https://github.com/mjpieters/SO-userscripts/tree/main/scripts/bookmark-users
 // @supportURL  https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:bookmark-users
