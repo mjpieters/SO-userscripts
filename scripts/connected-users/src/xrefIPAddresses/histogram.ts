@@ -19,6 +19,65 @@ export type Bucket = {
   label: string
 }
 
+/** Produce histogram buckets for a list of user frequencies, sorted by their counts in _reverse_ order */
+export const genHistogramBuckets = (
+  userFrequencies: UserFrequencies
+): {
+  buckets: Bucket[]
+  logScale: boolean
+} => {
+  if (userFrequencies.length === 0) return { buckets: [], logScale: false }
+
+  const buckets: Bucket[] = []
+  const minConnCount = userFrequencies[userFrequencies.length - 1].count
+  const maxConnCount = userFrequencies[0].count
+  for (let i = minConnCount; i <= maxConnCount; i++) {
+    buckets.push({
+      connCount: i,
+      userCount: 0,
+      label: `Overlapping on ${i} ip(s)`,
+    })
+  }
+  userFrequencies.forEach(
+    ({ count }) => (buckets[count - minConnCount].userCount += 1)
+  )
+
+  if (buckets.length > maxhistBars) {
+    // combine buckets to keep the histogram manageable when there are
+    // a large number of IP addresses.
+    const bucketCount = Math.ceil(buckets.length / maxhistBars)
+    const newBuckets: Bucket[] = []
+    for (let i = 0; i < buckets.length; i += bucketCount) {
+      const connCount = buckets[i].connCount
+      const lastConnCount =
+        buckets[Math.min(buckets.length, i + bucketCount) - 1].connCount
+      const userCount = buckets
+        .slice(i, i + bucketCount)
+        .reduce((acc, { userCount }) => acc + userCount, 0)
+      newBuckets.push({
+        connCount,
+        userCount,
+        label:
+          connCount !== lastConnCount
+            ? `Overlapping on ${connCount}-${lastConnCount} ip(s)`
+            : `Overlapping on ${connCount} ip(s)`,
+      })
+    }
+    buckets.splice(0, buckets.length)
+    buckets.push(...newBuckets)
+  }
+
+  // lowest and highest non-zero frequencies
+  const [minFreq, maxFreq] = buckets.reduce(
+    ([min, max], { userCount }) => [
+      Math.min(min, Math.max(userCount, 1)),
+      Math.max(max, userCount),
+    ],
+    [Infinity, 1]
+  )
+  return { buckets, logScale: maxFreq > 10 * minFreq }
+}
+
 const histogramStyles = `
   .s-${controllerId}__connected-histogram svg rect {
     fill: var(--theme-secondary-400);
@@ -95,59 +154,13 @@ export class HistogramController extends Stacks.StacksController {
   setFrequencies(userFrequencies: UserFrequencies, dispatchEvent = true) {
     // first clear the existing histogram
     this.svgTarget.replaceChildren()
-    this.buckets = []
-    if (userFrequencies.length === 0) return
 
-    const minConnCount = userFrequencies[userFrequencies.length - 1].count
-    const maxConnCount = userFrequencies[0].count
-    for (let i = minConnCount; i <= maxConnCount; i++) {
-      this.buckets.push({
-        connCount: i,
-        userCount: 0,
-        label: `Overlapping on ${i} ip(s)`,
-      })
-    }
-    userFrequencies.forEach(
-      ({ count }) => (this.buckets[count - minConnCount].userCount += 1)
-    )
+    const { buckets, logScale } = genHistogramBuckets(userFrequencies)
+    this.buckets = buckets
+    this.logScale = logScale
 
-    if (this.buckets.length > maxhistBars) {
-      // combine buckets to keep the histogram manageable when there are
-      // a large number of IP addresses.
-      const bucketCount = Math.ceil(this.buckets.length / maxhistBars)
-      const newBuckets: Bucket[] = []
-      for (let i = 0; i < this.buckets.length; i += bucketCount) {
-        const connCount = this.buckets[i].connCount
-        const lastConnCount =
-          this.buckets[Math.min(this.buckets.length, i + bucketCount) - 1]
-            .connCount
-        const userCount = this.buckets
-          .slice(i, i + bucketCount)
-          .reduce((acc, { userCount }) => acc + userCount, 0)
-        newBuckets.push({
-          connCount,
-          userCount,
-          label:
-            connCount !== lastConnCount
-              ? `Overlapping ${connCount}-${lastConnCount} ip(s)`
-              : `Overlapping ${connCount} ip(s)`,
-        })
-      }
-      this.buckets = newBuckets
-    }
-
-    // lowest and highest non-zero frequencies
-    const [minFreq, maxFreq] = this.buckets.reduce(
-      ([min, max], { userCount }) => [
-        Math.min(min, Math.max(userCount, 1)),
-        Math.max(max, userCount),
-      ],
-      [Infinity, 1]
-    )
-    this.logScale = maxFreq > 10 * minFreq
-
-    // don't bother when it's just one bucket or fewer.
-    if (this.buckets.length <= 1) return
+    // don't bother drawing when it's just zero or one bucket.
+    if (buckets.length <= 1) return { buckets: [], logScale: false }
 
     this.drawBarChart()
     this.adjustThresholdClasses(this.buckets[0].connCount)
