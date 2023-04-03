@@ -10,10 +10,6 @@ on:
   
 permissions: {}
 
-env:
-  OCTOKIT_DEBUG: 'false'
-  OCTOKIT_RETRIES: '3'
-
 jobs:
   add_remove_labels:
     runs-on: ubuntu-latest
@@ -31,106 +27,83 @@ jobs:
             api.github.com:443
 
       - name: Add auto-merge label
-        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
-        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: github.event.action == 'auto_merge_enabled'
-        with:
-          debug: ${{ env.OCTOKIT_DEBUG }}
-          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
-          script: |
-            core.debug(
-              JSON.stringify(
-                await github.rest.issues.addLabels({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  labels: ['auto-merge']
-                })
-              )
-            )
+        run: gh pr edit "$PR_URL" --add-label "auto-merge"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Remove auto-merge label
-        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
-        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: github.event.action == 'auto_merge_disabled'
-        with:
-          debug: ${{ env.OCTOKIT_DEBUG }}
-          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
-          script: |
-            try {
-              core.debug(
-                JSON.stringify(
-                  await github.rest.issues.removeLabel({
-                    issue_number: context.issue.number,
-                    owner: context.repo.owner,
-                    repo: context.repo.repo,
-                    name: 'auto-merge'
-                  })
-                )
-              )
-            } catch (e) {
-              core.info('Label "auto-merge" was not present on the PR')
-            }
+        run: gh pr edit "$PR_URL" --remove-label "auto-merge"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Set userscript-specific labels
-        # uses: actions/github-script@c1485da120d9fae32e0d884cded8ce0aa82ab1cb # v6.4.0
-        uses: mjpieters/github-script@0c8fe71a7aac52b69510dff49515dbde5cc7161e # v6.5.0-pre.1
         if: contains(fromJSON('["opened", "synchronize", "reopened"]'), github.event.action)
-        with:
-          debug: ${{ env.OCTOKIT_DEBUG }}
-          retries: ${{ fromJSON(env.OCTOKIT_RETRIES) }}
-          script: |
-            const number = context.issue.number
+        env:
+          GH_REPO: ${{github.repository}}
+          PR_SHA: ${{github.sha}}
+          PR_NUMBER: ${{github.event.number}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          # Determine what userscripts are defined at the PR HEAD SHA. Each
+          # userscript name is also the name of a label.
+          scriptNames=$(
+              gh api \
+                  -H "Accept: application/vnd.github.object" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  "/repos/{owner}/{repo}/contents/scripts?ref=${PR_SHA}" \
+                  --jq '.entries | map(select(.type == "dir")) | .[].name'
+          )
+          echo "Known userscripts: ${scriptNames//$'\n'/, }"
+          if [ -z "${scriptNames}" ]; then exit; fi
 
-            // Determine what userscripts are defined at the PR HEAD SHA. Each
-            // userscript name is also the name of a label.
-            const { data: { entries = [] } } = await github.rest.repos.getContent({
-              ...context.repo, ref: context.sha, path: 'scripts',
-              mediaType: { format: 'object' }
-            })
-            core.debug(`response entries: ${JSON.stringify(entries)}`)
-            const scriptNames = entries.reduce(
-              (results, e) => (e.type === 'dir' ? [...results, e.name] : results),
-              []
-            )
-            core.info(`Known userscripts: ${scriptNames.join(', ')}`)
-            if (scriptNames.length === 0) return
+          # utility functions to join arrrays with an arbitrary delimiter, and to print
+          join() { local delim=$1 out; shift; printf -v out "%s$delim" "$@"; echo "${out%"${delim}"}"; }
+          echoArr() { local msg=$1; shift; echo "$msg: $(join ', ' "$@")"; }
 
-            // Determine the existing labels on this PR
-            const { data: { labels } } = await github.rest.pulls.get({
-              ...context.repo, pull_number: number
-            })
-            core.debug(`PR label entries: ${JSON.stringify(labels)}`)
-            const existingLabels = new Set(labels.map((l) => l.name))
-            core.info(`Existing PR labels: ${[...existingLabels].join(', ')}`)
+          # Determine the existing labels on this PR
+          declare -A existingLabels=()
+          for label in $(gh pr view "$PR_NUMBER" --json labels --jq '.labels[].name'); do
+              existingLabels[$label]=1
+          done
+          echoArr 'Existing PR labels' "${!existingLabels[@]}"
 
-            // Determine what files have been touched
-            const listFilesOptions = github.rest.pulls.listFiles.endpoint.merge({
-              ...context.repo, pull_number: number
-            })
-            const changedFiles = await github.paginate(listFilesOptions)
-            const changedFileNames = changedFiles.map((f) => f.filename)
-            core.debug(`Changed files: ${JSON.stringify(changedFileNames)}`)
+          # Determine what scripts this PR touched, based on what files it changed
+          declare -A touchedScripts=()
+          for touched in $(
+              gh api \
+                  -H "Accept: application/vnd.github+json" \
+                  -H "X-GitHub-Api-Version: 2022-11-28" \
+                  "/repos/{owner}/{repo}/pulls/${PR_NUMBER}/files" \
+                  --jq 'map(.filename | match("^scripts/([^/]+)/") | .captures[0].string) | unique | .[]'
+          ); do
+              touchedScripts[$touched]=1
+          done
+          echoArr 'Touched scripts' "${!touchedScripts[@]}"
 
-            // if there are changes for a userscript, add the matching label
-            // otherwise, if there is an existing label for a userscript the
-            // PR no longer touches, remove it again.
-            const missingLabels = []
-            for (const scriptName of scriptNames) {
-              const hasLabel = existingLabels.has(scriptName)
-              const needle = `scripts/${scriptName}/`
-              const touchedScript = changedFileNames.some((f) => f.startsWith(needle))
-              if (touchedScript && !hasLabel) missingLabels.push(scriptName)
-              else if (!touchedScript && hasLabel) {
-                core.info(`Removing existing label ${scriptName} from PR`)
-                await github.rest.issues.removeLabel({
-                  ...context.repo, issue_number: number, name: scriptName,
-                })
-              }
-            }
-            if (missingLabels.length > 0) {
-              core.info(`Adding labels to PR: ${missingLabels.join(", ")}`)
-              await github.rest.issues.addLabels({
-                ...context.repo, issue_number: number, labels: missingLabels,
-              })
-            }
+          # if there are changes for a userscript, add the matching label. Otherwise, if
+          # there is an existing label for a userscript the PR no longer touches, remove
+          # it again.
+          declare -A missingLabels=() surplusLabels=()
+          for scriptName in $scriptNames; do
+              if [[ ${touchedScripts["$scriptName"]} && ! ${existingLabels[$scriptName]} ]]; then
+                  missingLabels[$scriptName]=1
+              elif [[ ! ${touchedScripts["$scriptName"]} && ${existingLabels[$scriptName]} ]]; then
+                  surplusLabels[$scriptName]=1
+              fi
+          done
+          declare -a args=()
+          if [ "${#missingLabels[*]}" -gt 0 ]; then
+              echoArr 'Adding labels to PR' "${!missingLabels[@]}"
+              args+=("--add-label" "$(join , "${!missingLabels[@]}")")
+          fi
+          if [ "${#surplusLabels[*]}" -gt 0 ]; then
+              echoArr 'Removing labels from PR' "${!surplusLabels[@]}"
+              args+=("--remove-label" "$(join , "${!surplusLabels[@]}")")
+          fi
+          if [ "${#args[*]}" -gt 0 ]; then
+              gh pr edit "$PR_NUMBER" "${args[@]}"
+          fi
