@@ -354,7 +354,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     this.refresh()
   }
 
-  showConnected({ detail: { connCount } }: { detail: Bucket }): void {
+  showConnected({ detail: { connCount } }: CustomEvent<Bucket>): void {
     if (connCount !== this.threshold) {
       this.threshold = connCount
       this.refreshConnectedUsers(this.connectedUsers)
@@ -418,7 +418,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
       .then(() => button?.classList.remove('is-copied'))
   }
 
-  updateFocusUsersGraphLink({ detail: uids }: { detail: number[] }): void {
+  updateFocusUsersGraphLink({ detail: uids }: CustomEvent<number[]>): void {
     const today = luxon.DateTime.utc()
     const periodStart = today.minus({ days: 14 })
     const graphLink = this.focusUsersGraphLinkTarget
