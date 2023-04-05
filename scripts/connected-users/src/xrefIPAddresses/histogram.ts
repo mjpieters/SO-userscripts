@@ -112,12 +112,18 @@ export class HistogramController extends Stacks.StacksController {
 
   connect() {
     this.svgTarget.addEventListener('click', this.propagateEvent.bind(this))
-    this.svgTarget.addEventListener('hover', this.propagateEvent.bind(this))
+    this.svgTarget.addEventListener(
+      'pointerover',
+      this.propagateEvent.bind(this)
+    )
   }
 
   disconnect() {
     this.svgTarget.removeEventListener('click', this.propagateEvent.bind(this))
-    this.svgTarget.removeEventListener('hover', this.propagateEvent.bind(this))
+    this.svgTarget.removeEventListener(
+      'pointerover',
+      this.propagateEvent.bind(this)
+    )
   }
 
   private svgRatioCache: number
@@ -141,11 +147,16 @@ export class HistogramController extends Stacks.StacksController {
   }
 
   private propagateEvent(e: Event): void {
-    const target = e.target as SVGRectElement
-    const index = target.dataset.bucketIndex
-    if (index === undefined) return
+    const bucketRect = (e.target as SVGElement | null)?.closest(
+      'svg [data-bucket-index]'
+    ) as SVGElement | null
+    const indexStr = bucketRect?.dataset.bucketIndex
+    if (indexStr === undefined) return
+    const index = parseInt(indexStr)
+    if (index < 0 || index >= this.buckets.length) return
+    e.stopPropagation()
 
-    const bucket = this.buckets[parseInt(index)]
+    const bucket = this.buckets[index]
     if (e.type === 'click') this.adjustThresholdClasses(bucket.connCount)
 
     this.dispatch(e.type, { detail: bucket })
