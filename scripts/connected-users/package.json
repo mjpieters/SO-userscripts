@@ -1,7 +1,7 @@
 {
     "name": "connected-users",
     "devDependencies": {
-        "@types/luxon": "^3.2.2"
+        "@types/luxon": "^3.3.0"
     },
     "dependencies": {
         "@stackoverflow/stacks-icons": "^5.3.1",
