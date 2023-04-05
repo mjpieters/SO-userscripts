@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The histogram controller dispatches a click event for the first bucket whenever more than 1 bucket is present 1`] = `"<svg xmlns="http://www.w3.org/2000/svg" data-us-mod-connected-users-histogram-target="svg"></svg>"`;
+
+exports[`The histogram controller dispatches a click event for the first bucket whenever more than 1 bucket is present 2`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" data-us-mod-connected-users-histogram-target="svg" viewBox="0 0 21 10.152892561983471"><g stroke-width="0.05076446280991736" class="gridLines">
+        <defs><line id="gridLine" x1="0" x2="21" y1="0" y2="0"></line></defs>
+        <use href="#gridLine"></use>
+       <use href="#gridLine" y="10.152892561983471"></use><use href="#gridLine" y="6.768595041322314"></use><use href="#gridLine" y="3.384297520661157"></use></g>
+        <rect width="4" height="10.152892561983471" x="1" y="0" data-bucket-index="0" data-bucket-conn-count="2" class="threshold">
+          <title>Overlapping on 2 ips: 3 accounts</title>
+        </rect>
+       
+        <rect width="4" height="0" x="6" y="10.152892561983471" data-bucket-index="1" data-bucket-conn-count="3">
+          <title>Overlapping on 3 ips: 0 accounts</title>
+        </rect>
+       
+        <rect width="4" height="0" x="11" y="10.152892561983471" data-bucket-index="2" data-bucket-conn-count="4">
+          <title>Overlapping on 4 ips: 0 accounts</title>
+        </rect>
+       
+        <rect width="4" height="6.768595041322314" x="16" y="3.384297520661157" data-bucket-index="3" data-bucket-conn-count="5">
+          <title>Overlapping on 5 ips: 2 accounts</title>
+        </rect>
+       </svg>"
+`;
+
+exports[`The histogram controller renders the histogram whenever frequencies are set 1`] = `"<svg xmlns="http://www.w3.org/2000/svg" data-us-mod-connected-users-histogram-target="svg"></svg>"`;
+
+exports[`The histogram controller renders the histogram whenever frequencies are set 2`] = `
+"<svg xmlns="http://www.w3.org/2000/svg" data-us-mod-connected-users-histogram-target="svg" viewBox="0 0 21 10.152892561983471"><g stroke-width="0.05076446280991736" class="gridLines">
+        <defs><line id="gridLine" x1="0" x2="21" y1="0" y2="0"></line></defs>
+        <use href="#gridLine"></use>
+       <use href="#gridLine" y="10.152892561983471"></use><use href="#gridLine" y="6.768595041322314"></use><use href="#gridLine" y="3.384297520661157"></use></g>
+        <rect width="4" height="10.152892561983471" x="1" y="0" data-bucket-index="0" data-bucket-conn-count="2" class="threshold">
+          <title>Overlapping on 2 ips: 3 accounts</title>
+        </rect>
+       
+        <rect width="4" height="0" x="6" y="10.152892561983471" data-bucket-index="1" data-bucket-conn-count="3">
+          <title>Overlapping on 3 ips: 0 accounts</title>
+        </rect>
+       
+        <rect width="4" height="0" x="11" y="10.152892561983471" data-bucket-index="2" data-bucket-conn-count="4">
+          <title>Overlapping on 4 ips: 0 accounts</title>
+        </rect>
+       
+        <rect width="4" height="6.768595041322314" x="16" y="3.384297520661157" data-bucket-index="3" data-bucket-conn-count="5">
+          <title>Overlapping on 5 ips: 2 accounts</title>
+        </rect>
+       </svg>"
+`;

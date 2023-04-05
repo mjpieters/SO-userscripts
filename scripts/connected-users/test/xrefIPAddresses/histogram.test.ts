@@ -1,7 +1,13 @@
-import { describe, expect, test } from '@jest/globals'
+import { describe, beforeEach, expect, test } from '@jest/globals'
+import { screen } from '@testing-library/dom'
+import userEvent from '@testing-library/user-event'
 
+import * as Stimulus from '@hotwired/stimulus'
+
+import { domReady } from '../testUtils'
 import {
   genHistogramBuckets,
+  HistogramController,
   Bucket,
 } from '@connected-users/xrefIPAddresses/histogram'
 import { UserFrequencies } from '@connected-users/xrefIPAddresses/types'
@@ -111,5 +117,118 @@ describe('We can generate histogram buckets', () => {
       ...freqs,
     ])
     expect(ls2).toBe(true)
+  })
+})
+
+describe('The histogram controller', () => {
+  const controllerId = HistogramController.controllerId
+  let application: Stimulus.Application
+  let controller: HistogramController
+
+  beforeEach(async () => {
+    document.body.innerHTML = `
+      <div data-controller="${controllerId}" id="controller">
+        <svg xmlns="http://www.w3.org/2000/svg" data-${controllerId}-target="svg"></svg>
+      </div>
+    `
+    // Provide enough context for the SVG element to have an inner size
+    document.head.innerHTML = '<style>svg { padding: 0px }</style>'
+    const svgElem = document.body.getElementsByTagName('svg')[0]
+    Object.defineProperties(svgElem, {
+      clientWidth: { value: 242, configurable: true },
+      clientHeight: { value: 117, configurable: true },
+    })
+
+    application = Stimulus.Application.start()
+    application.register(controllerId, HistogramController)
+
+    // wait for the controller to be connected, which happens on domReady
+    await domReady()
+    controller = application.getControllerForElementAndIdentifier(
+      document.getElementById('controller') as HTMLElement,
+      controllerId
+    ) as HistogramController
+  })
+
+  test('registers styles after loading', () => {
+    const styles = document.getElementById(`${controllerId}-styles`)
+    expect(styles).not.toBeNull()
+  })
+
+  const cases: [UserFrequencies, Bucket | null][] = [
+    [[{ uid: 1, count: 1 }], null],
+    [
+      [
+        { uid: 1, count: 5 },
+        { uid: 2, count: 5 },
+        { uid: 3, count: 2 },
+        { uid: 4, count: 2 },
+        { uid: 5, count: 2 },
+      ],
+      { userCount: 3, connCount: 2, label: 'Overlapping on 2 ips' },
+    ],
+  ]
+  test.each(cases)(
+    'renders the histogram whenever frequencies are set',
+    (freq) => {
+      controller.setFrequencies(freq)
+      expect(controller.svgTarget.outerHTML).toMatchSnapshot()
+    }
+  )
+
+  test.each(cases)(
+    'dispatches a click event for the first bucket whenever more than 1 bucket is present',
+    (freq, expected) => {
+      let dispatchedBucket: Bucket | null = null
+      controller.element.addEventListener(
+        `${controllerId}:click`,
+        (e: CustomEvent<Bucket>) => {
+          dispatchedBucket = e.detail
+        }
+      )
+      controller.setFrequencies(freq)
+      expect(controller.svgTarget.outerHTML).toMatchSnapshot()
+      expect(dispatchedBucket).toStrictEqual(expected)
+    }
+  )
+
+  test('Moving a pointer over buckets dispatches events with bucket details', async () => {
+    const user = userEvent.setup({ delay: null })
+    controller.setFrequencies(cases[1][0])
+
+    let dispatchedBucket: Bucket | null = null
+    controller.element.addEventListener(
+      `${controllerId}:pointerover`,
+      (e: CustomEvent<Bucket>) => {
+        dispatchedBucket = e.detail
+      }
+    )
+    const bar = screen.getByText('Overlapping on 5 ips: 2 accounts')
+    await user.hover(bar)
+    expect(dispatchedBucket).toStrictEqual({
+      userCount: 2,
+      connCount: 5,
+      label: 'Overlapping on 5 ips',
+    })
+  })
+
+  test('Clicking on a bucket dispatches events with bucket details', async () => {
+    const user = userEvent.setup({ delay: null })
+    controller.setFrequencies(cases[1][0])
+
+    let dispatchedBucket: Bucket | null = null
+    controller.element.addEventListener(
+      `${controllerId}:click`,
+      (e: CustomEvent<Bucket>) => {
+        dispatchedBucket = e.detail
+      }
+    )
+    const bar = screen.getByText('Overlapping on 5 ips: 2 accounts')
+    await user.click(bar)
+    expect(dispatchedBucket).toStrictEqual({
+      userCount: 2,
+      connCount: 5,
+      label: 'Overlapping on 5 ips',
+    })
   })
 })

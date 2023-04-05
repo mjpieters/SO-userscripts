@@ -20,3 +20,9 @@ export const cartesian = <T extends unknown[][]>(inputs: [...T]) => {
     }
   }
 }
+
+export const domReady = () =>
+  new Promise<void>((resolve) => {
+    if (document.readyState !== 'loading') return resolve()
+    document.addEventListener('DOMContentLoaded', () => resolve())
+  })
