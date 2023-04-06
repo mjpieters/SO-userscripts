@@ -167,6 +167,13 @@ describe('The histogram controller', () => {
       ],
       { userCount: 3, connCount: 2, label: 'Overlapping on 2 ips' },
     ],
+    [
+      [
+        ...[...new Array(11).keys()].map((i) => ({ uid: i, count: 3 })),
+        ...[...new Array(1).keys()].map((i) => ({ uid: i + 11, count: 1 })),
+      ],
+      { userCount: 1, connCount: 1, label: 'Overlapping on 1 ip' },
+    ],
   ]
   test.each(cases)(
     'renders the histogram whenever frequencies are set',
@@ -187,7 +194,6 @@ describe('The histogram controller', () => {
         }
       )
       controller.setFrequencies(freq)
-      expect(controller.svgTarget.outerHTML).toMatchSnapshot()
       expect(dispatchedBucket).toStrictEqual(expected)
     }
   )
@@ -212,6 +218,26 @@ describe('The histogram controller', () => {
     })
   })
 
+  test('Moving over or clicking on other histogram elements does not dispatch events', async () => {
+    const user = userEvent.setup({ delay: null })
+    controller.setFrequencies(cases[1][0])
+
+    let dispatchedBucket: Bucket | null = null
+    const handler = (e: CustomEvent<Bucket>) => {
+      dispatchedBucket = e.detail
+    }
+    controller.element.addEventListener(`${controllerId}:pointerover`, handler)
+    controller.element.addEventListener(`${controllerId}:click`, handler)
+    const elems = Array.from(controller.svgTarget.querySelectorAll('*'))
+    for (const elem of elems) {
+      if (elem.tagName === 'rect' || elem.tagName === 'title') continue
+      await user.hover(elem)
+      expect(dispatchedBucket).toBeNull()
+      await user.click(elem)
+      expect(dispatchedBucket).toBeNull()
+    }
+  })
+
   test('Clicking on a bucket dispatches events with bucket details', async () => {
     const user = userEvent.setup({ delay: null })
     controller.setFrequencies(cases[1][0])
@@ -230,5 +256,21 @@ describe('The histogram controller', () => {
       connCount: 5,
       label: 'Overlapping on 5 ips',
     })
+  })
+
+  test('Clicking on a bucket moves the threshold class to that bucket', async () => {
+    const user = userEvent.setup({ delay: null })
+    controller.setFrequencies(cases[1][0])
+
+    const threshold = () => {
+      const thresholdElems = controller.element.querySelectorAll('.threshold')
+      expect(thresholdElems.length).toBe(1)
+      return thresholdElems[0]
+    }
+    const bars = Array.from(controller.svgTarget.getElementsByTagName('rect'))
+    for (const bar of bars) {
+      await user.click(bar)
+      expect(threshold()).toBe(bar)
+    }
   })
 })
