@@ -68,7 +68,7 @@ describe('We can fetch users in batches from the Stack Exchange API', () => {
     expect(mockFetchAll).toHaveBeenCalledWith(
       '/users/{ids}',
       { ids: [1, 2, 3] },
-      { filter: expect.any(String) }
+      { filter: expect.any(String), compareFn: expect.any(Function) }
     )
   })
 
@@ -105,7 +105,7 @@ describe('We can fetch users in batches from the Stack Exchange API', () => {
     expect(mockFetchAll).toHaveBeenCalledWith(
       '/users/{ids}',
       { ids: [2, 4] },
-      { filter: expect.any(String) }
+      { filter: expect.any(String), compareFn: expect.any(Function) }
     )
     expect(mockCachePut.mock.calls).toEqual([
       [2, expect.any(ExistingUser)],

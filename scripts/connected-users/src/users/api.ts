@@ -50,7 +50,7 @@ export class UserFetcher<
   async *users(
     userIds: InstanceType<UserType>['user_id'][]
   ): AsyncIterableIterator<User> {
-    const toFetch: number[] = []
+    const toFetch: User['user_id'][] = []
     const byUserId = new Map(
       userIds.reduce((resolved, uid) => {
         const user = this.cache.get(uid)
@@ -58,25 +58,42 @@ export class UserFetcher<
         return user !== undefined ? [...resolved, [uid, user]] : resolved
       }, [] as [User['user_id'], User][])
     )
+
+    const get = this.missingAssumeDeleted
+      ? (uid: User['user_id']) => byUserId.get(uid) || this.missingUser(uid)
+      : (uid: User['user_id']) => byUserId.get(uid)
+    const uids = userIds.values()
+    function* cachedOrMissing(until?: User['user_id']) {
+      for (const uid of uids) {
+        if (uid === until) break
+        const user = get(uid)
+        if (user) yield user
+      }
+    }
+
     if (toFetch.length > 0) {
-      const apiResults = this.api.fetchAll<Parameters<UserType['fromJSON']>[0]>(
+      type JSONUser = Parameters<UserType['fromJSON']>[0]
+      const order = new Map(toFetch.map((uid, i) => [uid, i]))
+      const options = {
+        filter: minimalUserFilter,
+        compareFn: (a: JSONUser, b: JSONUser) =>
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          order.get(a.user_id)! - order.get(b.user_id)!,
+      }
+      const apiResults = this.api.fetchAll<JSONUser>(
         '/users/{ids}',
         { ids: toFetch },
-        { filter: minimalUserFilter }
+        options
       )
       for await (const jsonUser of apiResults) {
         const user = this.UserClass.fromJSON(jsonUser)
         this.cache.put(user.user_id, user)
-        byUserId.set(user.user_id, user)
+        yield* cachedOrMissing(user.user_id)
+        yield user
       }
     }
-    const get = this.missingAssumeDeleted
-      ? (uid: number) => byUserId.get(uid) || this.missingUser(uid)
-      : (uid: number) => byUserId.get(uid)
-    for (const uid of userIds) {
-      const user = get(uid)
-      if (user) yield user
-    }
+
+    yield* cachedOrMissing()
   }
 
   private missingUser(userId: User['user_id']): MissingUser {
