@@ -293,4 +293,16 @@ describe('We can fetch results in batches', () => {
     const gen = api.fetchAll<number>('/foo/{bar}')
     await expect(gen.next()).rejects.toThrow(/Missing path parameter bar/)
   })
+
+  test('each paged batch can be sorted', async () => {
+    mockFetch({ items: [2, 6, 3, 4, 1] }, { items: [9, 7, 8, 5] })
+    const gen = api.fetchAll<number>(
+      '/foo/{bar}',
+      { bar: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
+      { pageSize: 5, compareFn: (a, b) => a - b }
+    )
+    for (const expected of [1, 2, 3, 4, 6, 5, 7, 8, 9]) {
+      await expect((await gen.next()).value).toEqual(expected)
+    }
+  })
 })

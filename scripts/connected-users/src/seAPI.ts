@@ -19,6 +19,9 @@ type APIOptions = {
   filter?: string
   pageSize?: number
 }
+type SortOptions<T> = {
+  compareFn?: (a: T, b: T) => number
+}
 type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never
 type ParameterValues = string[] | number[] | Date[]
@@ -137,11 +140,12 @@ export class StackExchangeAPI {
    * Fetch paged data from the API; handles paging, and batches path parameter vector batching
    * If a filter is used, retrieving more than pageSize items only works if the `has_more`
    * parameter is included in the response wrapper.
+   * If a compare function is provided, the items are sorted before yielding.
    */
   async *fetchAll<T>(
     path: string,
     parameters: APIParameters = {},
-    options: APIOptions = {}
+    options: APIOptions & SortOptions<T> = {}
   ): AsyncIterableIterator<T> {
     const pageSize = options.pageSize || this.defaultPageSize
     for (const batch of this.pathParameterBatches(path, parameters, pageSize)) {
@@ -149,6 +153,8 @@ export class StackExchangeAPI {
       let wrapper: APIItems<T>
       do {
         wrapper = await this.fetchItems<T>(path, { ...batch, page }, options)
+        if (options.compareFn !== undefined)
+          wrapper.items.sort(options.compareFn)
         yield* wrapper.items
         page += 1
       } while (wrapper.has_more)
