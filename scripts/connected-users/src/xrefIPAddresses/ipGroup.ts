@@ -7,7 +7,7 @@ import { preferences } from '../preferences'
 import { camelize } from '../utils'
 import { UserFrequencies } from './types'
 
-import { parseDateTime } from './utils'
+import { parseAccessInterval } from './utils'
 
 const mainUserCls = 's-mainUser'
 const knownUserCls = 's-known'
@@ -59,19 +59,6 @@ const userControls = `
           title="Remove this user from the focused accounts list"
     >${IconEyeOffSm} <span class="md:d-none">Remove</span></button></span>
 `
-
-/**
- * For a given XRef user row, extract the start and end dates of user access
- * for this IP address as a luxon Interval object.
- */
-export function parseAccessInterval(tr: HTMLTableRowElement): luxon.Interval {
-  return luxon.Interval.fromDateTimes.apply(
-    this,
-    Array.from(
-      tr.querySelectorAll<HTMLSpanElement>('td .relativetime[title]')
-    ).map((e) => parseDateTime(e.title))
-  )
-}
 
 export class IpGroupController extends Stacks.StacksController {
   static controllerId = `${controllerId}-ip-group`
