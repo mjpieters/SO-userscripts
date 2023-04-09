@@ -28,7 +28,9 @@ const jestConfig: JestConfigWithTsJest = {
       setupFilesAfterEnv: ['<rootDir>/utils/testSetup.ts'],
       modulePaths: [compilerOptions.baseUrl],
       moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
-      transformIgnorePatterns: ['<rootDir>/node_modules/(?!(stimulus-use))'],
+      transformIgnorePatterns: [
+        '<rootDir>/node_modules/(?!(stimulus-use|@stackoverflow/stacks-icons))',
+      ],
     })),
   ],
   coverageDirectory: 'coverage',
