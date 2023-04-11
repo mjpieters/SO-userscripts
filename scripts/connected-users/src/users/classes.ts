@@ -34,6 +34,17 @@ export abstract class User {
   }
 
   abstract toHTML(): string
+
+  private cachedNode: HTMLElement | null = null
+
+  get node(): HTMLElement {
+    if (this.cachedNode === null) {
+      const node = document.createElement('div')
+      node.innerHTML = this.toHTML()
+      this.cachedNode = node.firstElementChild as HTMLElement
+    }
+    return this.cachedNode
+  }
 }
 
 /* subset of https://api.stackexchange.com/docs/types/user */

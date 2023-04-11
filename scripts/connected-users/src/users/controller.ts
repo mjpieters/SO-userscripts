@@ -56,8 +56,8 @@ export class UserListController extends Stacks.StacksController {
             : null
         const existingCard =
           userRow.querySelector<HTMLDivElement>('.s-user-card')
-        if (existingCard) existingCard.outerHTML = user.toHTML()
-        else userRow.innerHTML = user.toHTML()
+        if (existingCard) existingCard.replaceWith(user.node)
+        else userRow.replaceChildren(user.node)
         const newCard = userRow.querySelector('.s-user-card')
         newCard?.classList.add(...this.userCardClasses)
         if (firstChild) {

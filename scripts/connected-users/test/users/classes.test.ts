@@ -38,12 +38,12 @@ describe('Users are rendered to HTML', () => {
         user_type: userType,
         is_employee: isEmployee,
       })
-      expect(user.toHTML()).toMatchSnapshot()
+      expect(user.node).toMatchSnapshot()
     }
   )
 })
 
 test('Deleted user can rendered to HTML', () => {
   const deletedUser = new DeletedUser(42)
-  expect(deletedUser.toHTML()).toMatchSnapshot()
+  expect(deletedUser.node).toMatchSnapshot()
 })
