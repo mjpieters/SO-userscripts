@@ -28,9 +28,8 @@ jobs:
 
       - name: Approve PR
         if: |
-            (  steps.metadata.outputs.dependency-type == 'direct:production'
-            || steps.metadata.outputs.dependency-type == 'direct:development')
-            && steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          steps.metadata.outputs.dependency-type != 'indirect'
+          && steps.metadata.outputs.update-type != 'version-update:semver-major'
         run: gh pr review --approve "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
@@ -38,9 +37,8 @@ jobs:
 
       - name: Enable auto-merge for Dependabot PRs
         if: |
-            (  steps.metadata.outputs.dependency-type == 'direct:production'
-            || steps.metadata.outputs.dependency-type == 'direct:development')
-            && steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          steps.metadata.outputs.dependency-type != 'indirect'
+          && steps.metadata.outputs.update-type != 'version-update:semver-major'
         run: |
           gh pr merge --auto --squash "$PR_URL"
           gh pr edit "$PR_URL" --add-label "auto-merge"
