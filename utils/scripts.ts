@@ -1,5 +1,5 @@
 import path from 'path'
-import glob from 'glob'
+import { globIterateSync } from 'glob'
 import { existsSync } from 'fs'
 
 interface UserScriptContexts {
@@ -25,7 +25,7 @@ class UserScripts {
 
   get entries(): { [key: string]: string } {
     if (this.entries_cache === undefined) {
-      const scriptMainPaths = glob.globIterateSync(
+      const scriptMainPaths = globIterateSync(
         path.join(this.scriptsFolder, '*/src/index.ts')
       )
       this.entries_cache = {}
