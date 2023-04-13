@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Connected Users
 // @description **Moderator-only**. Hightlights users in the IP cross section view that overlap in time
-// @version     1.5.1
+// @version     1.5.2
 // @author      Martijn Pieters
 // @homepage    https://github.com/mjpieters/SO-userscripts/tree/main/scripts/connected-users
 // @supportURL  https://github.com/mjpieters/SO-userscripts/issues?q=is:issue+is%3Aopen+label:connected-users
