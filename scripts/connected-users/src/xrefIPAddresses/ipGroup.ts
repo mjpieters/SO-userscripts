@@ -174,7 +174,7 @@ export class IpGroupController extends Stacks.StacksController {
   refresh(showOnlyConnected?: boolean) {
     if (showOnlyConnected !== undefined)
       this.showOnlyConnected = showOnlyConnected
-    if (this.refreshId !== null) return
+    if (this.refreshId !== null) window.cancelAnimationFrame(this.refreshId)
     this.refreshId = window.requestAnimationFrame(() => {
       this.updateClasses()
       this.refreshId = null

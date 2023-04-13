@@ -430,7 +430,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
   private refreshId: number | null = null
 
   private refresh(): void {
-    if (this.refreshId !== null) return
+    if (this.refreshId !== null) window.cancelAnimationFrame(this.refreshId)
     this.refreshId = window.requestAnimationFrame(() => {
       this.threshold = 0
       this.updateFocusedUsersList()
