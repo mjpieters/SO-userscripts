@@ -18,6 +18,9 @@ export class UserListController extends Stacks.StacksController {
   static classes = ['userCard']
   declare readonly userCardClasses: string
 
+  static values = { keepFirst: { type: Boolean, default: false } }
+  declare readonly keepFirstValue: boolean
+
   static afterLoad(identifier: string): void {
     document.head.insertAdjacentHTML(
       'beforeend',
@@ -36,8 +39,8 @@ export class UserListController extends Stacks.StacksController {
     this.refreshId = window.requestAnimationFrame(async () => {
       this.countTarget.innerHTML = this.userRowTargets.length.toString()
       // replace sparse user cards with full versions
-      // preserves the first child of an existing s-user-card div if the row is
-      // marked with data-user-card-keep-first="true"
+      // preserves the first child of an existing s-user-card div if keepFirst
+      // is true
       const hydrationRows = new Map(
         this.userRowTargets.reduce(
           (entries, row) =>
@@ -52,12 +55,11 @@ export class UserListController extends Stacks.StacksController {
         for await (const user of api.users([...hydrationRows.keys()])) {
           const userRow = hydrationRows.get(user.user_id)
           if (!userRow) continue
-          const firstChild =
-            userRow.dataset.userCardKeepFirst === 'true'
-              ? userRow
-                  .querySelector<HTMLDivElement>('.s-user-card :first-child')
-                  ?.cloneNode(true)
-              : null
+          const firstChild = this.keepFirstValue
+            ? userRow
+                .querySelector<HTMLDivElement>('.s-user-card :first-child')
+                ?.cloneNode(true)
+            : null
           const existingCard =
             userRow.querySelector<HTMLDivElement>('.s-user-card')
           if (existingCard) existingCard.replaceWith(user.node)

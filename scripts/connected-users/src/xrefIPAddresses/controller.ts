@@ -79,6 +79,7 @@ const xrefFocusUI = `
     <div data-controller="${EmptyDomController.controllerId} ${UserListController.controllerId}"
          data-${EmptyDomController.controllerId}-empty-class="d-none"
          data-action="${EmptyDomController.controllerId}:not-empty->${UserListController.controllerId}#updateUsers"
+         data-${UserListController.controllerId}-keep-first-value="true"
       >
       <h2 class="s-sidebarwidget--header s-sidebarwidget__small-bold-text
                 s-sidebarwidget__expanding-control"
@@ -460,7 +461,6 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
           `<div class="s-sidebarwidget--item ai-center"
               data-uid="${uid}"
               data-${UserListController.controllerId}-target="userRow"
-              data-user-card-keep-first="true"
           >
             <div class="s-user-card" data-uid="${uid}">
               <span class="s-user-card--time">${overlap}</span>
