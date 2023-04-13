@@ -56,9 +56,7 @@ export class UserListController extends Stacks.StacksController {
           const userRow = hydrationRows.get(user.user_id)
           if (!userRow) continue
           const firstChild = this.keepFirstValue
-            ? userRow
-                .querySelector<HTMLDivElement>('.s-user-card :first-child')
-                ?.cloneNode(true)
+            ? userRow.querySelector<HTMLDivElement>('.s-user-card :first-child')
             : null
           const existingCard =
             userRow.querySelector<HTMLDivElement>('.s-user-card')
@@ -66,12 +64,8 @@ export class UserListController extends Stacks.StacksController {
           else userRow.replaceChildren(user.node)
           const newCard = userRow.querySelector('.s-user-card')
           newCard?.classList.add(...this.userCardClasses)
-          if (firstChild) {
-            newCard?.insertAdjacentElement(
-              'afterbegin',
-              firstChild as HTMLElement
-            )
-          }
+          if (firstChild)
+            newCard?.insertAdjacentElement('afterbegin', firstChild)
           userRow.dataset.hydrated = 'true'
         }
         // signal the Mod User Quicklinks Everywhere script
