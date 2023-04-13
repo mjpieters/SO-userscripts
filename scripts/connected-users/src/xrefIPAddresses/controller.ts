@@ -13,7 +13,7 @@ import { controllerId } from '../constants'
 import { EmptyDomController } from '../emptyDom'
 import { preferences, reload as reloadPreferences } from '../preferences'
 import { UserListController } from '../users'
-import { outlet, outletConnected, outlets } from '../utils'
+import { delay, outlet, outletConnected, outlets } from '../utils'
 
 import { Bucket, HistogramController } from './histogram'
 import { IpGroupController } from './ipGroup'
@@ -398,25 +398,19 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     }
   }
 
-  copyFocusUsers({ target }: { target: HTMLElement }): void {
+  async copyFocusUsers({ target }: { target: HTMLElement }): Promise<void> {
     // list userids, and if available, their username slug.
-    const users = preferences.focusedUsers.map((uid) => {
-      const userLink = this.focusedUsersTarget.querySelector<HTMLAnchorElement>(
-        `a[href^="/users/${uid}/"]`
-      )
-      return userLink
-        ? userLink.href.replace(/.*\/users\//, '')
-        : uid.toFixed(0)
-    })
-    const text = users.join('\n')
+    const users = preferences.focusedUsers.map(
+      (uid) =>
+        this.focusedUsersTarget
+          .querySelector<HTMLAnchorElement>(`a[href^="/users/${uid}/"]`)
+          ?.href.replace(/.*\/users\//, '') ?? uid.toFixed(0)
+    )
+    await navigator.clipboard.writeText(users.join('\n'))
     const button = target.closest('button')
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        button?.classList.add('is-copied')
-        return new Promise((resolve) => setTimeout(resolve, 1500))
-      })
-      .then(() => button?.classList.remove('is-copied'))
+    button?.classList.add('is-copied')
+    await delay(1500)
+    button?.classList.remove('is-copied')
   }
 
   updateFocusUsersGraphLink({ detail: uids }: CustomEvent<number[]>): void {
