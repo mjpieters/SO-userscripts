@@ -17,9 +17,17 @@ const config: (
   args: Record<string, any>
 ) => Configuration = (_, argv) => {
   const isDevMode = argv.mode === 'development'
+  /* istanbul ignore next */
   const downloadUrl = isDevMode
     ? `http://localhost:${DEV_SERVER_PORT}`
     : `${homepage}/releases/latest/download/`
+  /* istanbul ignore next */
+  const proxyScript = isDevMode
+    ? {
+        baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
+        filename: '[basename].proxy.user.js',
+      }
+    : undefined
 
   const scripts = new UserScripts()
 
@@ -28,6 +36,7 @@ const config: (
     pretty: true,
     downloadBaseURL: downloadUrl,
     strict: !isDevMode,
+    proxyScript,
     headers: (original, ctx) => {
       const name = ctx.fileInfo.basename
       const { homepage, supportURL } = original
@@ -42,13 +51,6 @@ const config: (
       }
     },
   })
-  /* istanbul ignore next */
-  if (isDevMode) {
-    plugin.options.proxyScript = {
-      baseURL: `http://localhost:${DEV_SERVER_PORT}/`,
-      filename: '[basename].proxy.user.js',
-    }
-  }
 
   return {
     entry: scripts.entries,
