@@ -59,8 +59,7 @@ const config: (
     output: {
       clean: true,
       path: OUTPUT,
-      // Can't use [name].user.js, see momocow/webpack-userscript#90
-      filename: '[name].js',
+      filename: '[name].user.js',
     },
     plugins: [plugin],
     devtool: false,
