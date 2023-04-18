@@ -3612,7 +3612,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-transformer@npm:^0.5.1":
+"class-transformer@npm:0.5.1":
   version: 0.5.1
   resolution: "class-transformer@npm:0.5.1"
   checksum: f191c8b4cc4239990f5efdd790cabdd852c243ed66248e39f6616a349c910c6eed2d9fd1fbf7ee6ea89f69b4f1d0b493b27347fe0cd0ae26b47c3745a805b6d3
@@ -10566,7 +10566,7 @@ __metadata:
     webpack-cli: ^5.0.1
     webpack-dev-server: ^4.13.3
     webpack-merge: ^5.8.0
-    webpack-userscript: ^3.1.0
+    webpack-userscript: ^3.2.1
   languageName: unknown
   linkType: soft
 
@@ -11405,7 +11405,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.1.0":
   version: 2.5.0
   resolution: "tslib@npm:2.5.0"
   checksum: ae3ed5f9ce29932d049908ebfdf21b3a003a85653a9a140d614da6b767a93ef94f460e52c3d787f0e4f383546981713f165037dc2274df212ea9f8a4541004e1
@@ -11991,11 +11991,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-userscript@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "webpack-userscript@npm:3.1.0"
+"webpack-userscript@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "webpack-userscript@npm:3.2.1"
   dependencies:
-    class-transformer: ^0.5.1
+    class-transformer: 0.5.1
     class-validator: ^0.14.0
     node-fetch: ^2.6.9
     p-limit: ^3.1.0
@@ -12003,9 +12003,10 @@ __metadata:
     ssri: ^10.0.1
     table: ^6.8.1
     tapable: ^2.2.1
+    tslib: ^2.0.0
   peerDependencies:
     webpack: 5
-  checksum: 29c3e59782ebc33fc695cd5e8b9bff276dda60d858022059eb2850827980d9cc2b47bd58e78ab247b45cafc224d3e1973cbaf03cdb88436f1c336ddfa734baab
+  checksum: fc465ff15802c840300e75dccab77d634e163d0034dc827d1e4167bd5ecfee9b5a6a6f5b55e4fdf2f570f271dc7945a609bb54bfe1554c517de98a7e46c25d60
   languageName: node
   linkType: hard
 
