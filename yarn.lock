@@ -10573,7 +10573,7 @@ __metadata:
     webpack-cli: ^5.0.1
     webpack-dev-server: ^4.13.3
     webpack-merge: ^5.8.0
-    webpack-userscript: ^3.2.1
+    webpack-userscript: ^3.2.2
   languageName: unknown
   linkType: soft
 
@@ -11998,9 +11998,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webpack-userscript@npm:^3.2.1":
-  version: 3.2.1
-  resolution: "webpack-userscript@npm:3.2.1"
+"webpack-userscript@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "webpack-userscript@npm:3.2.2"
   dependencies:
     class-transformer: 0.5.1
     class-validator: ^0.14.0
@@ -12013,7 +12013,7 @@ __metadata:
     tslib: ^2.0.0
   peerDependencies:
     webpack: 5
-  checksum: fc465ff15802c840300e75dccab77d634e163d0034dc827d1e4167bd5ecfee9b5a6a6f5b55e4fdf2f570f271dc7945a609bb54bfe1554c517de98a7e46c25d60
+  checksum: bdad5298468fef765ad8248ed7acdf21ebe649473a2afbf516b31367efeea4eb4d910bc5d0b1e8e6a70d647307101791ac7e4793a2e135455e2200f7dd44ea03
   languageName: node
   linkType: hard
 

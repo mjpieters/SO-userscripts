@@ -68,7 +68,7 @@
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.13.3",
     "webpack-merge": "^5.8.0",
-    "webpack-userscript": "^3.2.1"
+    "webpack-userscript": "^3.2.2"
   },
   "packageManager": "yarn@3.4.1"
 }
