@@ -32,7 +32,7 @@
     "@swc/jest": "^0.2.26",
     "@testing-library/dom": "^9.2.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/node": "^18.16.2",
+    "@types/node": "^18.16.3",
     "@types/semantic-release": "^20.0.1",
     "@types/ssri": "^7.1.1",
     "@types/tampermonkey": "^4.0.10",
