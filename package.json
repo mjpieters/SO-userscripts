@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.3",
     "@hotwired/stimulus": "^3.2.1",
     "@jest/globals": "^29.5.0",
     "@semantic-release/exec": "semantic-release/exec",
