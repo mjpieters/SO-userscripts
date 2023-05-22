@@ -1505,6 +1505,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.11.7":
+  version: 2.11.7
+  resolution: "@popperjs/core@npm:2.11.7"
+  checksum: 5b6553747899683452a1d28898c1b39173a4efd780e74360bfcda8eb42f1c5e819602769c81a10920fc68c881d07fb40429604517d499567eac079cfa6470f19
+  languageName: node
+  linkType: hard
+
 "@semantic-release/commit-analyzer@npm:^9.0.2":
   version: 9.0.2
   resolution: "@semantic-release/commit-analyzer@npm:9.0.2"
@@ -1675,6 +1682,16 @@ __metadata:
   version: 5.3.1
   resolution: "@stackoverflow/stacks-icons@npm:5.3.1"
   checksum: e5c5e384b46ec37bcdf791139024cf24e6b651f5a0847a9fc7fc6ed629398d4c33d322d0cdc5f96fb5e4a55b10fed1e7c3bdd80def3f7bf2c2eddc021e9f115b
+  languageName: node
+  linkType: hard
+
+"@stackoverflow/stacks@npm:^1.9.0":
+  version: 1.9.3
+  resolution: "@stackoverflow/stacks@npm:1.9.3"
+  dependencies:
+    "@hotwired/stimulus": ^3.2.1
+    "@popperjs/core": ^2.11.7
+  checksum: 724487d612675aa2b37b62c5d094db0e55d976b0c0b632f38a9a7cd90cd26ccd0c31a8415b510d607d3e276f912e9d711815ff5d707246d8e02fb5a96b47ad98
   languageName: node
   linkType: hard
 
@@ -2479,13 +2496,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@userscripters/stackexchange-global-types@npm:^2.6.1":
-  version: 2.6.1
-  resolution: "@userscripters/stackexchange-global-types@npm:2.6.1"
+"@userscripters/stackexchange-global-types@npm:^2.7.0":
+  version: 2.7.0
+  resolution: "@userscripters/stackexchange-global-types@npm:2.7.0"
   dependencies:
     "@hotwired/stimulus": ^3.2.1
+    "@stackoverflow/stacks": ^1.9.0
     "@types/jquery": ^3.5.16
-  checksum: 28b34fa64b52de0de55fb8e7de38832b4d04803f68d71a82e389c5d4a5bdd99bd5d82ce45cb5f904171c8c4bdf5a546ec12b93f64599745d6c4675fde3106eca
+  checksum: 9db881f2a480f2f1b2bb73c47be19ae1849ad119d26c1fa81da572811b6c27291c38c93463a432659ff019df6392f85202baf6c34ddeef5a5be983162fae3ebb
   languageName: node
   linkType: hard
 
@@ -10787,7 +10805,7 @@ __metadata:
     "@types/webpack": ^5.28.1
     "@typescript-eslint/eslint-plugin": ^5.59.6
     "@typescript-eslint/parser": ^5.59.6
-    "@userscripters/stackexchange-global-types": ^2.6.1
+    "@userscripters/stackexchange-global-types": ^2.7.0
     concurrently: ^8.0.1
     eslint: ^8.40.0
     eslint-config-prettier: ^8.8.0
