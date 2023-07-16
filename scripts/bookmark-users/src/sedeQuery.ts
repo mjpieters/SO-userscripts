@@ -7,7 +7,7 @@
 import { sedeUrl, sedeQueryId } from './constants'
 import { getSiteId } from './utils'
 
-type BookmarkedBy = {
+interface BookmarkedBy {
   date: string
   userId: string
 }
@@ -21,7 +21,7 @@ export function fetchBookmarkers(postId: number): Promise<BookmarkedBy[]> {
       fetch: true,
       onload: (response) => {
         if (response.status !== 200) {
-          reject(new Error(`invalid response ${response}`))
+          reject(new Error(`invalid response ${response.responseText}`))
         }
         const text = response.responseText
         const lines = text.split(/\r?\n/).filter(Boolean)

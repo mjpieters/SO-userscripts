@@ -21,10 +21,10 @@ beforeAll(() => {
 })
 afterAll(() => {
   jest.restoreAllMocks()
-  delete (global as any).luxon
+  delete (global as unknown as { luxon: unknown }).luxon
 })
 
-type TestUser = {
+interface TestUser {
   uid: number
   name: string
   from: string
@@ -96,7 +96,7 @@ describe('The IpGroupController manages per-IP-address UI tables', () => {
   const controllerId = IpGroupController.controllerId
   let application: Stimulus.Application
 
-  beforeEach(async () => {
+  beforeEach(() => {
     jest.spyOn(window, 'location', 'get').mockReturnValue({
       pathname: '/admin/xref-user-ips/1742',
     } as unknown as Location)
@@ -110,7 +110,7 @@ describe('The IpGroupController manages per-IP-address UI tables', () => {
     users: TestUser[]
   ): Promise<IpGroupController> => {
     document.body.innerHTML = controllerTable(users.map(userRow))
-    const elem = document.body.querySelector('table tr') as HTMLTableRowElement
+    const elem = document.body.querySelector<HTMLTableRowElement>('table tr')!
     elem.dataset.controller = controllerId
 
     // wait for the controller to be connected, which happens on domReady

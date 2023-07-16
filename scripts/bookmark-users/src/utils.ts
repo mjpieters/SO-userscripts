@@ -10,7 +10,7 @@ export function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-type APIResponse<T> = {
+interface APIResponse<T> {
   backoff?: number
   error_id?: number
   error_message?: string
@@ -19,7 +19,7 @@ type APIResponse<T> = {
 }
 
 // holds path => earliest next fetch allowed time in ms
-const notBeforeTs: Map<string, number> = new Map()
+const notBeforeTs = new Map<string, number>()
 
 // Fetch data from the API; handles backoff, API key use and site ID transparently
 export async function seApiFetch<T>(path: string): Promise<T[]>
@@ -42,7 +42,7 @@ export async function seApiFetch<T>(
   }
 
   const response = await fetch(url.toString())
-  const wrapper: APIResponse<T> = await response.json()
+  const wrapper: APIResponse<T> = (await response.json()) as APIResponse<T>
   notBeforeTs.set(path, new Date().getTime() + (wrapper.backoff ?? 0))
 
   if (wrapper.error_id) {

@@ -1,13 +1,15 @@
 import { seAPIURL } from './constants'
 import { delay } from './utils'
 
-type APIBackoff = { backoff?: number }
-type APIItems<T> = {
+interface APIBackoff {
+  backoff?: number
+}
+interface APIItems<T> {
   items: T[]
   has_more?: boolean
   error_id?: never
 }
-type APIResponseError = {
+interface APIResponseError {
   error_id: number
   error_name: string
   error_message: string
@@ -15,20 +17,18 @@ type APIResponseError = {
 type APIWrapper<T> = (APIItems<T> | APIResponseError) & APIBackoff
 const isAPIError = <T>(wrapper: APIWrapper<T>): wrapper is APIResponseError =>
   wrapper.error_id !== undefined
-type APIOptions = {
+interface APIOptions {
   filter?: string
   pageSize?: number
 }
-type SortOptions<T> = {
+interface SortOptions<T> {
   compareFn?: (a: T, b: T) => number
 }
 type ArrayElement<ArrayType extends readonly unknown[]> =
   ArrayType extends readonly (infer ElementType)[] ? ElementType : never
 type ParameterValues = string[] | number[] | Date[]
 type ParameterValue = ArrayElement<ParameterValues>
-type APIParameters = {
-  [key: string]: ParameterValue | ParameterValues
-}
+type APIParameters = Record<string, ParameterValue | ParameterValues>
 export class APIError extends Error {
   constructor(
     public readonly errorId: number,
@@ -72,21 +72,20 @@ class FutureBackoff implements PromiseLike<number> {
             this.resolve = resolve
           })
         : Promise.resolve(immediateValue)
-    this.then = this.promise.then.bind(this.promise)
+    this.then = this.promise.then.bind(
+      this.promise
+    ) as typeof Promise.prototype.then
   }
 }
 const NO_BEFORE = new FutureBackoff(0)
-
-const perN = <S extends any[]>(values: S, n: number): S[] =>
-  values.reduce((result, elem, index) => {
+const perN = <S>(values: S[], n: number): S[][] =>
+  values.reduce<S[][]>((result, elem, index) => {
     const chunk = Math.floor(index / n)
     result[chunk] = [...(chunk < result.length ? result[chunk] : []), elem]
     return result
-  }, [] as S[])
+  }, [])
 
-const asArr = <S extends readonly unknown[], T = ArrayElement<S>>(
-  v: S | T
-): S => (Array.isArray(v) ? (v as S) : ([v] as unknown as S))
+const asArr = <S>(v: S[] | S): S[] => (Array.isArray(v) ? v : ([v] as S[]))
 
 export class StackExchangeAPI {
   readonly siteId: string
@@ -96,7 +95,7 @@ export class StackExchangeAPI {
     siteId?: string,
     readonly defaultPageSize = 100
   ) {
-    this.siteId = siteId || getSiteId()
+    this.siteId = siteId ?? getSiteId()
   }
 
   /**
@@ -125,8 +124,8 @@ export class StackExchangeAPI {
     let wrapper: APIWrapper<T>
     try {
       const response = await fetch(url.toString())
-      wrapper = await response.json()
-      setBackoff(new Date().getTime() + (wrapper.backoff || 0) * 1000)
+      wrapper = (await response.json()) as APIWrapper<T>
+      setBackoff(new Date().getTime() + (wrapper.backoff ?? 0) * 1000)
     } catch (e) {
       setBackoff(0)
       throw e
@@ -147,7 +146,7 @@ export class StackExchangeAPI {
     parameters: APIParameters = {},
     options: APIOptions & SortOptions<T> = {}
   ): AsyncIterableIterator<T> {
-    const pageSize = options.pageSize || this.defaultPageSize
+    const pageSize = options.pageSize ?? this.defaultPageSize
     for (const batch of this.pathParameterBatches(path, parameters, pageSize)) {
       let page = parseInt(batch.page?.toString() || '1')
       let wrapper: APIItems<T>
@@ -173,10 +172,12 @@ export class StackExchangeAPI {
       case 1: {
         const [k, v] = [keys[0], params[keys[0]]]
         if (v === undefined) throw Error(`Missing path parameter ${k}`)
-        return perN(asArr<ParameterValues>(v), per).map((batch) => ({
-          ...params,
-          [k]: batch,
-        }))
+        return perN<ParameterValue>(asArr<ParameterValue>(v), per).map(
+          (batch) => ({
+            ...params,
+            [k]: batch as ParameterValues,
+          })
+        )
       }
       default:
         throw Error("Can't batch multiple path parameters")
@@ -192,10 +193,7 @@ export class StackExchangeAPI {
       ...(options.filter && { filter: options.filter }),
       ...(this.apiKey && { key: this.apiKey }),
       site: this.siteId,
-      pagesize: (options.pageSize === undefined
-        ? this.defaultPageSize
-        : options.pageSize
-      ).toFixed(0),
+      pagesize: (options.pageSize ?? this.defaultPageSize).toFixed(0),
     })
     let urlpath = path
     for (const [key, value] of Object.entries(parameters)) {
@@ -214,7 +212,8 @@ export class StackExchangeAPI {
     return url
   }
 
-  private readonly notBeforeFutures: Map<string, FutureBackoff> = new Map()
+  private readonly notBeforeFutures = new Map<string, FutureBackoff>()
+
   private async handleBackoff(
     path: string
   ): Promise<(backoff: number) => void> {

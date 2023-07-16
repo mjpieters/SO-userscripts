@@ -12,11 +12,10 @@ export function parseDateTime(dt: string): luxon.DateTime {
  * for this IP address as a luxon Interval object.
  */
 export function parseAccessInterval(tr: HTMLTableRowElement): luxon.Interval {
-  return luxon.Interval.fromDateTimes.apply(
-    this,
-    Array.from(
+  return luxon.Interval.fromDateTimes(
+    ...(Array.from(
       tr.querySelectorAll<HTMLSpanElement>('td .relativetime[title]')
-    ).map((e) => parseDateTime(e.title))
+    ).map((e) => parseDateTime(e.title)) as [luxon.DateTime, luxon.DateTime])
   )
 }
 

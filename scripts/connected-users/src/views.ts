@@ -13,7 +13,8 @@ export function xrefUsersView(): void {
   })
   if (!location.pathname.includes('/admin/xref-user-ips/')) return
 
-  Promise.all([documentReady, loadScript(luxonUrl)]).then(() => {
+  // eslint-disable-next-line no-void
+  void Promise.all([documentReady, loadScript(luxonUrl)]).then(() => {
     XRefConnectedUsersController.attach('#xref-ids')
   })
 }

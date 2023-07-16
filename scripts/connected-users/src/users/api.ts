@@ -7,7 +7,7 @@ import { minimalUserFilter, seAPIKey, userAPICacheSize } from '../constants'
 
 import { DeletedUser, ExistingUser, JSONLoadable, User } from './classes'
 
-type UserFetcherOptions = {
+interface UserFetcherOptions {
   api: StackExchangeAPI
   cache: Cache<User['user_id'], User>
   missingAssumeDeleted: boolean
@@ -15,7 +15,7 @@ type UserFetcherOptions = {
 
 export class UserFetcher<
   UserType extends JSONLoadable<User> = typeof ExistingUser,
-  MissingUser extends User = DeletedUser
+  MissingUser extends User = DeletedUser,
 > {
   private readonly api: StackExchangeAPI
   private readonly cache: Cache<User['user_id'], User>
@@ -35,13 +35,10 @@ export class UserFetcher<
     options: Partial<UserFetcherOptions> = {}
   ): UserFetcher {
     const config: UserFetcherOptions = {
-      api: options.api || new StackExchangeAPI(seAPIKey),
+      api: options.api ?? new StackExchangeAPI(seAPIKey),
       cache:
-        options.cache || new LruCache<User['user_id'], User>(userAPICacheSize),
-      missingAssumeDeleted:
-        options.missingAssumeDeleted === undefined
-          ? false
-          : options.missingAssumeDeleted,
+        options.cache ?? new LruCache<User['user_id'], User>(userAPICacheSize),
+      missingAssumeDeleted: options.missingAssumeDeleted ?? false,
     }
     return new UserFetcher(ExistingUser, DeletedUser, config)
   }
@@ -52,15 +49,18 @@ export class UserFetcher<
   ): AsyncIterableIterator<User> {
     const toFetch: User['user_id'][] = []
     const byUserId = new Map(
-      userIds.reduce((resolved, uid) => {
-        const user = this.cache.get(uid)
-        if (user === undefined) toFetch.push(uid)
-        return user !== undefined ? [...resolved, [uid, user]] : resolved
-      }, [] as [User['user_id'], User][])
+      userIds.reduce(
+        (resolved, uid) => {
+          const user = this.cache.get(uid)
+          if (user === undefined) toFetch.push(uid)
+          return user !== undefined ? [...resolved, [uid, user]] : resolved
+        },
+        [] as [User['user_id'], User][]
+      )
     )
 
     const get = this.missingAssumeDeleted
-      ? (uid: User['user_id']) => byUserId.get(uid) || this.missingUser(uid)
+      ? (uid: User['user_id']) => byUserId.get(uid) ?? this.missingUser(uid)
       : (uid: User['user_id']) => byUserId.get(uid)
     const uids = userIds.values()
     function* cachedOrMissing(until?: User['user_id']) {

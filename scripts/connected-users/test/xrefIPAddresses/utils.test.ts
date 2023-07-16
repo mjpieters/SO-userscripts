@@ -39,7 +39,7 @@ describe('We can parse date/time strings', () => {
   })
 
   afterAll(() => {
-    delete (global as any).luxon
+    delete (global as unknown as { luxon: unknown }).luxon
   })
 
   test('from table rows with relative time elements', () => {
@@ -79,8 +79,8 @@ describe('We can get the inner rectangle size of an element', () => {
   })
 
   afterAll(() => {
-    delete (elem as any).clientWidth
-    delete (elem as any).clientHeight
+    delete (elem as unknown as { clientWidth: unknown }).clientWidth
+    delete (elem as unknown as { clientHeight: unknown }).clientHeight
     jest.restoreAllMocks()
   })
 
@@ -114,7 +114,8 @@ describe('Given an invisible element inside expandable divs', () => {
   })
 
   afterAll(() => {
-    for (const elem of elems) delete (elem as any).clientWidth
+    for (const elem of elems)
+      delete (elem as unknown as { clientWidth: unknown }).clientWidth
   })
 
   test('we can make the element temporarily visible', () => {

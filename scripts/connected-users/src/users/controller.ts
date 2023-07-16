@@ -34,54 +34,58 @@ export class UserListController extends Stacks.StacksController {
 
   private refreshId: number | null = null
 
+  private async _update(): Promise<void> {
+    this.countTarget.innerHTML = this.userRowTargets.length.toString()
+    // replace sparse user cards with full versions
+    // preserves the first child of an existing s-user-card div if keepFirst
+    // is true
+    const hydrationRows = new Map(
+      this.userRowTargets.reduce(
+        (entries, row) =>
+          row.dataset.hydrated === 'true'
+            ? entries
+            : [...entries, [parseInt(row.dataset.uid ?? '0'), row]],
+        [] as [number, HTMLDivElement][]
+      )
+    )
+    try {
+      if (hydrationRows.size === 0) return
+      for await (const user of api.users([...hydrationRows.keys()])) {
+        const userRow = hydrationRows.get(user.user_id)
+        if (!userRow) continue
+        const firstChild = this.keepFirstValue
+          ? userRow.querySelector<HTMLDivElement>('.s-user-card :first-child')
+          : null
+        const existingCard =
+          userRow.querySelector<HTMLDivElement>('.s-user-card')
+        if (existingCard) existingCard.replaceWith(user.node)
+        else userRow.replaceChildren(user.node)
+        const newCard = userRow.querySelector('.s-user-card')
+        newCard?.classList.add(...this.userCardClasses)
+        if (firstChild) newCard?.insertAdjacentElement('afterbegin', firstChild)
+        userRow.dataset.hydrated = 'true'
+      }
+      // signal the Mod User Quicklinks Everywhere script
+      this.dispatch('moduserquicklinks', { prefix: '' })
+      this.dispatch('usersHydrated', {
+        detail: this.userRowTargets.reduce(
+          (uids, r) =>
+            r.querySelector('s-user-card__deleted') === null
+              ? [...uids, parseInt(r.dataset.uid ?? '0')]
+              : uids,
+          [] as number[]
+        ),
+      })
+    } finally {
+      this.refreshId = null
+    }
+  }
+
   updateUsers(): void {
     if (this.refreshId !== null) window.cancelAnimationFrame(this.refreshId)
-    this.refreshId = window.requestAnimationFrame(async () => {
-      this.countTarget.innerHTML = this.userRowTargets.length.toString()
-      // replace sparse user cards with full versions
-      // preserves the first child of an existing s-user-card div if keepFirst
-      // is true
-      const hydrationRows = new Map(
-        this.userRowTargets.reduce(
-          (entries, row) =>
-            row.dataset.hydrated === 'true'
-              ? entries
-              : [...entries, [parseInt(row.dataset.uid || '0'), row]],
-          [] as [number, HTMLDivElement][]
-        )
-      )
-      try {
-        if (hydrationRows.size === 0) return
-        for await (const user of api.users([...hydrationRows.keys()])) {
-          const userRow = hydrationRows.get(user.user_id)
-          if (!userRow) continue
-          const firstChild = this.keepFirstValue
-            ? userRow.querySelector<HTMLDivElement>('.s-user-card :first-child')
-            : null
-          const existingCard =
-            userRow.querySelector<HTMLDivElement>('.s-user-card')
-          if (existingCard) existingCard.replaceWith(user.node)
-          else userRow.replaceChildren(user.node)
-          const newCard = userRow.querySelector('.s-user-card')
-          newCard?.classList.add(...this.userCardClasses)
-          if (firstChild)
-            newCard?.insertAdjacentElement('afterbegin', firstChild)
-          userRow.dataset.hydrated = 'true'
-        }
-        // signal the Mod User Quicklinks Everywhere script
-        this.dispatch('moduserquicklinks', { prefix: '' })
-        this.dispatch('usersHydrated', {
-          detail: this.userRowTargets.reduce(
-            (uids, r) =>
-              r.querySelector('s-user-card__deleted') === null
-                ? [...uids, parseInt(r.dataset.uid || '0')]
-                : uids,
-            [] as number[]
-          ),
-        })
-      } finally {
-        this.refreshId = null
-      }
+    this.refreshId = window.requestAnimationFrame(() => {
+      // eslint-disable-next-line no-void
+      void this._update()
     })
   }
 }
