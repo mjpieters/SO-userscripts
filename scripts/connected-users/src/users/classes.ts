@@ -6,7 +6,7 @@ import { escapeHtml } from '../utils'
 type JSONReflection<T> = {
   [P in keyof T as T[P] extends Function ? never : P]: T[P] // eslint-disable-line @typescript-eslint/ban-types
 }
-type Constructor<T> = new (...args: any[]) => T
+type Constructor<T> = new (...args: unknown[]) => T
 export interface JSONLoadable<T> {
   new (): T
   fromJSON(json: JSONReflection<T>): T
@@ -54,6 +54,7 @@ export class ExistingUser extends User {
     silver: number
     gold: number
   }
+
   display_name: string
   profile_image: string
   reputation: number

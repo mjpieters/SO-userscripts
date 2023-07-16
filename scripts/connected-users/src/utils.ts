@@ -30,10 +30,12 @@ export const delay = (ms: number): Promise<void> =>
 
 /** create a camelCase name of a string */
 export const camelize = (value: string): string =>
-  value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
+  value.replace(/(?:[_-])([a-z0-9])/g, (_, char: string) => char.toUpperCase())
 
 /** Stimulus hook helpers */
-type HasControllerId = { controllerId: string }
+interface HasControllerId {
+  controllerId: string
+}
 /** Generate a property name for the given controller type accessed as a single outlet */
 export const outlet = <T>({ controllerId }: HasControllerId): keyof T =>
   `${camelize(`${controllerId}`)}Outlet` as keyof T
@@ -68,7 +70,7 @@ export class LruCache<K, V> implements Cache<K, V> {
 
   public put(key: K, value: V) {
     while (this.values.size >= this.maxEntries)
-      this.values.delete(this.values.keys().next().value)
+      this.values.delete(this.values.keys().next().value as K)
     this.values.set(key, value)
   }
 }

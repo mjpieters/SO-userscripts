@@ -10,6 +10,7 @@ import {
 import { UserFetcher } from '@connected-users/users/api'
 import { DeletedUser, ExistingUser, User } from '@connected-users/users/classes'
 
+// eslint-disable-next-line @typescript-eslint/require-await
 async function* asAsyncIt<T>(arr: T[]): AsyncIterableIterator<T> {
   yield* arr
 }
@@ -35,13 +36,16 @@ describe('We can fetch users in batches from the Stack Exchange API', () => {
     typeof import('@connected-users/seAPI')
   >('@connected-users/seAPI').StackExchangeAPI
   const mockedAPI = new MockedAPIClass()
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const mockFetchAll = jest.mocked(mockedAPI.fetchAll)
 
   const MockedCache = jest.createMockFromModule<
     typeof import('@connected-users/utils')
   >('@connected-users/utils').LruCache
   const mockedCache = new MockedCache<User['user_id'], User>()
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const mockCacheGet = jest.mocked(mockedCache.get)
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const mockCachePut = jest.mocked(mockedCache.put)
 
   let fetcher: UserFetcher

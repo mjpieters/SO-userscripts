@@ -145,7 +145,7 @@ describe('The histogram controller', () => {
     // wait for the controller to be connected, which happens on domReady
     await domReady()
     controller = application.getControllerForElementAndIdentifier(
-      document.getElementById('controller') as HTMLElement,
+      document.getElementById('controller')!,
       controllerId
     ) as HistogramController
   })
@@ -264,7 +264,7 @@ describe('The histogram controller', () => {
 
     const threshold = () => {
       const thresholdElems = controller.element.querySelectorAll('.threshold')
-      expect(thresholdElems.length).toBe(1)
+      expect(thresholdElems).toHaveLength(1)
       return thresholdElems[0]
     }
     const bars = Array.from(controller.svgTarget.getElementsByTagName('rect'))

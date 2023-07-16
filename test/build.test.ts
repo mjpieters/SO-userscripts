@@ -23,7 +23,7 @@ async function runWebpack(): Promise<WebpackResult> {
       resolve({ assets: stats.compilation.assets, output: volume })
     })
   })
-  await compiler.close((err) => {
+  compiler.close((err) => {
     if (err) throw err
   })
   return results
@@ -40,7 +40,7 @@ describe('The webpack build is not broken', () => {
     sources = Object.fromEntries(
       Object.entries(files).map(([filename, source]) => [
         path.basename(filename),
-        source || '',
+        source ?? '',
       ])
     )
     assetNames = Object.keys(assets)

@@ -9,7 +9,7 @@ import {
 import { UserFrequencies } from './types'
 import { ensureHasSize, innerRect } from './utils'
 
-export type Bucket = {
+export interface Bucket {
   // number of ip addresses on which a user connected with the focus account(s)
   // This is the bucket 'name'
   connCount: number
@@ -111,18 +111,24 @@ export class HistogramController extends Stacks.StacksController {
   }
 
   connect() {
-    this.svgTarget.addEventListener('click', this.propagateEvent.bind(this))
+    this.svgTarget.addEventListener(
+      'click',
+      this.propagateEvent.bind(this) as typeof this.propagateEvent
+    )
     this.svgTarget.addEventListener(
       'pointerover',
-      this.propagateEvent.bind(this)
+      this.propagateEvent.bind(this) as typeof this.propagateEvent
     )
   }
 
   disconnect() {
-    this.svgTarget.removeEventListener('click', this.propagateEvent.bind(this))
+    this.svgTarget.removeEventListener(
+      'click',
+      this.propagateEvent.bind(this) as typeof this.propagateEvent
+    )
     this.svgTarget.removeEventListener(
       'pointerover',
-      this.propagateEvent.bind(this)
+      this.propagateEvent.bind(this) as typeof this.propagateEvent
     )
   }
 
@@ -202,12 +208,12 @@ export class HistogramController extends Stacks.StacksController {
         <use href="#gridLine" />
        </g>`
     )
-    const gridLines = this.svgTarget.querySelector('g.gridLines') as SVGGElement
+    const gridLines = this.svgTarget.querySelector('g.gridLines')!
     // grid line spacing differs when using log10 scale (going up by powers of 10)
     // and when using linear scale (drawing at most 10 such lines)
     const gridStep = this.logScale
       ? (y: number) => Math.pow(10, Math.floor(Math.log10(y || 1)))
-      : (_: any, step = Math.max(Math.floor(maxValue / 10), 1)) => step
+      : (_: unknown, step = Math.max(Math.floor(maxValue / 10), 1)) => step
     let y = 0
     while (y < maxValue) {
       const height = svgHeight - scaleHeight(y) * scaleCoef
@@ -230,8 +236,8 @@ export class HistogramController extends Stacks.StacksController {
           data-bucket-conn-count="${bucket.connCount}"
         >
           <title>${bucket.label}: ${bucket.userCount} account${
-        bucket.userCount === 1 ? '' : 's'
-      }</title>
+            bucket.userCount === 1 ? '' : 's'
+          }</title>
         </rect>
        `
       this.svgTarget.insertAdjacentHTML('beforeend', rect)

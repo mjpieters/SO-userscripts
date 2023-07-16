@@ -9,7 +9,7 @@ describe('We can use an EmptyDomController to watch for container changes', () =
   const controllerId = EmptyDomController.controllerId
   let application: Stimulus.Application
 
-  beforeEach(async () => {
+  beforeEach(() => {
     application = Stimulus.Application.start()
     application.register(controllerId, EmptyDomController)
   })
@@ -101,7 +101,7 @@ describe('We can use an EmptyDomController to watch for container changes', () =
 
     controller.element.innerHTML = '<div></div><div></div><div></div>'
     await Promise.resolve()
-    expect(eventCount).toStrictEqual(3)
+    expect(eventCount).toBe(3)
   })
 
   test('emptying the container fires an event', async () => {
@@ -123,9 +123,7 @@ describe('We can use an EmptyDomController to watch for container changes', () =
         </div>
       </div>
     `)
-    const inner = controller.element.querySelector(
-      '#innerContainer'
-    ) as HTMLElement
+    const inner = controller.element.querySelector('#innerContainer')!
 
     controller.element.insertAdjacentHTML('afterbegin', '<p>Not monitored</p>')
     await Promise.resolve()

@@ -1,3 +1,4 @@
+/* eslint-disable no-void */
 import {
   afterEach,
   beforeEach,
@@ -9,8 +10,8 @@ import {
 
 import { APIError, StackExchangeAPI } from '@connected-users/seAPI'
 
-type MockResponse = {
-  items?: any[]
+interface MockResponse {
+  items?: unknown[]
   backoff?: number
   has_more?: boolean
   error?: {
@@ -128,7 +129,7 @@ describe('We can pass in parameters to the API', () => {
   const table: [
     `/${string}`,
     Record<string, string[] | string | number | Date>,
-    string
+    string,
   ][] = [
     ['/foo', { bar: 42 }, '/foo?site=apitest&pagesize=100&bar=42'],
     ['/bar/{spam}', { spam: 'ham' }, '/bar/ham?site=apitest&pagesize=100'],
@@ -171,8 +172,8 @@ describe('We honour the backoff parameter', () => {
 
   test('by waiting the specified amount of time', async () => {
     await api.fetch('/foo') // backoff = 42
-    api.fetch('/foo') // backoff = 17
-    api.fetch('/foo')
+    void api.fetch('/foo') // backoff = 17
+    void api.fetch('/foo')
     for (const t of [2, 10, 10, 10, 10]) {
       expect(fetchSpy).toHaveBeenCalledTimes(1)
       await jest.advanceTimersByTimeAsync(1000 * t)
@@ -194,14 +195,14 @@ describe('We honour the backoff parameter', () => {
 
   test('/me is treated as /users/{ids}', async () => {
     await api.fetch('/me')
-    api.fetch('/users/{ids}', { ids: 42 })
+    void api.fetch('/users/{ids}', { ids: 42 })
     expect(fetchSpy).toHaveBeenCalledTimes(1)
     await jest.advanceTimersByTimeAsync(42000)
     expect(fetchSpy).toHaveBeenCalledTimes(2)
   })
 })
 
-describe('We honour the backoff parameter', () => {
+describe('Errors reset the backoff value', () => {
   let api: StackExchangeAPI
   beforeEach(() => {
     api = new StackExchangeAPI()
@@ -258,7 +259,7 @@ describe('We can fetch results in batches', () => {
     const gen = api.fetchAll<number>('/foo')
     for (const i of [1, 2, 3, 4, 5])
       await expect(gen.next()).resolves.toEqual({ value: i, done: false })
-    await expect(gen.next()).rejects
+    await expect(gen.next()).resolves.toEqual({ value: undefined, done: true })
   })
 
   test('from vectored path parameters', async () => {
@@ -302,7 +303,7 @@ describe('We can fetch results in batches', () => {
       { pageSize: 5, compareFn: (a, b) => a - b }
     )
     for (const expected of [1, 2, 3, 4, 6, 5, 7, 8, 9]) {
-      await expect((await gen.next()).value).toEqual(expected)
+      expect((await gen.next()).value).toEqual(expected)
     }
   })
 })

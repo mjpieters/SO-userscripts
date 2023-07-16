@@ -2,10 +2,8 @@ import path from 'path'
 import { globIterateSync } from 'glob'
 import { existsSync } from 'fs'
 
-interface UserScriptContexts {
-  [scriptName: string]: Record<string, any>
-}
-type UserScriptTest = {
+type UserScriptContexts = Record<string, Record<string, unknown>>
+interface UserScriptTest {
   name: string
   path: string
 }
@@ -21,9 +19,9 @@ class UserScripts {
     return Object.keys(this.entries)
   }
 
-  private entries_cache: { [key: string]: string } | undefined
+  private entries_cache: Record<string, string> | undefined
 
-  get entries(): { [key: string]: string } {
+  get entries(): Record<string, string> {
     if (this.entries_cache === undefined) {
       const scriptMainPaths = globIterateSync(
         path.join(this.scriptsFolder, '*/src/index.ts')
@@ -51,14 +49,15 @@ class UserScripts {
     return this.headers_cache
   }
 
-  private headersFor(scriptName: string): Record<string, any> {
+  private headersFor(scriptName: string): Record<string, unknown> {
     const headersFile = path.resolve(
       this.scriptsFolder,
       scriptName,
       'headers.json'
     )
     try {
-      return require(headersFile)
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      return require(headersFile) as Record<string, unknown>
     } catch (e) {
       return {}
     }

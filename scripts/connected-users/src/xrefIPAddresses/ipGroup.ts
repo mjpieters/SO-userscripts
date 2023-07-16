@@ -72,7 +72,7 @@ export class IpGroupController extends Stacks.StacksController {
     )
   }
 
-  private belowThreshold: Set<string> = new Set()
+  private belowThreshold = new Set<string>()
 
   private get userRows(): HTMLTableRowElement[] {
     return Array.from(
@@ -137,10 +137,9 @@ export class IpGroupController extends Stacks.StacksController {
 
   private addFocusButtons() {
     this.userRows.forEach((tr) => {
-      tr.querySelector('td a[href^="/users/"]')?.insertAdjacentHTML(
-        'beforebegin',
-        userControls
-      )
+      tr
+        .querySelector('td a[href^="/users/"]')
+        ?.insertAdjacentHTML('beforebegin', userControls)
       const dataKey = `${camelize(controllerId)}UidParam`
       const uid = tr.dataset.uid!
       tr.querySelectorAll<HTMLButtonElement>('td .s-btn[data-action]').forEach(
@@ -158,7 +157,9 @@ export class IpGroupController extends Stacks.StacksController {
     this.focusUserRows.forEach((tr) => {
       tr.classList.add(knownUserCls)
     })
-    const below = this.belowThreshold.has.bind(this.belowThreshold)
+    const below = this.belowThreshold.has.bind(
+      this.belowThreshold
+    ) as typeof this.belowThreshold.has
     this.connectedUserRows.forEach((tr) => {
       tr.classList.toggle(overlapCls, !below(tr.dataset.uid!))
     })

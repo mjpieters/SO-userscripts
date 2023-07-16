@@ -9,12 +9,12 @@ import { currentTag, UserScripts } from './utils'
 
 const HERE = path.resolve(__dirname)
 const OUTPUT = path.resolve(HERE, 'dist')
-const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT || '8842')
-const VERSION = process.env.VERSION || currentTag().replace(/^v/, '')
+const DEV_SERVER_PORT = parseInt(process.env.DEV_SERVER_PORT ?? '8842')
+const VERSION = process.env.VERSION ?? currentTag().replace(/^v/, '')
 
 const config: (
-  env: Record<string, any>,
-  args: Record<string, any>
+  env: Record<string, unknown>,
+  args: Record<string, unknown>
 ) => Configuration = (_, argv) => {
   const isDevMode = argv.mode === 'development'
   /* istanbul ignore next */

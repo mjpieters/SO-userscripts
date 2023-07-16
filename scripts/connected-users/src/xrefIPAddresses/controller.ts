@@ -202,6 +202,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
     'focusedUsers',
     'focusUsersGraphLink',
   ]
+
   declare readonly xrefsTableTarget: HTMLTableElement
   declare readonly connectedUsersTarget: HTMLDivElement
   declare readonly focusedUsersTarget: HTMLDivElement
@@ -216,12 +217,13 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
   private get ipGroups(): IpGroupController[] {
     return this[outlets<this>(IpGroupController)] as IpGroupController[]
   }
+
   private get histogram(): HistogramController {
     return this[outlet<this>(HistogramController)] as HistogramController
   }
 
   static attach(xRefsSelector: string): void {
-    const xrefsTable = document.querySelector(xRefsSelector) as HTMLTableElement
+    const xrefsTable = document.querySelector(xRefsSelector)!
     const groups = Array.from(
       xrefsTable.querySelectorAll<HTMLTableRowElement>(ipGroupSelector)
     ).filter((row) => row.querySelector('tbody') !== null)
@@ -327,7 +329,7 @@ export class XRefConnectedUsersController extends Stacks.StacksController {
   }
 
   private get connectedUsers(): UserFrequencies {
-    const connectedUsers: Map<number, number> = new Map()
+    const connectedUsers = new Map<number, number>()
     this.ipGroups.forEach((ipGroup) =>
       ipGroup.connectedUsers.forEach((uid) =>
         connectedUsers.set(uid, (connectedUsers.get(uid) ?? 0) + 1)
