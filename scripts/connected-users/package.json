@@ -5,7 +5,7 @@
         "luxon": "^3.3.0"
     },
     "dependencies": {
-        "@stackoverflow/stacks-icons": "^5.3.1",
+        "@stackoverflow/stacks-icons": "^5.4.0",
         "stimulus-use": "^0.52.0"
     }
 }
