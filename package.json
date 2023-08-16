@@ -37,7 +37,7 @@
     "@types/ssri": "^7.1.1",
     "@types/tampermonkey": "^4.0.11",
     "@types/webpack": "^5.28.1",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "@userscripters/stackexchange-global-types": "^2.7.0",
     "concurrently": "^8.2.0",
