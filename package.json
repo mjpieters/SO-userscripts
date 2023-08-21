@@ -60,7 +60,7 @@
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.2",
     "prettier-eslint": "^15.0.1",
-    "semantic-release": "^21.0.7",
+    "semantic-release": "^21.0.9",
     "swc-loader": "^0.2.3",
     "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
