@@ -35,7 +35,7 @@
     "@types/node": "^20.5.1",
     "@types/semantic-release": "^20.0.1",
     "@types/ssri": "^7.1.1",
-    "@types/tampermonkey": "^4.20.0",
+    "@types/tampermonkey": "^4.20.1",
     "@types/webpack": "^5.28.1",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
