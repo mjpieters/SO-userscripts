@@ -2333,10 +2333,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.5.1":
-  version: 20.5.1
-  resolution: "@types/node@npm:20.5.1"
-  checksum: 3dbe611cd67afa987102c8558ee70f848949c5dcfee5f60abc073e55c0d7b048e391bf06bb1e0dc052cb7210ca97136ac496cbaf6e89123c989de6bd125fde82
+"@types/node@npm:^20.5.3":
+  version: 20.5.3
+  resolution: "@types/node@npm:20.5.3"
+  checksum: fe67a0fd7402218bdf91523a2b1c2e41d619f7294b1a471e0a778b8bc7bb3fcf291aed12041bcbe9622d50a3d1295a9adea0e7e19bb9386a246bf66071404721
   languageName: node
   linkType: hard
 
@@ -11712,7 +11712,7 @@ __metadata:
     "@swc/jest": ^0.2.29
     "@testing-library/dom": ^9.3.1
     "@testing-library/user-event": ^14.4.3
-    "@types/node": ^20.5.1
+    "@types/node": ^20.5.3
     "@types/semantic-release": ^20.0.1
     "@types/ssri": ^7.1.1
     "@types/tampermonkey": ^4.20.1
