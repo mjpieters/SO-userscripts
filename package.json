@@ -24,7 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/stimulus": "^3.2.2",
     "@jest/globals": "^29.6.4",
     "@semantic-release/exec": "semantic-release/exec",
     "@semantic-release/git": "^10.0.1",
