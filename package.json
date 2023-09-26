@@ -38,7 +38,7 @@
     "@types/tampermonkey": "^4.20.3",
     "@types/webpack": "^5.28.3",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
-    "@typescript-eslint/parser": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.3",
     "@userscripters/stackexchange-global-types": "^2.7.0",
     "concurrently": "^8.2.1",
     "eslint": "^8.50.0",
