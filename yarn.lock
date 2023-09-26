@@ -2449,12 +2449,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ssri@npm:^7.1.1":
-  version: 7.1.1
-  resolution: "@types/ssri@npm:7.1.1"
+"@types/ssri@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "@types/ssri@npm:7.1.2"
   dependencies:
     "@types/node": "*"
-  checksum: 0327eb212a8d52e09f0fe4df5e0f580db9daaf2e03fc9dbbc5c1356c92fd870084588e5b0b9b58546e1a5cae9a825097a74100c463b241f38dafb49043569de3
+  checksum: a40e5591c5da215c977c044c2b877e4e951ca56e62293dd662201da8264562ce8bbc440424a924093c252eb8ec6341404f9bf7119dfeeabb155f6b734940a764
   languageName: node
   linkType: hard
 
@@ -11763,7 +11763,7 @@ __metadata:
     "@testing-library/user-event": ^14.5.1
     "@types/node": ^20.6.5
     "@types/semantic-release": ^20.0.1
-    "@types/ssri": ^7.1.1
+    "@types/ssri": ^7.1.2
     "@types/tampermonkey": ^4.20.3
     "@types/webpack": ^5.28.3
     "@typescript-eslint/eslint-plugin": ^6.7.2
