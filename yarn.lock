@@ -4513,7 +4513,7 @@ __metadata:
     "@stackoverflow/stacks-icons": ^5.5.0
     "@types/luxon": ^3.3.2
     luxon: ^3.4.3
-    stimulus-use: ^0.52.0
+    stimulus-use: ^0.52.1
   languageName: unknown
   linkType: soft
 
@@ -12018,13 +12018,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stimulus-use@npm:^0.52.0":
-  version: 0.52.0
-  resolution: "stimulus-use@npm:0.52.0"
+"stimulus-use@npm:^0.52.1":
+  version: 0.52.1
+  resolution: "stimulus-use@npm:0.52.1"
   peerDependencies:
     "@hotwired/stimulus": ">= 3"
     hotkeys-js: ">= 3"
-  checksum: 99a0b8f2f89564ee8cb5aa3874e7e0e15ac6e6dcd0f327dc85fc504fd384248629d1730490d1df78489190cc061a56e7238bfef15690459ee0d02d0004de609c
+  checksum: 386523caa4657322bed4e62789b4bd7d7f5519ec8b472ac41b801c61206e0a33e29f527680a7c8a0d08ff55dc0a230055901c7d6b5d01d2d2c58199fc2d53a14
   languageName: node
   linkType: hard
 

@@ -6,6 +6,6 @@
     },
     "dependencies": {
         "@stackoverflow/stacks-icons": "^5.5.0",
-        "stimulus-use": "^0.52.0"
+        "stimulus-use": "^0.52.1"
     }
 }
