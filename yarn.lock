@@ -2500,14 +2500,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/webpack@npm:^5.28.3":
-  version: 5.28.3
-  resolution: "@types/webpack@npm:5.28.3"
+"@types/webpack@npm:^5.28.4":
+  version: 5.28.4
+  resolution: "@types/webpack@npm:5.28.4"
   dependencies:
     "@types/node": "*"
     tapable: ^2.2.0
     webpack: ^5
-  checksum: 8452528f7ff61eb5e53d9d1dc08c05c648af2d850e14debf49141859b72798ea2d91f2892f849d7fa97e208fef7ae82960eea24b1019cb072b4713b515e74bfc
+  checksum: 7a08e31096a05c77bb49b3830f85f2e340090fa2b19dbe4681c7eab92e49db85bdbbe7b374df7d7aa38549922ff3252f43a00d4c5c2f9fe0c2a198cdb5ddde7e
   languageName: node
   linkType: hard
 
@@ -11777,7 +11777,7 @@ __metadata:
     "@types/semantic-release": ^20.0.1
     "@types/ssri": ^7.1.3
     "@types/tampermonkey": ^4.20.4
-    "@types/webpack": ^5.28.3
+    "@types/webpack": ^5.28.4
     "@typescript-eslint/eslint-plugin": ^6.8.0
     "@typescript-eslint/parser": ^6.8.0
     "@userscripters/stackexchange-global-types": ^2.7.0
