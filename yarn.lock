@@ -1873,10 +1873,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stackoverflow/stacks-icons@npm:^5.5.0":
-  version: 5.5.0
-  resolution: "@stackoverflow/stacks-icons@npm:5.5.0"
-  checksum: d3bda9d60ea7cac798e0d6ad9b2c9d01c25a651845d29d37db2473f3bd2e775244e3c86eec3c8ac9a853cd4c69a90e8db17af7260778b628c7c84ab4ddb56dbb
+"@stackoverflow/stacks-icons@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@stackoverflow/stacks-icons@npm:6.0.0"
+  checksum: 50dbdb44cf55f7e6b6f719625bacb04f74692afb3c2a665de6681d4cbf6259fbdc21586345ebd34165d843a9cfd923e2d50ab5b326e8959362f00af155e1cf53
   languageName: node
   linkType: hard
 
@@ -4555,7 +4555,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "connected-users@workspace:scripts/connected-users"
   dependencies:
-    "@stackoverflow/stacks-icons": ^5.5.0
+    "@stackoverflow/stacks-icons": ^6.0.0
     "@types/luxon": ^3.3.3
     luxon: ^3.4.3
     stimulus-use: ^0.52.1
