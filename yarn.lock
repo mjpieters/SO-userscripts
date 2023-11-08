@@ -2490,12 +2490,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/semantic-release@npm:^20.0.4":
-  version: 20.0.4
-  resolution: "@types/semantic-release@npm:20.0.4"
+"@types/semantic-release@npm:^20.0.5":
+  version: 20.0.5
+  resolution: "@types/semantic-release@npm:20.0.5"
   dependencies:
     "@types/node": "*"
-  checksum: f998a96e008c47761b2c25deaf72a3709c476f8c4c09f8433a4af4159d4bd11a2a5fc0a85255210aee77acd90d1c686f6a81f03feb6151a8833b40efd022a3a9
+  checksum: 0f14e43de27d0a773143e7c8b58fe9d334f9927eb5a6ccc8e743f6e77b6aeb94cd9308757837cceac2d1a8e353932fd65cbfa567a39869ab417223cc469d4dc5
   languageName: node
   linkType: hard
 
@@ -11966,7 +11966,7 @@ __metadata:
     "@testing-library/dom": ^9.3.3
     "@testing-library/user-event": ^14.5.1
     "@types/node": ^20.8.2
-    "@types/semantic-release": ^20.0.4
+    "@types/semantic-release": ^20.0.5
     "@types/ssri": ^7.1.4
     "@types/tampermonkey": ^5.0.2
     "@types/webpack": ^5.28.4
