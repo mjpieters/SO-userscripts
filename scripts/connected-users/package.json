@@ -1,7 +1,7 @@
 {
     "name": "connected-users",
     "devDependencies": {
-        "@types/luxon": "^3.3.5",
+        "@types/luxon": "^3.3.6",
         "luxon": "^3.4.4"
     },
     "dependencies": {
