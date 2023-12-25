@@ -4649,7 +4649,7 @@ __metadata:
     "@stackoverflow/stacks-icons": ^6.0.0
     "@types/luxon": ^3.3.7
     luxon: ^3.4.4
-    stimulus-use: ^0.52.1
+    stimulus-use: ^0.52.2
   languageName: unknown
   linkType: soft
 
@@ -12324,13 +12324,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stimulus-use@npm:^0.52.1":
-  version: 0.52.1
-  resolution: "stimulus-use@npm:0.52.1"
+"stimulus-use@npm:^0.52.2":
+  version: 0.52.2
+  resolution: "stimulus-use@npm:0.52.2"
   peerDependencies:
     "@hotwired/stimulus": ">= 3"
     hotkeys-js: ">= 3"
-  checksum: 386523caa4657322bed4e62789b4bd7d7f5519ec8b472ac41b801c61206e0a33e29f527680a7c8a0d08ff55dc0a230055901c7d6b5d01d2d2c58199fc2d53a14
+  checksum: 812121fb980ae85962c492289e00fd23c7bcfe3e0777fbded9bd62266a321e9042c243fa4fb59573e4a262cb7fb4fd2df1e408cc32ce8da7f1a0e65e4b11b177
   languageName: node
   linkType: hard
 
