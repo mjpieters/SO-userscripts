@@ -2455,12 +2455,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.11.0":
-  version: 20.11.0
-  resolution: "@types/node@npm:20.11.0"
+"@types/node@npm:^20.11.3":
+  version: 20.11.3
+  resolution: "@types/node@npm:20.11.3"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 1bd6890db7e0404d11c33d28f46f19f73256f0ba35d19f0ef2a0faba09f366f188915fb9338eebebcc472075c1c4941e17c7002786aa69afa44980737846b200
+  checksum: 56d58fec1352af4fddcf07b6f003e427b34c9bdd936ef895f8c3db4dccf7606662a8c536865532a7b58f1208712744cce777ba23767325e66d6beaa5c772219f
   languageName: node
   linkType: hard
 
@@ -12064,7 +12064,7 @@ __metadata:
     "@swc/jest": ^0.2.29
     "@testing-library/dom": ^9.3.4
     "@testing-library/user-event": ^14.5.2
-    "@types/node": ^20.11.0
+    "@types/node": ^20.11.3
     "@types/semantic-release": ^20.0.6
     "@types/ssri": ^7.1.5
     "@types/tampermonkey": ^5.0.2
