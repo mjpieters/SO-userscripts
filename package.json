@@ -58,7 +58,7 @@
     "jest-environment-jsdom": "^29.6.2",
     "jest-extended": "^4.0.2",
     "lint-staged": "^15.2.1",
-    "prettier": "^3.2.4",
+    "prettier": "^3.2.5",
     "prettier-eslint": "^16.3.0",
     "semantic-release": "^22.0.12",
     "swc-loader": "^0.2.4",
