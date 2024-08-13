@@ -5,6 +5,9 @@
 
 User scripts for use on Stack Exchange websites. You can install these by clicking on the install link for each individual script from their individual README files, listed below.
 
+> [!WARNING]  
+> This repository is no longer being maintained. Use the code here at your own risk, I am no longer a moderator and can't fix these.
+
 ## Scripts
 
 * ♦ [Connected users](./scripts/connected-users/README.md): Userscript to aid investigation of connected users on the moderator-only IP cross-reference view. **Requires ♦ moderator access**.
