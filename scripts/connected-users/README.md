@@ -1,5 +1,8 @@
 # ♦ Connected Users
 
+> [!WARNING]
+> This repository is no longer being maintained. Use the code here at your own risk, I am no longer a moderator and can't fix these.
+
 > **Warning**  
 > This userscript only works for sites where you have ♦ elected moderator access.
 
