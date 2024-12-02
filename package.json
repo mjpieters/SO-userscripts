@@ -39,7 +39,7 @@
     "@types/webpack": "^5.28.5",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@userscripters/stackexchange-global-types": "^2.7.0",
+    "@userscripters/stackexchange-global-types": "^2.8.0",
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
